@@ -55,7 +55,7 @@ if (plotit):
 
 cax = 0 # counter for the grid of subplots - this increases by 1 for each star AND also counts the star number for output array
 
-for l in tqdm(t): # loop over all the stars in the table
+for l in t: # loop over all the stars in the table
 	star = l['hip_id']    		# name
 	d = l['sy_dist']      		# parsecs
 	Vmag = l['sy_vmag']   		# V magnitude
