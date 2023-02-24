@@ -172,7 +172,7 @@ POLLUX, a proposed UV instrument for the LUVOIR study could also allow the detec
  Phase curves of planets are more complex than simple Lambertian curves. 
  The phase curve of an edge on system in unpolarized light is dominated by the reflectance and backscatter of the surface, clouds, and atmosphere. Though this behaviour is not Lambertian, the planet will, in general, get brighter at fuller phases (small scattering angles) with a peak at full phase from cloud backscatter \citet[see, for example,][]{kopparla2018}. In cases where surface liquid (sea) is present, the specular reflection can create a notable addition to the phase curve at broad scattering angles near crescent phase \citep{Robinson_2010}. Exoplanet phase curves can also contain a rainbow signature at gibbous phases (moderately narrow scattering angles), though this is a small feature in comparison to the reflectance.
 
- In polarized light, additional structure in the phase curve can enable phenomena like ocean glint, rainbows, and the Rayleigh scattering to be more easily distinguished.  Notably, in the polarized phase curve the rainbow may be an especially strong feature and the maximum reflectance signal (from Rayleigh scattering) occurs
+ In polarized light, additional structure in the phase curve can enable phenomena like ocean glint, rainbows, and the Rayleigh scattering to be more easily distinguished.  Notably, in the polarized phase curve the rainbow may be an especially strong feature and the maximum reflectance signal (from Rayleigh scattering) occurs 
 
  
 
@@ -378,6 +378,8 @@ The reflected flux and polarisation are not constant as a function of scattering
 \label{sec:circular}
 For each star on the HabWorlds target list, we generate XX hypothetical habitable planets at the Earth-equivalent-flux semi-major axis. The orbital inclinations are randomly drawn from a distribution uniform in $\cos i$. We then use Eqn \ref{eq:Delta_phi_max} to determine the range of accessible scattering phase angles for each hypothetical planet. Figure blah shows the cumulative distribution for the most extreme scattering phase angles accessible for the HabWorlds target list, depending on the choice of inner working angle.  
 
+\textbf{Is there a plot for this?}
+
 \subsection{Eccentric randomly inclined orbits}
 \label{sec:eccentric}
 We repeat the Monte Carlo simulation from section \ref{sec:circular} assuming the orbital eccentricity follows a beta distribution with shape parameters $a=0.867$ and $b=3.03$ (cf. \citet{Guimond_2019} and references therein). We randomly drew 1000 eccentricities from the beta distribution for each star and determined the orbits. We then filtered on $\IWA$ for multiples of 1, 2, 3 and 4 $\lambda / D$, before identifying which targets would be observable at the scattering phase angles where ocean glint, rainbows or the Rayleigh peak occur. Figure \ref{fig:ball-o-yarn} shows a sample of the generated orbits with the filtered \IWA's. Each plot has been scaled such that the habitable zone occupies the same radius hence the \IWA's vary in apparent size compared to the orbit. 
@@ -386,8 +388,7 @@ We repeat the Monte Carlo simulation from section \ref{sec:circular} assuming th
     \centering
     \includegraphics[width=\textwidth]{figures/madness.pdf}  
     \caption{
-        Eccentric orbits for the stellar sample $\IWA$ of 1, 2, 3 and 4~$\lambda / D$ corresponding to 21, 42, 63 and 84 mas.
-        The habitable zone is identified in each panel. 
+        A example of the eccentric orbits generated for the stellar sample. The orbits are scaled by the Earth-equivalent flux distance. The shaded region indicates \IWA's of 1, 2, 3 and 4~$\lambda / D$ corresponding to 21, 42, 63 and 84 mas. The \IWA can significantly affect the range of scattering phases observable with each orbit.
     }
     \label{fig:ball-o-yarn}
 \end{figure*}
@@ -402,9 +403,6 @@ We repeat the Monte Carlo simulation from section \ref{sec:circular} assuming th
     }
     \label{fig:accessible_phase_angles}
 \end{figure*}
-
-full version cumulative distribution \\
-- discussion of differences \\
 
 \subsection{The glory of Alpha Cen}
 \label{sec:ealpha-cen}
