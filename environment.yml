@@ -5,3 +5,4 @@ dependencies:
   - pip:
       - matplotlib==3.4.3
       - pandas
+      - astropy
