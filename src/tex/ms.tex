@@ -115,7 +115,7 @@
     $^{5}$ Leiden Observatory, Leiden University, P.O. Box 9513, 2300 RA Leiden, The Netherlands\\
     $^{6}$ Max Planck Institute for Intelligent Systems, Max Planck Ring 4, 72076 Tübingen, Germany \& ETH Zurich, Switzerland \\
     $^{7}$ LESIA, Observatoire de Paris, Université PSL, CNRS, Sorbonne Université, Université de Paris, F-92195 Meudon, France \\
-    $^{8}$ Department of Physics, University of California, Santa Barbara, CA 93106, USA 
+    $^{8}$ Department of Physics, University of California, Santa Barbara, CA 93106, USA \\
     $^{9}$ NASA Nexus for Exoplanet System Science, Virtual Planetary Laboratory Team, Seattle, WA 98195, USA
 }
 \date{Draft version: \today}
@@ -156,12 +156,25 @@ planets and satellites: terrestrial planets -- instrumentation: high angular res
 
 \textcolor{blue}{Habitable worlds bit}
 
-The National Academy of Sciences Astronomy \& Astrophysics 2020 Decadal Survey \citep{decadal} recommended the first in a new \enquote{Great Observatories} program a telescope with the capability to detect signatures of habitability for about 25 habitable zone planets. This assertion requires an instrument with a coronograph capable of high contrast imaging in the optical-near infrared. Following this release, NASA recently announced the start of the development of the Habitable Worlds Observatory (HWO). The precursor technology recommended by the Decadal Survey also lists "direct imaging to probe polarized ocean glint on terrestrial planets" as one of the priority capabilities (\citet[Box E.1 in][]{decadal}) for ground and space-based observatories.
-The performance and precise characteristics of this telescope (on-axis or off-axis, exact diameter, type of segmentation, type of coronagraph) are still to be determined. The development will be heavily influenced by the LUVOIR \citep{LUVOIR2019} and HabEx \citep{HabEx_2020} preparatory studies.  The Inner Working angle (\IWA) of the resulting telescope will be dependent on these choices, which in turn will have a significant impact on the expected exo-Earth yield \cite{Stark2019_exoplanetyield}.
+The National Academy of Sciences Astronomy \& Astrophysics 2020 Decadal Survey \citep{decadal} recommended the first in a new \enquote{Great Observatories} program a telescope with the capability to detect signatures of habitability for about 25 habitable zone planets.
+%
+This assertion requires an instrument with a coronograph capable of high contrast imaging in the optical-near infrared.
+%
+Following this release, NASA recently announced the start of the development of the Habitable Worlds Observatory (HWO).
+%
+The precursor technology recommended by the Decadal Survey also lists ``direct imaging to probe polarized ocean glint on terrestrial planets'' as one of the priority capabilities \citep[Box E.1 in][]{decadal} for ground and space-based observatories.
+%
+The performance and precise characteristics of this telescope (on-axis or off-axis, exact diameter, type of segmentation, type of coronagraph) are still to be determined.
+%
+The development will be heavily influenced by the LUVOIR \citep{LUVOIR2019} and HabEx \citep{HabEx_2020} preparatory studies.
+%
+The Inner Working angle (\IWA) of the resulting telescope will be dependent on these choices, which in turn will have a significant impact on the expected exo-Earth yield \citep{Stark2019_exoplanetyield}.
 
-
-Extreme Coronagraph for Living Planetary Systems (ECLIPS) coronograph for LUVOIR was a proposed \SIrange{200}{2000}{\nano\meter} instrument for exoplanet characterisation, with a similar coronagraph operating between \num{450} and \SI{1800}{\nano\meter} planned for HabEx. 
-POLLUX, a proposed UV instrument for the LUVOIR study could also allow the detection of polarised light from hot Jupiters at \SI{300}{\nano\meter} \citep{Bouret2018_pollux}.  However, the challenges associated with the design of a coronagraph in UV are enormous, and it is unlikely that the HWO will include a UV high-contrast instrument sensitive to Earth-like planets.
+Extreme Coronagraph for Living Planetary Systems (ECLIPS) coronograph for LUVOIR was a proposed \SIrange{200}{2000}{\nano\meter} instrument for exoplanet characterisation, with a similar coronagraph operating between \num{450} and \SI{1800}{\nano\meter} planned for HabEx.
+%
+POLLUX, a proposed UV instrument for the LUVOIR study could also allow the detection of polarised light from hot Jupiters at \SI{300}{\nano\meter} \citep{Bouret2018_pollux}.
+%
+However, the challenges associated with the design of a coronagraph in UV are enormous, and it is unlikely that the HWO will include a UV high-contrast instrument sensitive to Earth-like planets.
 
 
 %We ignore contrast in this study
@@ -171,8 +184,15 @@ POLLUX, a proposed UV instrument for the LUVOIR study could also allow the detec
 \textbf{Why Polarization curves worth looking at [Kim]}
 %compare to features in nonpol (strength rainbow); current capabilties?
 
- Phase curves of planets are more complex than simple Lambertian curves. 
- The phase curve of an edge on system in unpolarized light is dominated by the reflectance and backscatter of the surface, clouds, and atmosphere. Though this behaviour is not Lambertian, the planet will, in general, get brighter at fuller phases (small scattering angles) with a peak at full phase from cloud backscatter \citet[see, for example,][]{kopparla2018}. In cases where surface liquid (sea) is present, the specular reflection can create a notable addition to the phase curve at broad scattering angles near crescent phase \citep{Robinson_2010}. Exoplanet phase curves can also contain a rainbow signature at gibbous phases (moderately narrow scattering angles), though this is a small feature in comparison to the reflectance.
+ Phase curves of planets are more complex than simple Lambertian curves.
+ %
+ The phase curve of an edge on system in unpolarized light is dominated by the reflectance and backscatter of the surface, clouds, and atmosphere.
+ %
+ Though this behaviour is not Lambertian, the planet will, in general, get brighter at fuller phases (small scattering angles) with a peak at full phase from cloud backscatter \citep[see, for example,][]{kopparla2018}.
+ %
+ In cases where surface liquid (sea) is present, the specular reflection can create a notable addition to the phase curve at broad scattering angles near crescent phase \citep{Robinson_2010}.
+ %
+ Exoplanet phase curves can also contain a rainbow signature at gibbous phases (moderately narrow scattering angles), though this is a small feature in comparison to the reflectance.
 
  In polarized light, additional structure in the phase curve can enable phenomena like ocean glint, rainbows, and the Rayleigh scattering to be more easily distinguished.  Notably, in the polarized phase curve the rainbow may be an especially strong feature and the maximum reflectance signal (from Rayleigh scattering) occurs 
 
@@ -389,11 +409,12 @@ We repeat the Monte Carlo simulation from section \ref{sec:circular} assuming th
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/madness.pdf}  
+    \includegraphics[width=\textwidth]{figures/ball_of_yarn.pdf}  
     \caption{
         A example of the eccentric orbits generated for the stellar sample. The orbits are scaled by the Earth-equivalent flux distance. The shaded region indicates \IWA's of 1, 2, 3 and 4~$\lambda / D$ corresponding to 21, 42, 63 and 84 mas. The \IWA can significantly affect the range of scattering phases observable with each orbit.
     }
     \label{fig:ball-o-yarn}
+    \script{make_yarn_plot.py}
 \end{figure*}
 
 
