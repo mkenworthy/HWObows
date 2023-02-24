@@ -30,7 +30,11 @@ datasets:
   #     TOI640b.json: src/data/TOI640b.json
 
 # Custom file dependencies
+
 dependencies:
+    src/scripts/create-scatterplot.py:
+      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+      - src/data/beta_max_3_lambda_over_d.csv
   # src/scripts/my_script.py:
   #   - src/data/dataset_for_my_script.dat
   # src/tex/ms.tex:
