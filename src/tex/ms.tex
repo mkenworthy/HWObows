@@ -86,11 +86,11 @@
     \textcolor{C5}{o}%
     \textcolor{C6}{w}%
     \textcolor{C7}{s}%
-    \xspace
+    % \xspace
 }
 
 % Chasing rainbows with the Habitable Worlds Observatory
-\title{Chasing \rainbows with the Habitable Worlds Observatory}
+\title{Chasing \rainbows \hspace{1pt} with the Habitable Worlds Observatory}
 %Scattering phase angle probed by directly imaged planets, or
 %Don't ask us about contrast
 
@@ -98,7 +98,7 @@
 % Authors are in alphabetical order:
 \author[Sophia R. Vaughan et al.]{%
     Sophia R. Vaughan$^{1,}$\thanks{Correspondence:  \url{sophia.vaughan@physics.ox.ac.uk}}
-    Kim Bott$^{2}$,
+    Kimberly Bott$^{2,9}$,
     Sarah L. Casewell$^{3}$,
     Nicolas B. Cowan$^{4}$,
     David Doelman$^{5}$,\newauthor
@@ -116,6 +116,7 @@
     $^{6}$ Max Planck Institute for Intelligent Systems, Max Planck Ring 4, 72076 Tübingen, Germany \& ETH Zurich, Switzerland \\
     $^{7}$ LESIA, Observatoire de Paris, Université PSL, CNRS, Sorbonne Université, Université de Paris, F-92195 Meudon, France \\
     $^{8}$ Department of Physics, University of California, Santa Barbara, CA 93106, USA 
+    $^{9}$ NASA Nexus for Exoplanet System Science, Virtual Planetary Laboratory Team, Seattle, WA 98195, USA
 }
 \date{Draft version: \today}
 
@@ -129,7 +130,8 @@
 \begin{abstract}
 NASA recently announced the Habitable Worlds Observatory, which would detect rocky planets in the habitable zone, establish their habitability, and search them for biosignatures. 
 %Numerous instrumental and observational challenges have still to be overcome to design a coronagraphic mission with that goal. After a research phase aiming at the detection of a few tens of exo-Earth in the habitable zone, the Habitable Worlds Observatory will use its spectroscopic and polarimetric capabilities to probe these planets' atmosphere and surface properties. 
-Surface liquid water is the definition of planetary habitability. Photometric and polarimetric phase variations might betray the presence of specularly reflecting oceans on exoplanets, in addition to being sensitive to rainbows and other cloud scattering effects. These phenomena tend to occur at scattering phase angles close to new or full phase, whereas direct imaging missions are optimised to detect planets near quadrature. The range of scattering phases accessible for an exoplanet can be limited by its orbital inclination or the coronagraph's inner working angle. Planets with relatively face-on orbits exhibit a limited range of phases. For planets that orbit close to edge-on, on the other hand, the accessible phase angles are limited by obscuration by the coronagraph. We use the list of target stars for the Habitable Worlds Observatory to estimate the number of exo-Earths that could be searched for non-Lambertian scattering phenomena. Any exo-Earths visible to the Habitable Worlds Observatory could be searched for the Rayleigh scattering peak, which occurs near quadrature. The glint signature at scattering phases of 50--70$^\circ$ would be accessible to the Habitable Worlds Observatory in XX systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in YY systems. The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with IWA.       
+% JMa I've seen someone commented my text. I'm ok with that but I think it would be important to have a 1 sentence description of the 
+Surface liquid water is central to the definition of planetary habitability. Photometric and polarimetric phase variations can show the presence of specularly reflecting oceans on exoplanets, in addition to being sensitive to rainbows and other cloud scattering effects. Direct imaging missions are optimised to detect planets near quadrature, which may obscure some of the phases at which these features are strongest. The range of scattering phases accessible for an exoplanet can be limited by its orbital inclination or the coronagraph's inner working angle. Planets that orbit close to edge-on have accessible phase angles limited by obscuration by the coronagraph. We use the list of target stars for the Habitable Worlds Observatory to estimate the number of exo-Earths that could be searched for non-Lambertian scattering phenomena. We find that exo-Earths in systems listed in this Habitable Worlds Observatory catalog will have a detectable Rayleigh scattering peak. The glint signature at scattering phases of $\sim$50--70$^\circ$ would be accessible to the Habitable Worlds Observatory in XX systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in YY systems. The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with IWA.       
 
 
 \end{abstract}
@@ -221,7 +223,7 @@ POLLUX, a proposed UV instrument for the LUVOIR study could also allow the detec
 
 
 \section{Methods/simulations}
-\subsection{Habitable Worlds Observatory and its target star list}
+\subsection{HWO and Stellar Sample}
 %\textcolor{blue}{Merge the 2 sections here into "Assumed technical specifications and sample"? I don't think this needs to be 2 subsections}
 The HWO is still in the early stages of development, and the exact telescope and instrument design is undecided. 
 In this work, we assume a \SI{6}{\meter} primary mirror, which is the currently favoured design for the observatory.
@@ -369,7 +371,7 @@ The inclination $i$ is sampled such that $\cos(i)$ follows a uniform distributio
 % \subsection{Monte Carlo Simulations}
 % \label{sec:montecarlo}
 % For each star on the HabWorlds target list, we generate XX hypothetical habitable planets at the Earth-equivalent-flux semi-major axis.
-The reflected flux and polarisation are not constant 
+The reflected flux and polarisation are not constant as a function of scattering phase angle. This is due to a combination of the changing illumination fraction of the exoplanets Earth facing surface and scattering effects. These are modelled using ...
 
 \section{Results}
 
@@ -379,13 +381,7 @@ For each star on the HabWorlds target list, we generate XX hypothetical habitabl
 
 \subsection{Eccentric randomly inclined orbits}
 \label{sec:eccentric}
-Introduce full orbits \\
-
-We repeat the monte-carlo simulation from section \ref{sec:circular} assuming the orbital eccentricity follows a beta distribution with shape parameters $a=0.867$ and $b=3.03$ (cf. \citet{Guimond_2019} and references therein).
-
-We randomly drew 1000 eccentricities from the beta distribution for each star and determined the orbits. We then filtered on IWA for multiples of 1, 2 3 and 4 $\lambda / D$, before determining which targets we would be able to determine whether ocean glint, rainbows or Rayleigh peak are detectable for.
-
-Yarn ball plot \cref{fig:ball-o-yarn} \\
+We repeat the Monte Carlo simulation from section \ref{sec:circular} assuming the orbital eccentricity follows a beta distribution with shape parameters $a=0.867$ and $b=3.03$ (cf. \citet{Guimond_2019} and references therein). We randomly drew 1000 eccentricities from the beta distribution for each star and determined the orbits. We then filtered on $\IWA$ for multiples of 1, 2, 3 and 4 $\lambda / D$, before identifying which targets would be observable at the scattering phase angles where ocean glint, rainbows or the Rayleigh peak occur. Figure \ref{fig:ball-o-yarn} shows a sample of the generated orbits with the filtered \IWA's. Each plot has been scaled such that the habitable zone occupies the same radius hence the \IWA's vary in apparent size compared to the orbit. 
 
 \begin{figure*}
     \centering
@@ -396,6 +392,8 @@ Yarn ball plot \cref{fig:ball-o-yarn} \\
     }
     \label{fig:ball-o-yarn}
 \end{figure*}
+
+
  
 \begin{figure*}
     \centering
