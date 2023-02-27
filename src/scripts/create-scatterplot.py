@@ -5,7 +5,7 @@ Create a color-coded scatter plot the the target list.
 # -----------------------------------------------------------------------------
 # IMPORTS
 # -----------------------------------------------------------------------------
-import paths
+
 from typing import Any
 
 from matplotlib.colorbar import Colorbar
@@ -17,7 +17,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-print(mpl.__version__)
+import paths
+
 
 # -----------------------------------------------------------------------------
 # AUXILIARY FUNCTIONS
@@ -40,23 +41,31 @@ def set_fontsize(ax: plt.Axes, fontsize: float) -> None:
 # MAIN CODE
 # -----------------------------------------------------------------------------
 
-if __name__ == '__main__':
-    
+if __name__ == "__main__":
+
     # -------------------------------------------------------------------------
     # Load the data
     # -------------------------------------------------------------------------
 
+    print("\nCREATE SCATTERPLOT\n")
+
+    print("Loading data...", end=" ", flush=True)
+
     # Load the target list
-    file_path = paths.data / '2646_NASA_ExEP_Target_List_HWO_Table.csv'
+    file_path = paths.data / "2646_NASA_ExEP_Target_List_HWO_Table.csv"
     data = pd.read_csv(file_path, header=1)
 
     # Load the beta values
-    file_path = paths.data / 'beta_max_3_lambda_over_d.csv'
+    file_path = paths.data / "beta_max_3_lambda_over_d.csv"
     beta_values = np.loadtxt(file_path)
+
+    print("Done!")
 
     # -------------------------------------------------------------------------
     # Create the scatter plot
     # -------------------------------------------------------------------------
+
+    print("Creating scatter plot...", end=" ", flush=True)
 
     # Define a function to map a quantity (e.g., angular separation)
     # onto a marker size
@@ -65,7 +74,7 @@ if __name__ == '__main__':
 
     # Define a mapping of quantity (e.g., beta value) to a color
     norm = mpl.colors.Normalize(vmin=0, vmax=90)
-    cmap = mpl.colormaps['viridis_r']
+    cmap = mpl.colormaps["viridis_r"]
 
     # Define a function to map a quantity (e.g., beta value) onto a color
     def quantity_to_color(q: float) -> Any:
@@ -73,9 +82,7 @@ if __name__ == '__main__':
 
     # Create a new figure
     pad_inches = 0.025
-    fig, ax = plt.subplots(
-        figsize=(7 - 2 * pad_inches, 3 - 2 * pad_inches)
-    )
+    fig, ax = plt.subplots(figsize=(7 - 2 * pad_inches, 3 - 2 * pad_inches))
 
     # Set up the font size
     set_fontsize(ax, 6)
@@ -84,8 +91,8 @@ if __name__ == '__main__':
     # ax.grid(ls='--', c='k', alpha=0.2, zorder=0)
 
     # Set labels and limits for the axes
-    ax.set_xlabel(r'Stellar distance (pc)')
-    ax.set_ylabel('Stellar effective temperature (K)')
+    ax.set_xlabel(r"Stellar distance (pc)")
+    ax.set_ylabel("Stellar effective temperature (K)")
     ax.set_xlim(0, 25)
     ax.set_ylim(3500, 7500)
 
@@ -100,10 +107,10 @@ if __name__ == '__main__':
         ax.plot(
             x_i,
             y_i,
-            'o',
+            "o",
             ms=ms_i,
             markerfacecolor=c_i,
-            markeredgecolor='none',
+            markeredgecolor="none",
             zorder=99,
         )
 
@@ -114,67 +121,98 @@ if __name__ == '__main__':
         cbar_ax,
         cmap=cmap,
         norm=norm,
-        orientation='vertical',
+        orientation="vertical",
     )
     fig.add_axes(cbar_ax)
 
     # Set up additional options for the colorbar
-    cbar.ax.set_ylabel('Degrees from quadrature', fontsize=6)
+    cbar.ax.set_ylabel("Degrees from quadrature", fontsize=6)
     cbar.ax.set_xlim(0, 1)
     cbar.ax.set_ylim(0, 90)
     cbar.ax.tick_params(labelsize=6)
 
     # Add labels to the colorbar
     cbar.ax.text(
-        0.5, 10, 'Rayleigh', rotation=90, ha='center', va='center', fontsize=6
-        )
+        0.5,
+        10,
+        "Rayleigh",
+        rotation=90,
+        ha="center",
+        va="center",
+        fontsize=6,
+    )
     cbar.ax.text(
-        0.5, 30, 'Glint', rotation=90, ha='center', va='center', fontsize=6
-        )
+        0.5,
+        30,
+        "Glint",
+        rotation=90,
+        ha="center",
+        va="center",
+        fontsize=6,
+    )
     cbar.ax.text(
-        0.5, 60, 'Rainbows', rotation=90, ha='center', va='center', fontsize=6,
-        color='white'
-        )
+        0.5,
+        60,
+        "Rainbows",
+        rotation=90,
+        ha="center",
+        va="center",
+        fontsize=6,
+        color="white",
+    )
     cbar.ax.text(
-        0.5, 80, 'Other', rotation=90, ha='center', va='center', fontsize=6,
-        color='white'
-        )
+        0.5,
+        80,
+        "Other",
+        rotation=90,
+        ha="center",
+        va="center",
+        fontsize=6,
+        color="white",
+    )
 
     # Manually create a legend for the markersize
     handles = [
         Line2D(
-            [0], [0],
+            [0],
+            [0],
             linewidth=0,
-            label='Angular separation (in mas):',
+            label="Angular separation (in mas):",
             markersize=0,
         )
     ]
     handles += [
         Line2D(
-            [0], [0],
+            [0],
+            [0],
             linewidth=0,
-            marker='o',
-            label=f'{_:d}',
-            markeredgecolor='black',
-            markerfacecolor='none',
+            marker="o",
+            label=f"{_:d}",
+            markeredgecolor="black",
+            markerfacecolor="none",
             markersize=quantity_to_ms(_),
         )
         for _ in [100, 300, 500, 700, 900]
     ]
     ax.legend(
         handles=handles,
-        loc='lower right',
+        loc="lower right",
         fontsize=6,
         ncol=len(handles),
-        edgecolor='none',
+        edgecolor="none",
         borderpad=1.25,
     )
 
+    print("Done!")
+
     # Save the figure
     fig.tight_layout(pad=0)
+    file_path = paths.figures / "scatterplot.pdf"
     plt.savefig(
-        paths.figures / 'scatterplot.pdf',
+        file_path,
         dpi=600,
-        bbox_inches='tight',
+        bbox_inches="tight",
         pad_inches=pad_inches,
     )
+
+    print(f"Saved result to {file_path}!")
