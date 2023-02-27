@@ -3,6 +3,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 import paths
+
 from phases import *
 from samplers import *
 
@@ -54,9 +55,27 @@ nplanets = 10
 # number of epochs to sample along the orbit of the planet
 norbitsample = 1000
 
+
+def convert_lod_to_mas(
+	lod: float,
+	wavelength: u.Quantity = 600 * u.nm,  # 600 nm
+	diameter: u.Quantity = 6 * u.m,  # 6 m
+) -> float:
+	"""
+	Convert a angular separation from units of lambda / D to mas.
+	"""
+
+	return (lod * wavelength / diameter).to(
+		'mas',
+		equivalencies=u.dimensionless_angles(),
+	).value
+
+
 # IWA ranges
 # inner working angles (in mas) to compute betamax at
-iwa = np.linspace(20, 120, 5)
+# iwa = np.linspace(20, 120, 5)
+iwa = np.array([convert_lod_to_mas(_) for _ in [1, 2, 3, 4]])
+
 
 # read in the stars
 from astropy.io import ascii
