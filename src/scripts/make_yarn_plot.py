@@ -1,9 +1,30 @@
 import numpy as np
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 import paths
 from phases import *
 from samplers import *
+
+
+# Define colorblind-friendly colors (CBF)
+# Source: https://arxiv.org/abs/2107.02270
+CBF_COLORS = [
+	"#3F90DA",  # blue
+	"#FFA90E",  # orange
+	"#BD1F01",  # red
+	"#94A4A2",  # gray
+	"#832DB6",  # purple
+	"#A96B59",  # brown
+	"#E76300",  # orange
+	"#B9AC70",  # tan
+	"#717581",  # gray
+	"#92DADD",  # light blue
+]
+
+# Use colorblind-friendly colors as default color cycle
+mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=CBF_COLORS)
+
 
 np.random.seed(42) # set a seed so the plots and data output are reporducible for showyourwork!
 
@@ -18,7 +39,13 @@ tyb = dict(color='black', fontsize=6)
 def draw_iwa(ax, iwa):
 	from matplotlib.patches import Circle
 	for r in iwa:
-		ax.add_patch(Circle((0, 0), radius=r, alpha=0.2))
+		# ax.add_patch(Circle((0, 0), radius=r, alpha=0.2))
+		ax.add_patch(
+			Circle(
+				(0, 0), radius=r, facecolor='none', edgecolor='k', ls='--',
+				lw=0.5, alpha=1.0
+			)
+		)
 
 
 # number of planet sims per star
@@ -73,13 +100,22 @@ for l in t: # loop over all the stars in the table
 	mass = l['st_mass']   		# stellar mass
 	hz = l['st_eei_angsep'] 	# Habitable zone distance (mas)
 
-	if (plotit) and (cax < (nstars_plot*nstars_plot)):
+	# Set options for text boxes
+	textbox_props = dict(
+		boxstyle='square,pad=0.25',
+		# linewidth=0.5,
+		facecolor='white',
+		edgecolor='none',
+		alpha=0.8,
+	)
+
+	if plotit and (cax < (nstars_plot * nstars_plot)):
 		ax[cax].set_xlim(-2*hz, 2*hz)
 		ax[cax].set_ylim(-2*hz, 2*hz)
 		draw_iwa(ax[cax], iwa)
-		ax[cax].text(0.05, 0.95, star, ha='left', va='top', transform=ax[cax].transAxes, fontsize=6, weight='bold')
-		ax[cax].text(0.05, 0.05, f'HZ={hz:.1f} mas', ha='left', va='bottom', transform=ax[cax].transAxes, **tyb)
-
+		ax[cax].text(0.05, 0.95, star, ha='left', va='top', transform=ax[cax].transAxes, fontsize=6, weight='bold', bbox=textbox_props)
+		ax[cax].text(0.05, 0.12, rf'$d_*$ = {d:.1f} pc', ha='left', va='bottom', transform=ax[cax].transAxes, bbox=textbox_props, **tyb)
+		ax[cax].text(0.05, 0.05, rf'HZ = {hz:.1f} mas', ha='left', va='bottom', transform=ax[cax].transAxes, bbox=textbox_props, **tyb)
 
 	# draw e and i from these distributions
 	esamp = sample_e(nplanets)
