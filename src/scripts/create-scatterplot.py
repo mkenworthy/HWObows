@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     # Define a mapping of quantity (e.g., beta value) to a color
     norm = mpl.colors.Normalize(vmin=0, vmax=90)
-    cmap = mpl.cm.get_cmap('viridis_r')
+    cmap = mpl.colormaps['viridis_r']
 
     # Define a function to map a quantity (e.g., beta value) onto a color
     def quantity_to_color(q: float) -> Any:
