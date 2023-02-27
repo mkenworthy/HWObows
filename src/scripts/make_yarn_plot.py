@@ -12,12 +12,14 @@ plotit = 1 # set to 0 to skip plot generation
 norbs_plot = 10
 nstars_plot = 4 # you will make a plot with nstars_plot by nstars_plot panels
 
-tyb = dict(color='black', fontsize=14)
+tyb = dict(color='black', fontsize=10)
+
 
 def draw_iwa(ax, iwa):
 	from matplotlib.patches import Circle
 	for r in iwa:
-		ax.add_patch(Circle((0,0),radius=r,alpha=0.2))
+		ax.add_patch(Circle((0, 0), radius=r, alpha=0.2))
+
 
 # number of planet sims per star
 nplanets = 10
@@ -41,17 +43,25 @@ print(f'# read in {nstars} stars from {fname}')
 betamin = np.zeros((nplanets,nstars,iwa.size))
 betamax = np.zeros((nplanets,nstars,iwa.size))
 
-if (plotit):
-	fig, axes = plt.subplots(nstars_plot, nstars_plot, figsize=(10,10))
+if plotit:
+
+	pad_inches = 0.025
+	fig, axes = plt.subplots(
+		nstars_plot,
+		nstars_plot,
+		figsize=(7 - 2 * pad_inches, 7 - 2 * pad_inches)
+	)
+
 	ax = axes.flatten()
-	fig.suptitle(f'Inner Working Angles = {iwa} mas')
+	# fig.suptitle(f'Inner Working Angles = {iwa} mas')
+
 	# remove the x and y ticks
 	for a in ax:
 		a.set_xticks([])
 		a.set_yticks([])
 		a.set_aspect('equal')
 
-	fig.subplots_adjust(wspace=0, hspace=0)
+	# fig.subplots_adjust(wspace=0, hspace=0)
 
 cax = 0 # counter for the grid of subplots - this increases by 1 for each star AND also counts the star number for output array
 
@@ -63,18 +73,18 @@ for l in t: # loop over all the stars in the table
 	hz =  l['st_eei_angsep'] 	# Habitable zone distance (mas)
 
 	if (plotit) and (cax < (nstars_plot*nstars_plot)):
-		ax[cax].set_xlim(-1.5*hz, 1.5*hz)
-		ax[cax].set_ylim(-1.5*hz, 1.5*hz)
-		draw_iwa(ax[cax],iwa)
-		ax[cax].text(0.05, 0.95, star, ha='left', va='top', transform=ax[cax].transAxes, fontfamily='bold', fontsize=18)
+		ax[cax].set_xlim(-2*hz, 2*hz)
+		ax[cax].set_ylim(-2*hz, 2*hz)
+		draw_iwa(ax[cax], iwa)
+		ax[cax].text(0.05, 0.95, star, ha='left', va='top', transform=ax[cax].transAxes, fontsize=10)
 		ax[cax].text(0.05, 0.05, f'HZ={hz:.1f} mas', ha='left', va='bottom', transform=ax[cax].transAxes, **tyb)
 
 
 	# draw e and i from these distributions
 	esamp = sample_e(nplanets)
 	isamp = sample_i(nplanets) * u.deg
-	anodesamp = np.random.random_sample((nplanets,)) * 360*u.deg 
-	wsamp = np.random.random_sample((nplanets,)) * 360*u.deg 
+	anodesamp = np.random.random_sample((nplanets,)) * 360*u.deg
+	wsamp = np.random.random_sample((nplanets,)) * 360*u.deg
 
 	for n in np.arange(nplanets):
 
@@ -100,7 +110,11 @@ for l in t: # loop over all the stars in the table
 
 if plotit:
 	plt.draw()
-	plt.savefig(paths.figures / 'ball_of_yarn.pdf')
+	fig.tight_layout(pad=0)
+	file_path = paths.figures / 'ball_of_yarn.pdf'
+	plt.savefig(
+		file_path,
+		bbox_inches="tight",
+		pad_inches=pad_inches,
+	)
 	plt.show()
-
-	
