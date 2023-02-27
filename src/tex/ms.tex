@@ -258,7 +258,8 @@ For ease of comparison, \cref{tab:IWA_OWA} indicates the angular separations cor
 \begin{table}
     \centering
     \caption{
-        Conversion between $\lambda / D$ and mas for different wavelengths. \textbf{We should use consistent wavelengths for this table, for the Bott Plot, and for the M\&M cumulative distribution function. Also update to use the only wavelength we choose}
+        Conversion between $\lambda / D$ and \si{\mas} for different wavelengths, assuming $D = \SI{6}{\meter}$. 
+        \todo{We should use consistent wavelengths for this table, for the Bott Plot, and for the M\&M cumulative distribution function. Also update to use the only wavelength we choose.}
     }
     \label{tab:IWA_OWA}
     \begin{tabular}{ c c c c } 
@@ -266,13 +267,13 @@ For ease of comparison, \cref{tab:IWA_OWA} indicates the angular separations cor
      & $\lambda/D$ & mas (at \SI{600}{\nano\meter}) & mas (at \SI{700}{\nano\meter}) \\
     \midrule
     \midrule
-    IWA & 1 & 21 & 24\\
-    IWA & 2 & 42 & 48\\
-    IWA & 3 & 63 & 72\\
-    IWA & 4& 84& 96\\
+    IWA & 1 & 20.63 & 24.06 \\
+    IWA & 2 & 41.25 & 48.13 \\
+    IWA & 3 & 61.88 & 72.19 \\
+    IWA & 4 & 82.51 & 96.26 \\
     \midrule
-    OWA & 32 & 660 & 770 \\
-    OWA & 64 & 1320 & 1540\\
+    OWA & 32 &  660.05 & 770.06 \\
+    OWA & 64 & 1320.09 & 1540.11 \\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -304,7 +305,7 @@ We define the inclination $i$, such that $i=0$ corresponds to a face-on orbit.
    \centering
    \includegraphics[width=0.99\textwidth]{figures/orb-grid.pdf}
    \caption{
-        The scattering phase angles accessible to a direct imaging mission can be limited by orbital inclination or by the coronagraphic inner working angle. 
+        \textbf{I think show your work may have borked this? The vertical arrow and the one at the top look like they got squished?} The scattering phase angles accessible to a direct imaging mission can be limited by orbital inclination or by the coronagraphic inner working angle. 
         If the orbital inclination is close to face-on (top panels) then the scattering phase angles probed throughout an orbit are limited by inclination; for circular orbits accessible scattering phases are $\phi \in 90^\circ \pm i$. 
         For orbital inclinations close to edge-on (bottom panels) the planet goes through all phases, but the scattering phase angles near 0$^\circ$ and 180$^\circ$ are not accessible due to obscuration by the coronagraph mask; for circular orbits, the accessible scattering phases are $\phi \in 90^\circ \pm \arcsin({\rm IWA}\cdot d_*/a)$.
     }
@@ -408,7 +409,7 @@ The reflected flux and polarisation are not constant as a function of scattering
 
 \subsection{Circular randomly inclined orbits}
 \label{sec:circular}
-For each star on the \hwo target list, we generate XX hypothetical habitable planets at the Earth-equivalent-flux semi-major axis. The orbital inclinations are randomly drawn from a distribution uniform in $\cos i$. 
+For each star on the \hwo\ target list, we generate XX hypothetical habitable planets at the Earth-equivalent-flux semi-major axis. The orbital inclinations are randomly drawn from a distribution uniform in $\cos i$. 
 We then use \cref{eq:Delta_phi_max} to determine the range of accessible scattering phase angles for each hypothetical planet. 
 \todo{Figure X} shows the cumulative distribution for the most extreme scattering phase angles accessible for the \hwo target list, depending on the choice of inner working angle.  
 
@@ -424,12 +425,13 @@ Each plot has been scaled such that the habitable zone occupies the same radius,
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{figures/ball_of_yarn.pdf}  
+    \includegraphics{figures/ball_of_yarn.pdf}  
     \caption{
-        An example of the eccentric orbits generated for the stellar sample. %Are we putting all of these somewhere?  Its prob about 7 pages worth in total?
+        %Are we putting all of these somewhere?  Its prob about 7 pages worth in total?
+        Random examples of the eccentric orbits generated for the stellar sample.
         The orbits are scaled by the Earth-equivalent flux distance. 
-        The shaded region indicates \IWA's of 1, 2, 3 and 4\,$\lambda / D$ corresponding to 21, 42, 63 and \SI{84}{\mas}.
-        The \IWA\ can significantly affect the range of scattering phases observable with each orbit.
+        The concentric circles marked by the dashed lines indicate inner working angles of 1, 2, 3, and 4\,$\lambda / D$, corresponding to 20.6, 41.3, 61.9, and \SI{82.5}{\mas}, respectively (assuming $\lambda = \SI{600}{\nano\meter}$ and $D = \SI{6}{\meter}$).
+        The figure illustrates that the \IWA\ can significantly affect the range of scattering phases observable with each orbit.
     }
     \label{fig:ball-o-yarn}
     \script{make_yarn_plot.py} % most awesome command in this paper.  This knitter approves.
@@ -446,7 +448,7 @@ Each plot has been scaled such that the habitable zone occupies the same radius,
     \label{fig:accessible_phase_angles}
 \end{figure*}
 
-\subsection{The glory of Alpha Cen}
+\subsection{The glory of Alpha Cen}%Halelujah
 \label{sec:ealpha-cen}
 \textbf{Glory science, what it tells us (Kim)}
 % Kim will write para on science of glory (what tells us, vaguely why appears here)
@@ -455,13 +457,12 @@ Each plot has been scaled such that the habitable zone occupies the same radius,
 \label{sec:contrast}
 
 \section{Discussion}
-What did we determine? Can we actually detect this stuff for anything in this sample? Do we need to not something about things like A stars which are not included in the sample - they were rejected by the list creators - do we need to comment on this? 
+What did we determine? Can we actually detect this stuff for anything in this sample? Do we need to not something about things like A stars which are not included in the sample - they were rejected by the list creators - do we need to comment on this?  - we decided nope.
 
 
 
-\section*{Software Data Availability}
-%Maybe we could upload the code that we used for our analysis / plots somewhere?
-%Just for full transparency / reproducibility?
+\section*{Software/Data Availability}
+
 The NASA ExEP target list containing the data used for these simulations is available online.% 
 \footnote{\url{https://exoplanets.nasa.gov/exep/science-overview/}}
 This work has made use of \textsf{numpy}
