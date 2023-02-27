@@ -12,7 +12,7 @@ plotit = 1 # set to 0 to skip plot generation
 norbs_plot = 10
 nstars_plot = 4 # you will make a plot with nstars_plot by nstars_plot panels
 
-tyb = dict(color='black', fontsize=10)
+tyb = dict(color='black', fontsize=6)
 
 
 def draw_iwa(ax, iwa):
@@ -76,7 +76,7 @@ for l in t: # loop over all the stars in the table
 		ax[cax].set_xlim(-2*hz, 2*hz)
 		ax[cax].set_ylim(-2*hz, 2*hz)
 		draw_iwa(ax[cax], iwa)
-		ax[cax].text(0.05, 0.95, star, ha='left', va='top', transform=ax[cax].transAxes, fontsize=10)
+		ax[cax].text(0.05, 0.95, star, ha='left', va='top', transform=ax[cax].transAxes, fontsize=6, weight='bold')
 		ax[cax].text(0.05, 0.05, f'HZ={hz:.1f} mas', ha='left', va='bottom', transform=ax[cax].transAxes, **tyb)
 
 
