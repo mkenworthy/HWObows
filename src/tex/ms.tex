@@ -301,9 +301,9 @@ As demonstrated in \cref{fig:orb-grid}, this can prevent the planet being detect
 In this section, we derive the minimum ($\phi_\mathrm{min}$) and maximum ($\phi_\mathrm{max}$) scattering phase angles accessible for a given orbit of semi-major $a$ (in \si{\au}), line of sight inclination $i$, star distance $d_*$ in parsecs (\si{\parsec}) and for a given inner working angle of the instrument \IWA\ (in milliarcseconds). 
 We define the inclination $i$, such that $i=0$ corresponds to a face-on orbit. 
 
-\begin{figure*}%[t]
+\begin{figure}%[t]
    \centering
-   \includegraphics[width=0.99\textwidth]{figures/orb-grid.pdf}
+   \includegraphics[width=0.99\columnwidth]{figures/orb-grid.pdf}
    \caption{
         \textbf{I think show your work may have borked this? The vertical arrow and the one at the top look like they got squished?} The scattering phase angles accessible to a direct imaging mission can be limited by orbital inclination or by the coronagraphic inner working angle. 
         If the orbital inclination is close to face-on (top panels) then the scattering phase angles probed throughout an orbit are limited by inclination; for circular orbits accessible scattering phases are $\phi \in 90^\circ \pm i$. 
@@ -311,7 +311,7 @@ We define the inclination $i$, such that $i=0$ corresponds to a face-on orbit.
     }
     \label{fig:orb-grid}
     \script{plot-orb-grid.py}
-\end{figure*}
+\end{figure}
 
 In the non-eccentric case (i.e., with a circular orbit and where the coronagraphic mask centred on the star), $\phi_\mathrm{min}$ and $\phi_\mathrm{max}$ are symmetric about 90 degrees (). 
 We define the angle $\Delta \phi$ such that: 
