@@ -1,5 +1,5 @@
 import numpy as np
-
+import paths
 #from scipy.interpolate import interp1d
 #import astropy.constants as c
 import astropy.units as u
@@ -199,4 +199,4 @@ ax.plot3D([0],[0],[0], 'ko', label='Mask', markersize=200, alpha=0.3)
 ax.view_init(elev=-40, azim=0)
 
 plt.subplots_adjust(wspace=0.0, hspace=-0.4)
-plt.savefig('./orb-grid.pdf')
+plt.savefig(paths.figures / 'orb-grid.pdf')
