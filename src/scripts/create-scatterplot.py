@@ -17,24 +17,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from utils import set_fontsize
+
 import paths
-
-
-# -----------------------------------------------------------------------------
-# AUXILIARY FUNCTIONS
-# -----------------------------------------------------------------------------
-
-def set_fontsize(ax: plt.Axes, fontsize: float) -> None:
-    """
-    Auxiliary function to set the fontsize of all elements in a plot.
-    """
-
-    for item in (
-        [ax.title, ax.xaxis.label, ax.yaxis.label]
-        + ax.get_xticklabels()
-        + ax.get_yticklabels()
-    ):
-        item.set_fontsize(fontsize)
 
 
 # -----------------------------------------------------------------------------
