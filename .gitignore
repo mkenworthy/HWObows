@@ -1,3 +1,6 @@
+# PyCharm project folder
+.idea
+
 # Snakemake and showyourwork temporaries
 **/.snakemake
 **/.showyourwork*
