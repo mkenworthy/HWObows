@@ -59,6 +59,7 @@ overleaf:
   push:
     - src/tex/figures
     - src/tex/output
+    - src/tex/tikz
   # List of files to pull from Overleaf
   pull:
     - src/tex/ms.tex
