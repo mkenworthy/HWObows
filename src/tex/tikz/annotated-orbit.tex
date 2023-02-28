@@ -1,0 +1,119 @@
+\documentclass[10pt, crop, margin=0.5mm, dvipsnames]{standalone}
+
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+\usepackage{tikz}
+\usetikzlibrary{
+    calc,
+    positioning,
+    shapes,
+}
+
+\usepackage{xcolor}
+
+
+\begin{document}
+\begin{tikzpicture}
+
+    % Define command for the "eye" symbol
+    \newcommand*\lateraleye{%
+       \scalebox{0.15}{
+    \tikzset{every picture/.style={line width=0.75pt}} 
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    \draw  [line width=1.5]  (300,100.33) .. controls (326,122) and (352,135) .. (378,139.33) .. controls (352,143.67) and (326,156.67) .. (300,178.33) ;
+    \draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (308.94,116.33) .. controls (313.87,116.33) and (317.86,125.51) .. (317.85,136.83) .. controls (317.84,148.15) and (313.84,157.33) .. (308.91,157.33) .. controls (303.99,157.32) and (300,148.14) .. (300.01,136.82) .. controls (300.02,125.5) and (304.02,116.32) .. (308.94,116.33) -- cycle ;
+    \draw  [draw opacity=0][line width=1.5]  (314.84,166.6) .. controls (311.87,164.64) and (309.14,162.18) .. (306.76,159.24) .. controls (295.12,144.82) and (296.6,124.33) .. (310.07,113.45) .. controls (311.48,112.32) and (312.96,111.33) .. (314.5,110.49) -- (331.14,139.55) -- cycle ; \draw  [line width=1.5]  (314.84,166.6) .. controls (311.87,164.64) and (309.14,162.18) .. (306.76,159.24) .. controls (295.12,144.82) and (296.6,124.33) .. (310.07,113.45) .. controls (311.48,112.32) and (312.96,111.33) .. (314.5,110.49) ;
+    \draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (304.43,124.2) .. controls (306.09,124.25) and (307.32,128.01) .. (307.18,132.6) .. controls (307.05,137.19) and (305.59,140.88) .. (303.93,140.83) .. controls (302.27,140.78) and (301.03,137.02) .. (301.17,132.43) .. controls (301.31,127.83) and (302.76,124.15) .. (304.43,124.2) -- cycle ;
+    \end{tikzpicture}
+    }\,}
+
+    % Command for arc with defined center
+    \def\centerarc[#1](#2)(#3:#4:#5){ \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+    % Command for planet dayside
+    % Arguments: center, radius, color, rotation (-180,...,180)
+    \newcommand\dayside[4]
+    {%
+      \ifnum #4 > 0
+        \pgfmathsetmacro\lb{ #2}            % left  arc, horizontal axis
+        \pgfmathsetmacro\rb{ #2*(90-#4)/90} % right arc, horizontal axis
+      \else
+        \pgfmathsetmacro\lb{-#2*(90+#4)/90} % left  arc, horizontal axis
+        \pgfmathsetmacro\rb{-#2}            % right arc, horizontal axis  
+      \fi
+      \draw[thick,#3,fill=white] #1 circle (#2);
+      \fill[#3,opacity=0.75] ($#1+(0,#2)$) arc (90:270:\lb cm and #2 cm)
+                                          arc (270:90:\rb cm and #2 cm);
+    }
+
+    % Define color scheme
+    \definecolor{rayleigh}{HTML}{dae319}
+    \definecolor{glint}{HTML}{35b779}
+    \definecolor{rainbow}{HTML}{31688e}
+    \definecolor{other}{HTML}{440154}
+
+    % Background (to center stuff)
+    \draw [fill=white, draw=none] (-3.3, 0) rectangle (3.3, 0);
+
+    % Plot what's blocked by the coronagraph
+    \draw [fill=black!10, draw=none] (-1, -4) rectangle (1, 4);
+    \node [align=center, black!30, font=\small] at (0, 4.5) {Blocked by\\ the coronagraph};
+    
+    % Define radius
+    \def\radius{2.5}
+    
+    % Color-code the orbit
+    \centerarc [other, line width=2mm](0, 0)(90:70:\radius);
+    \centerarc [other, line width=2mm](0, 0)(90:110:\radius);
+    \node [other, anchor=south, font=\small, rotate=80-90] at (80:\radius+0.25) {Glory};
+    
+    \centerarc [rainbow, line width=2mm](0, 0)(70:30:\radius);
+    \centerarc [rainbow, line width=2mm](0, 0)(110:150:\radius);
+    \node [rainbow, anchor=south, font=\small, rotate=50-90] at (50:\radius+0.25) {Rainbows};
+    
+    \centerarc [rayleigh, line width=2mm](0, 0)(30:-35:\radius);
+    \centerarc [rayleigh, line width=2mm](0, 0)(150:215:\radius);
+    \node [rayleigh, anchor=south, font=\small, rotate=0-90] at (0:\radius+0.25)  {Rayleigh};
+    
+    \centerarc [glint, line width=2mm](0, 0)(-35:-70:\radius);
+    \centerarc [glint, line width=2mm](0, 0)(215:250:\radius);
+    \node [glint, anchor=north, font=\small, rotate=-52.5+90] at (-52.5:\radius+0.25) {Glint};
+    
+    \centerarc [other, line width=2mm](0, 0)(-70:-90:\radius);
+    \centerarc [other, line width=2mm](0, 0)(250:270:\radius);
+    \node [other, anchor=north, font=\small, rotate=-80+90] at (-80:\radius+0.25) {Other};
+    
+    % Plot the orbit
+    \draw [dotted, black, semithick] (0, 0) circle (\radius);
+
+    % Star, planet position, and observer
+    \node [star, fill=Dandelion, star points=5, inner sep=1mm] (star) (star) at (0, 0) {};
+    \node [Dandelion, above=1mm of star] {Star};
+    \node [] (planet) at (135:\radius) {};
+    \node [black, left=1mm of planet.west] {planet};
+    \node [circle, anchor=center, align=center, rotate=-90, inner sep=0mm] (observer) at (0, -6) {\lateraleye};
+    \node [black, anchor=east, xshift=-2mm] at (observer) {Observer};
+
+    % Plot some lines
+    \draw [shorten <= 1mm, shorten >= 3mm, densely dashed] (star) -- node [pos=0.45, font=\scriptsize, below=0mm] {semi-major axis} (0:\radius);
+    \draw [shorten >= 2mm, shorten <= 2mm, gray] (star) -- (planet);
+    \draw [shorten >= 1mm, shorten <= 2mm, gray] (star) -- (observer);
+    \begin{scope}[yshift=-5cm]
+        \draw [white, thick] (0, 0) -- (0, 0.1);
+        \draw [gray] (-0.2, -0.1) -- (0.2, 0.1);
+        \draw [gray] (-0.2, 0) -- (0.2, 0.2);
+    \end{scope}
+
+
+    % Plot planets (daysides)
+    \foreach\i in {-180,-135,...,180} {
+        \dayside{(\i+90:\radius)}{0.2}{black}{\i};
+    }
+
+    % Plot the scattering angle in red
+    \draw [draw=red, thick, shorten >= 1mm, shorten <= 1mm, <->] ($(0, 0)+({1*cos(135)},{1*sin(135)})$) arc (135:270:1);
+    \node [red] at (202.5:0.75) {$\varphi$};
+
+\end{tikzpicture}
+\end{document}

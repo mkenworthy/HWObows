@@ -6,6 +6,7 @@
 ]{mnras}
 
 \usepackage[T1]{fontenc}
+\usepackage[dvipsnames, x11names]{xcolor}
 
 \renewcommand{\baselinestretch}{1.0} % Change to 1.65 for double spacing
 \usepackage{showyourwork}
@@ -32,15 +33,16 @@
 \usepackage{microtype}
 \usepackage{csquotes}
 \usepackage[capitalise]{cleveref}
-%\usepackage[dvipsnames, x11names]{xcolor}
 %\usepackage{xspace}
 
 \usepackage{standalone}
 \usepackage{tikz}
 \usetikzlibrary{
+    calc,
     positioning,
     shapes,
 }
+
 
 \usepackage{siunitx}
 \sisetup{
@@ -447,6 +449,25 @@ Each plot has been scaled such that the habitable zone occupies the same radius,
     }
     \label{fig:accessible_phase_angles}
 \end{figure*}
+
+\begin{figure}
+    \centering
+    \includestandalone{tikz/annotated-orbit}
+    \caption{
+        Annotated orbit --- let's see if this works.
+    }
+    \label{fig:annotated-orbit}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includestandalone{tikz/scattering-angle}
+    \caption{
+        Scattering angle --- let's see if this works.
+    }
+    \label{fig:scattering-angle}
+\end{figure}
+
 
 \subsection{The glory of Alpha Cen}%Halelujah
 \label{sec:ealpha-cen}
