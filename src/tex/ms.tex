@@ -134,7 +134,7 @@ NASA recently announced the Habitable Worlds Observatory, a coronagraphic missio
 %Numerous instrumental and observational challenges have still to be overcome to design a coronagraphic mission with that goal. After a research phase aiming at the detection of a few tens of exo-Earth in the habitable zone, the Habitable Worlds Observatory will use its spectroscopic and polarimetric capabilities to probe these planets' atmosphere and surface properties. 
 Surface liquid water is central to the definition of planetary habitability.
 %
-Photometric and polarimetric phase variations can show the presence of specularly reflecting oceans on exoplanets, in addition to being sensitive to rainbows and other cloud scattering effects. Direct imaging missions are optimised to detect planets near quadrature, which may obscure some of the phases at which these features are strongest. The range of scattering phases accessible for an exoplanet can be limited by its orbital inclination or the coronagraph's inner working angle. Planets that orbit close to edge-on have accessible phase angles limited by obscuration by the coronagraph. We use the list of target stars for the Habitable Worlds Observatory to estimate the number of exo-Earths that could be searched for non-Lambertian scattering phenomena. We find that exo-Earths in systems listed in this Habitable Worlds Observatory catalog will have a detectable Rayleigh scattering peak. The glint signature at scattering phases of $\sim$50--70$^\circ$ would be accessible to the Habitable Worlds Observatory in \textbf{XX} systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in \textbf{YY} systems. The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with IWA.       
+Photometric and polarimetric phase variations can show the presence of specularly reflecting oceans on exoplanets, in addition to being sensitive to rainbows and other cloud scattering effects. Direct imaging missions are optimised to detect planets near quadrature, which may obscure some of the phases at which these features are strongest. The range of scattering phases accessible for an exoplanet can be limited by its orbital inclination or the coronagraph's inner working angle. Planets that orbit close to edge-on have accessible phase angles limited by obscuration by the coronagraph. We use the list of target stars for the Habitable Worlds Observatory to estimate the number of exo-Earths that could be searched for non-Lambertian scattering phenomena. We find that exo-Earths in systems listed in this Habitable Worlds Observatory catalog will have a detectable Rayleigh scattering peak. The glint signature at scattering phases of $\sim$50--70$^\circ$ would be accessible to the Habitable Worlds Observatory in \textbf{XX} systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in \textbf{YY} systems. The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with \IWA.       
 
 
 \end{abstract}
@@ -242,18 +242,20 @@ However, the challenges associated with the design of a coronagraph in UV are en
 %    \item Scatter plot of stellar effective temperature vs system distance (Timmy)
 %\end{enumerate}
  
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Methods/simulations}
 \subsection{\hwo\ and Stellar Sample}
 %\textcolor{blue}{Merge the 2 sections here into "Assumed technical specifications and sample"? I don't think this needs to be 2 subsections}
 \hwo\ is still in the early stages of development, and the exact telescope and instrument design is undecided. 
+%
 In this work, we assume a \SI{6}{\meter} primary mirror, which is the currently favoured design for the observatory.
-
-\hwo\ will utilise a coronagraph to suppress the stellar light and facilitate high contrast observations of their faint exoplanet companions.  The \IWA\ of the coronagraph is currently undecided and will be driven by both the science requirements and technological limitations. 
-In this work, we investigate the scattering phase coverage obtainable for several choices for the \IWA\ of the observatory. 
-We also consider the Outer Working Angle (OWA) but for most targets this is not a limiting factor. 
+%
+In addition, \hwo\ will utilise a coronagraph to suppress the stellar light and facilitate high contrast observations of their faint exoplanet companions. 
+%
+The \IWA\ of the coronagraph is currently undecided and will be driven by both the science requirements and technological limitations. 
+%In this work, we investigate the scattering phase coverage obtainable for several choices for the \IWA\ of the observatory. 
+%We also consider the Outer Working Angle (OWA) but for most targets this is not a limiting factor. 
 For ease of comparison, \cref{tab:IWA_OWA} indicates the angular separations corresponding to multiples of $\lambda / D$ for a \SI{6}{\meter} telescope at a wavelength of $\lambda = \SI{-1}{\nano\meter}$ \todo{Update value!}.
 
 \begin{table}
@@ -279,15 +281,16 @@ For ease of comparison, \cref{tab:IWA_OWA} indicates the angular separations cor
     \end{tabular}
 \end{table}
 
-
 %\subsection{Stellar sample and assumed planet parameters} 
-We use the NASA Exoplanet Exploration Program's Mission Star List for the Habitable Worlds Observatory.%
+\hwo is currently envisioned to observe the stars stated in the NASA Exoplanet Exploration Program's Mission Star List for the Habitable Worlds Observatory.%
 \footnote{\url{https://exoplanets.nasa.gov/internal_resources/2645_NASA_ExEP_Target_List_HWO_Documentation_2023.pdf}}
+%
 This list comprises $\sim$160 stars, the majority of which are Sun-like dwarfs; 66~F~dwarfs, 55~G~dwarfs, 40~K~dwarfs, and 3~M~dwarfs.
-The target list is constructed assuming a maximum planet magnitude of $R_c = 31$ and a contrast floor of \num{2.5e-11}. %with an occurrence rate of
-%rocky planets in the optimistic habitable zone to be $\eta_{\oplus}$ = 0.24 \citep{decadal}. 
-The corresponding adopted habitable zone limits are a semi-major axis of \SIrange{0.95}{1.67}{\au} for a solar twin, planet sizes between \SIrange{0.8}{1.4}{} Earth radii, and for non-solar stars, scale as square root of the
-bolometric luminosity normalized to the Sun. 
+%
+The target list is constructed assuming a maximum planet magnitude of $R_c = 31$ and a contrast floor of \num{2.5e-11}. 
+%with an occurrence rate of rocky planets in the optimistic habitable zone to be $\eta_{\oplus}$ = 0.24 \citep{decadal}. 
+The corresponding adopted habitable zone limits are a semi-major axis of \SIrange{0.95}{1.67}{\au} for a solar twin, planet sizes between \SIrange{0.8}{1.4}{} Earth radii, and for non-solar stars, scale as square root of the bolometric luminosity normalized to the Sun. 
+%
 This range of orbital separation corresponds to the \enquote{conservative habitable zone} \citep{kasting93, kopparapu13}.
 
 The authors of the report determined that these are the nearby stars (maximum distance \SI{25}{\parsec}) for which exo-Earths would be the most observable for an imaging survey of habitable zones with a \SI{6}{\meter} telescope.
@@ -298,9 +301,21 @@ The authors of the report determined that these are the nearby stars (maximum di
 \label{sec:Delta_phi}
 
 The coronagraph, while necessary for observing faint exoplanets, can obscure part of the planet's orbit. 
-As demonstrated in \cref{fig:orb-grid}, this can prevent the planet being detected at high and low scattering angles. 
+%
+As demonstrated in \cref{fig:annotated-orbit}, this can prevent the planet being detected at high and low scattering angles. 
+%
 In this section, we derive the minimum ($\phi_\mathrm{min}$) and maximum ($\phi_\mathrm{max}$) scattering phase angles accessible for a given orbit of semi-major $a$ (in \si{\au}), line of sight inclination $i$, star distance $d_*$ in parsecs (\si{\parsec}) and for a given inner working angle of the instrument \IWA\ (in milliarcseconds). 
+%
 We define the inclination $i$, such that $i=0$ corresponds to a face-on orbit. 
+
+\begin{figure}
+    \centering
+    \includestandalone{tikz/annotated-orbit}
+    \caption{
+        Annotated orbit --- let's see if this works.
+    }
+    \label{fig:annotated-orbit}
+\end{figure}
 
 \begin{figure}%[t]
    \centering
@@ -481,14 +496,7 @@ Each plot has been scaled such that the habitable zone occupies the same radius,
     \label{fig:accessible_phase_angles}
 \end{figure*}
 
-\begin{figure}
-    \centering
-    \includestandalone{tikz/annotated-orbit}
-    \caption{
-        Annotated orbit --- let's see if this works.
-    }
-    \label{fig:annotated-orbit}
-\end{figure}
+
 
 \begin{figure}
     \centering
