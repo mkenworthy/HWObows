@@ -25,11 +25,12 @@ dag:
 
 # Externally-hosted datasets, e.g. on Zenodo
 datasets:
-  10.5072/zenodo.1167628:
+  10.5072/zenodo.1169235:
     contents:
       TOI640b.json: src/data/TOI640b.json
       2646_NASA_ExEP_Target_List_HWO_Table.csv: src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
       beta_max_3_lambda_over_d.csv: src/data/beta_max_3_lambda_over_d.csv
+      Reflected_light_curves_Trees_Stam_2019.txt: src/data/Reflected_light_curves_Trees_Stam_2019.txt
 # Custom file dependencies
 
 dependencies:
@@ -38,6 +39,10 @@ dependencies:
       - src/data/beta_max_3_lambda_over_d.csv
     src/scripts/make_yarn_plot.py:
       - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+    src/scripts/plot_contrasts.py:
+      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+      - src/data/Reflected_light_curves_Trees_Stam_2019.txt
+ 
   # src/scripts/my_script.py:
   #   - src/data/dataset_for_my_script.dat
   # src/tex/ms.tex:
