@@ -43,7 +43,6 @@
     shapes,
 }
 
-
 \usepackage{siunitx}
 \sisetup{
     range-units = single,
@@ -104,7 +103,7 @@
     Kimberly Bott$^{2,9}$,
     Sarah L. Casewell$^{3}$,
     Nicolas B. Cowan$^{4}$,
-    David Doelman$^{5}$,\newauthor
+    David S. Doelman$^{5}$,\newauthor
     Timothy D. Gebhard$^{6}$,
     Matthew Kenworthy$^{5}$,
     Johan Mazoyer$^{7}$,
@@ -135,7 +134,7 @@ NASA recently announced the Habitable Worlds Observatory, a coronagraphic missio
 %Numerous instrumental and observational challenges have still to be overcome to design a coronagraphic mission with that goal. After a research phase aiming at the detection of a few tens of exo-Earth in the habitable zone, the Habitable Worlds Observatory will use its spectroscopic and polarimetric capabilities to probe these planets' atmosphere and surface properties. 
 Surface liquid water is central to the definition of planetary habitability.
 %
-Photometric and polarimetric phase variations can show the presence of specularly reflecting oceans on exoplanets, in addition to being sensitive to rainbows and other cloud scattering effects. Direct imaging missions are optimised to detect planets near quadrature, which may obscure some of the phases at which these features are strongest. The range of scattering phases accessible for an exoplanet can be limited by its orbital inclination or the coronagraph's inner working angle. Planets that orbit close to edge-on have accessible phase angles limited by obscuration by the coronagraph. We use the list of target stars for the Habitable Worlds Observatory to estimate the number of exo-Earths that could be searched for non-Lambertian scattering phenomena. We find that exo-Earths in systems listed in this Habitable Worlds Observatory catalog will have a detectable Rayleigh scattering peak. The glint signature at scattering phases of $\sim$50--70$^\circ$ would be accessible to the Habitable Worlds Observatory in XX systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in YY systems. The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with IWA.       
+Photometric and polarimetric phase variations can show the presence of specularly reflecting oceans on exoplanets, in addition to being sensitive to rainbows and other cloud scattering effects. Direct imaging missions are optimised to detect planets near quadrature, which may obscure some of the phases at which these features are strongest. The range of scattering phases accessible for an exoplanet can be limited by its orbital inclination or the coronagraph's inner working angle. Planets that orbit close to edge-on have accessible phase angles limited by obscuration by the coronagraph. We use the list of target stars for the Habitable Worlds Observatory to estimate the number of exo-Earths that could be searched for non-Lambertian scattering phenomena. We find that exo-Earths in systems listed in this Habitable Worlds Observatory catalog will have a detectable Rayleigh scattering peak. The glint signature at scattering phases of $\sim$50--70$^\circ$ would be accessible to the Habitable Worlds Observatory in \textbf{XX} systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in \textbf{YY} systems. The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with IWA.       
 
 
 \end{abstract}
@@ -253,9 +252,9 @@ However, the challenges associated with the design of a coronagraph in UV are en
 In this work, we assume a \SI{6}{\meter} primary mirror, which is the currently favoured design for the observatory.
 
 \hwo\ will utilise a coronagraph to suppress the stellar light and facilitate high contrast observations of their faint exoplanet companions.  The \IWA\ of the coronagraph is currently undecided and will be driven by both the science requirements and technological limitations. 
-In this work, we investigate the scattering phase coverage obtainable for several choices for the \IWA\ of the observatory. We also consider the Outer Working Angle (OWA) but for most targets this is not a limiting factor.
-
-For ease of comparison, \cref{tab:IWA_OWA} indicates the angular separations corresponding to multiples of $\lambda / D$ for a \SI{6}{\meter} telescope at a wavelength of $\lambda = \SI{700}{\nano\meter}$.
+In this work, we investigate the scattering phase coverage obtainable for several choices for the \IWA\ of the observatory. 
+We also consider the Outer Working Angle (OWA) but for most targets this is not a limiting factor. 
+For ease of comparison, \cref{tab:IWA_OWA} indicates the angular separations corresponding to multiples of $\lambda / D$ for a \SI{6}{\meter} telescope at a wavelength of $\lambda = \SI{-1}{\nano\meter}$ \todo{Update value!}.
 
 \begin{table}
     \centering
@@ -401,11 +400,43 @@ The inclination $i$ is sampled such that $\cos(i)$ follows a uniform distributio
 \subsection{Making Contrast Curves}
 \textbf{Kim and David}
 %
+A second parameter that is crucial for detecting features like rainbows and ocean glint on Earth-like planets is the contrast, i.e. the relative flux of the reflected light from the planet divided by the stellar flux. 
+While this is not the main focus of this paper, it is important to consider that the contrast and polarised contrast are not constant as function of scattering phase angles.
+This is due to a combination of the changing illumination fraction of the exoplanets Earth facing surface and scattering effects. 
+Here, we aim to present some simplified examples of the impact of the scattering angle dependent contrast on the detectability of rainbow and glint features. 
+We note that these calculations are by no means complete or exact, given the many variables that go into modelling reflected fluxes and polarization fractions of Earth-like planet \citep{ treesstam2019,trees2022}.\\
+The NASA Exoplanet Exploration Program’s Mission Star
+List for the Habitable Worlds Observatory includes an estimated contrast ratio for an Earth twin in the habitable zone for every star. 
+The contrast is calculated as 
+\begin{equation}
+C = F_p/F_* = p \phi (\alpha) (R_p/a)^2,
+\end{equation}
+where p is the geometric albedo, $\phi (\alpha)$ is the integral phase function at phase angle $(\alpha)$, $R_p$
+is the planet’s radius, and $a$ is the separation of the planet from its star. 
+For their calculations they made the simplified assumptions of circular orbits, a geometric albedo of $p=0.2$, and that the scattering phase function, $\phi (\alpha)$, can be described by a simple Lambertian reflectance phase function, e.g. isotropic scattering.
+These calculations give a good order-of-magnitude calculation for the contrast of Earth-like planets around nearby stars.
+Therefore, in this work we will assume that the calculated contrasts given in the list correspond to the reflected flux at quadrature and normalize the scattering phase functions to this point.
+We note that we do not aim to accurately calculate the absolute scaling of the contrast as this depends on many factors and this would require to redo some of the work done for the star list.\\
 
-% \subsection{Monte Carlo Simulations}
-% \label{sec:montecarlo}
-% For each star on the HabWorlds target list, we generate XX hypothetical habitable planets at the Earth-equivalent-flux semi-major axis.
-The reflected flux and polarisation are not constant as a function of scattering phase angle. This is due to a combination of the changing illumination fraction of the exoplanets Earth facing surface and scattering effects. These are modelled using ...
+We use the scattering phase functions from \cite{treesstam2019} for an Earth-like planet with an ocean surface with patchy clouds and a wind-speed of 7m/s at 670 nm.
+The 670 nm is close to the center of the Rc band for Vega (642 nm). 
+We normalize the reflected light curve at the value of 90 degrees (quadrature) and multiply it with the contrast.
+In addition, we map the orbital phase for circular orbits to the scattering phase angle and the on-sky separation given the inclinations of 60 and 90 degrees.
+Together they give the reflected light contrast as function of separation for a full orbit.
+We multiply this flux with the degree of polarisation and retrieve the polarised contrast.
+
+See Figure~\ref{fig:contrasts}.
+
+\begin{figure*}%[t]
+   \centering
+   \includegraphics[width=0.99\textwidth]{figures/Contrast_vs_separation_inclination_angle_63.pdf}
+   \caption{
+    Contrast plots for three stars.
+    }
+    \label{fig:contrasts}
+    \script{plot_contrasts.py}
+\end{figure*}
+
 
 \section{Results}
 
@@ -509,3 +540,4 @@ Worlds grant No. 80NSSC20K152, and previous support for related work supported b
 \bibliography{bib}
 
 \end{document} 
+
