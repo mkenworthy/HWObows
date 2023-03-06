@@ -1,3 +1,6 @@
+# Create new conda environment (named "hwobows") simply by running:
+#   conda env create -f environment.yml
+name: hwobows
 dependencies:
   - conda-forge::numpy
   - conda-forge::pip
