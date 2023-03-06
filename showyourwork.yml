@@ -25,12 +25,18 @@ dag:
 
 # Externally-hosted datasets, e.g. on Zenodo
 datasets:
-  10.5072/zenodo.1169235:
+  10.5072/zenodo.1170227:
     contents:
       TOI640b.json: src/data/TOI640b.json
       2646_NASA_ExEP_Target_List_HWO_Table.csv: src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
       beta_max_3_lambda_over_d.csv: src/data/beta_max_3_lambda_over_d.csv
       Reflected_light_curves_Trees_Stam_2019.txt: src/data/Reflected_light_curves_Trees_Stam_2019.txt
+      betamax.py: src/data/betamax.py 
+      betamin.py: src/data/betamin.py 
+      betamax3.py: src/data/betamax3.py 
+      betamin3.py: src/data/betamin3.py 
+      iwa.py: src/data/iwa.py 
+      iwa3.py: src/data/iwa3.py
 # Custom file dependencies
 
 dependencies:
@@ -42,12 +48,9 @@ dependencies:
     src/scripts/plot_contrasts.py:
       - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
       - src/data/Reflected_light_curves_Trees_Stam_2019.txt
+     src/scripts/plot_n_versus_phase.py:
+      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
  
-  # src/scripts/my_script.py:
-  #   - src/data/dataset_for_my_script.dat
-  # src/tex/ms.tex:
-  #   - src/tex/stylesheet.tex
-
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms
 
