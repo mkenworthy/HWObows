@@ -425,9 +425,17 @@ Using \cref{eq:scattering_angle}, we deduce the 2 regime equation for inclined c
 
 \timmy{I think so far, the MC code doesn't compute angle coverage. I came up with this quick and dirty sketch to help us get started:}
 
-\includegraphics[width=\linewidth]{figures/ellipse.pdf}
 
-\timmy{If you agree that this makes sense, I could try to add this to the yarn ball script by Matt?}
+\begin{figure}
+   \centering
+   \includegraphics[width=0.99\columnwidth]{figures/ellipse.pdf}
+   \caption{
+  Ellipse drawing \timmy{If you agree that this makes sense, I could try to add this to the yarn ball script by Matt?}
+
+    }
+    \label{fig:ellipse}
+%    \script{plot-orb-grid.py}
+\end{figure}
 
 %The inclination $i$ is sampled such that $\cos(i)$ follows a uniform distribution, $\cos(i) \sim \mathcal{U}(0, 1)$.
 
