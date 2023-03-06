@@ -34,7 +34,7 @@ def xyz_position(
         https://en.m.wikipedia.org/wiki/Orbital_elements
 
     TODO: This is Sophia's code, I just copied it here and started to
-        document it. No guarantees that it is correct yet.
+        document it. (No guarantees that the documentation is correct.)
 
     Args:
         phases: Orbital phase, must be in the range [0, 1). Basically,
@@ -90,16 +90,16 @@ def beta_lim(
     Compute the minimum and maximum beta values for a given IWA.
 
     TODO: This is Sophia's code, I just copied it here and started to
-        document it. No guarantees that it is correct yet.
+        document it. (No guarantees that the documentation is correct.)
 
     Args:
-        iwa:
-        sma:
-        e:
-        aperi:
-        lan:
-        inc:
-        dist:
+        iwa: Inner working angle.
+        sma: Semi-major axis of the orbit.
+        e: Eccentricity. Must obey 0 < e < 1 for ellipctic orbits.
+        aperi: Argument of the periapsis.
+        lan: Longitude of the ascending node.
+        inc: Orbital inclination (where 0° = face-on, 90° = edge-on).
+        dist: Distance to the star.
 
     Returns:
         A tuple containing the minimum and maximum beta values.
