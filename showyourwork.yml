@@ -31,12 +31,12 @@ datasets:
       2646_NASA_ExEP_Target_List_HWO_Table.csv: src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
       beta_max_3_lambda_over_d.csv: src/data/beta_max_3_lambda_over_d.csv
       Reflected_light_curves_Trees_Stam_2019.txt: src/data/Reflected_light_curves_Trees_Stam_2019.txt
-      betamax.py: src/data/betamax.py 
-      betamin.py: src/data/betamin.py 
-      betamax3.py: src/data/betamax3.py 
-      betamin3.py: src/data/betamin3.py 
-      iwa.py: src/data/iwa.py 
-      iwa3.py: src/data/iwa3.py
+      betamax.npy: src/data/betamax.npy 
+      betamin.npy: src/data/betamin.npy 
+      betamax3.npy: src/data/betamax3.npy 
+      betamin3.npy: src/data/betamin3.npy 
+      iwa.npy: src/data/iwa.npy 
+      iwa3.npy: src/data/iwa3.npy
 # Custom file dependencies
 
 dependencies:
