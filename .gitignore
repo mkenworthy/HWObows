@@ -1,6 +1,7 @@
 # PyCharm project folder
 .idea
 
+*.DS_Store*
 # Snakemake and showyourwork temporaries
 **/.snakemake
 **/.showyourwork*
