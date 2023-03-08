@@ -6,4 +6,4 @@ rule make_betamax_csv_file:
      conda:
         "environment.yml"
      script:
-        "src/scripts/make_betamax_csv_file.py"
+        "src/scripts/make_betamax_3_lambda_over_d_csv.py"
