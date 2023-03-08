@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import interpolate as si
 import paths
-from hwo.py import *
+from hwo import *
 
 CBF_COLORS = [
     "#5790fc",  # blue
