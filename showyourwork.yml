@@ -29,7 +29,7 @@ datasets:
     contents:
       TOI640b.json: src/data/TOI640b.json
       2646_NASA_ExEP_Target_List_HWO_Table.csv: src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-      beta_max_3_lambda_over_d.csv: src/data/beta_max_3_lambda_over_d.csv
+ #     beta_max_3_lambda_over_d.csv: src/data/beta_max_3_lambda_over_d.csv
       Reflected_light_curves_Trees_Stam_2019.txt: src/data/Reflected_light_curves_Trees_Stam_2019.txt
       betamax.npy: src/data/betamax.npy 
       betamin.npy: src/data/betamin.npy 
@@ -58,6 +58,9 @@ dependencies:
       - src/data/betamax3.npy
       - src/data/betamin3.npy
       - src/data/iwa3.npy
+    src/scripts/make_beta_max_3_lambda_over_d_csv:
+      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+
  
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms

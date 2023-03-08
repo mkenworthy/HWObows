@@ -424,16 +424,6 @@ Using \cref{eq:scattering_angle}, we deduce the 2 regime equation for inclined c
 
 \timmy{I think so far, the MC code doesn't compute angle coverage. I came up with this quick and dirty sketch to help us get started:}
 
-
-\begin{figure}
-   \centering
-   \includegraphics[width=0.99\columnwidth]{figures/ellipse.pdf}
-   \caption{
-  Ellipse drawingIf you agree that this makes sense, I could try to add this to the yarn ball script by Matt? \todo{sophia: I have posted code in the slack to calculate beta min-max for randomly orientated eccentric orbits. I don't know how to add it to the code we already have.}}
-    \label{fig:ellipse}
-%    \script{plot-orb-grid.py}
-\end{figure}
-
 %The inclination $i$ is sampled such that $\cos(i)$ follows a uniform distribution, $\cos(i) \sim \mathcal{U}(0, 1)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -449,7 +439,7 @@ This is due to a combination of the changing illumination fraction of the exopla
 %
 Here, we aim to present some simplified examples of the impact of the scattering angle dependent contrast on the detectability of rainbow and glint features. 
 %
-We note that these calculations are by no means complete or exact, given the many variables that go into modelling reflected fluxes and polarization fractions of Earth-like planet \citep{ treesstam2019,trees2022}.
+We note that these calculations are by no means complete or exact, given the many variables that go into modelling reflected fluxes and polarization fractions of an Earth-like planet \citep{ treesstam2019,trees2022}.
 
 
 The NASA Exoplanet Exploration Program’s Mission Star List for the Habitable Worlds Observatory includes an estimated contrast ratio for an Earth twin in the habitable zone for every star. 
@@ -464,9 +454,9 @@ For their calculations they made the simplified assumptions of circular orbits, 
 %
 These calculations give a good order-of-magnitude calculation for the contrast of Earth-like planets around nearby stars.
 %
-Therefore, in this work we will assume that the calculated contrasts given in the list correspond to the reflected flux at quadrature and normalize the scattering phase functions to this point.
+Therefore, in this work, we will assume that the calculated contrasts given in the list correspond to the reflected flux at quadrature and normalize the scattering phase functions to this point.
 %
-We note that we do not aim to accurately calculate the absolute scaling of the contrast as this depends on many factors and would have required some of the work for the star list to be redone.
+We note that we do not aim to accurately calculate the absolute scaling of the contrast, as this depends on many factors and would have required some of the work for the star list to be redone.
 
 We use the scattering phase functions from \cite{treesstam2019} for an Earth-like planet with an ocean surface with patchy clouds and a wind-speed of $\SI{7}{\meter\per\second}$ at $\SI{670}{\nano\meter}$.
 %
@@ -480,7 +470,7 @@ Together they give the reflected light contrast as function of separation for a 
 %
 We multiply this flux with the degree of polarisation and retrieve the polarised contrast.
 %
-The resulting contrast curves are shown in \cref{fig:contrasts} for three of the closest target stars, the G dwarf $\alpha$ Cen A, the K dwarf $\epsilon$ Eri and the M dwarf Lalande 21185.
+The resulting contrast curves are shown in \cref{fig:contrasts} for three of the closest target stars, the G~dwarf $\alpha$~Cen~A, the K~dwarf $\epsilon$~Eri and the M~dwarf Lalande~21185.
 
 \begin{figure*}%[t]
    \centering
