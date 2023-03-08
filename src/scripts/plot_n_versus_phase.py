@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import paths
+from hwo import *
 
 CBF_COLORS = [
     "#5790fc",  # blue
@@ -111,9 +112,9 @@ if __name__ == "__main__":
     #The angular separation of the Earth Equivalent Instellation
     hab_zones = np.array(df['EEIDmas'].values[1:],dtype=float) #in mas
 
-    ##Some Assumed parameters 
-    d = 6 #telescope diameter
-    wavelength = 600e-9
+    ##Some Assumed parameters (now imported from hwo.py)
+ #   d = 6 #telescope diameter
+ #   wavelength = 600e-9
 
     ## Read in the maximum and minimum scattering angles as 
     ## calculated by the dynamical simulations
