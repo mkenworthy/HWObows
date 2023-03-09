@@ -145,11 +145,11 @@ def get_beta_min_and_beta_max(
         try:
             beta_min[i] = np.rad2deg(np.min(beta[mask])) * u.deg
         except ValueError:
-            beta_min[i] = np.nan * u.deg
+            beta_min[i] = 180 * u.deg
         try:
             beta_max[i] = np.rad2deg(np.max(beta[mask])) * u.deg
         except ValueError:
-            beta_max[i] = np.nan * u.deg
+            beta_max[i] = 0 * u.deg
 
     return beta_min, beta_max
 
