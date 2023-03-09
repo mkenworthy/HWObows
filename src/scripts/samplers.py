@@ -30,7 +30,7 @@ def sample_i(n: int = 1) -> np.ndarray:
     return np.rad2deg(np.arccos(sample_cos_i(n)))
 
 
-def sample_e(n: int, a: float = 0.867, b: float = 3.03) -> np.ndarray:
+def sample_e(n: int = 1, a: float = 0.867, b: float = 3.03) -> np.ndarray:
     """
     Sample `n` eccentricities `e` from a beta distribution with shape
     parameters `a` and `b`. The default values for `a` and `b` are
