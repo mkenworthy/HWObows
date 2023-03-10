@@ -193,9 +193,13 @@ if __name__ == "__main__":
     ## calculated by the dynamical simulations
     ## The files with the 3 suffix include the wider range of 
     ## iwa that we want for this step
-    phase_max=np.load(paths.data / "betamax3.npy")
-    phase_min=np.load(paths.data / "betamin3.npy")
-    iwa_list=np.load(paths.data / "iwa3.npy")
+    iwa = np.load('iwa_all3.npz')
+    phase_max = iwa['betamax']
+    phase_min = iwa['betamin']
+    iwa_list =  iwa['iwa']
+#    phase_max=np.load(paths.data / "betamax3.npy")
+#    phase_min=np.load(paths.data / "betamin3.npy")
+#    iwa_list=np.load(paths.data / "iwa3.npy")
     # Note: We pass in beta to the plotting function here, based on phase_max
     # Beta is an intermediate parameter used here. 
     # The maximum scattering angle is equal to 90+beta degrees

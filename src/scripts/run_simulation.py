@@ -160,9 +160,11 @@ if plotit:
 	plt.show()
 else:
 	print(f'saving the data with command line option {op}')
-	np.save(paths.data / f'iwa{tag}.npy',iwa)
-	np.save(paths.data / f'betamax{tag}.npy',betamax)
-	np.save(paths.data / f'betamin{tag}.npy',betamin)
+#	np.save(paths.data / f'iwa{tag}.npy',iwa)
+#	np.save(paths.data / f'betamax{tag}.npy',betamax)
+#	np.save(paths.data / f'betamin{tag}.npy',betamin)
+
+	np.savez_compressed(paths.data / f'iwa_all{tag}.npy', iwa=iwa, betamax=betamax, betamin=betamin)
 
 
 	

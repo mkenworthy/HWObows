@@ -119,9 +119,13 @@ if __name__ == "__main__":
     ## Read in the maximum and minimum scattering angles as 
     ## calculated by the dynamical simulations
     ## This set of files only has 4 IWAs. 
-    phase_max=np.load(paths.data / "betamax.npy")
-    phase_min=np.load(paths.data / "betamin.npy")
-    iwa_list=np.load(paths.data / "iwa.npy")
+    iwa = np.load('iwa_all.npz')
+    phase_max = iwa['betamax']
+    phase_min = iwa['betamin']
+    iwa_list =  iwa['iwa']
+#    phase_max=np.load(paths.data / "betamax.npy")
+#    phase_min=np.load(paths.data / "betamin.npy")
+#    iwa_list=np.load(paths.data / "iwa.npy")
     #Note: We only pass phase_max to the plotting routine. 
     # For a given system phase_max and phase_min might differ (with elliptical orbits), 
     # but the distributions mirror each other (about 90 degrees) when you average over enough orbits
