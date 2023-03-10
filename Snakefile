@@ -13,7 +13,7 @@ rule make_iwa_files:
     input:
         "src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv"
     output:
-        "iwa_all.npz"
+        "src/data/iwa_all.npz"
     cache:
         True
     conda:
@@ -25,7 +25,7 @@ rule make_iwa3_files:
     input:
         "src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv"
     output:
-        "iwa_all3.npz"
+        "src/data/iwa_all3.npz"
     cache:
         True
     conda:

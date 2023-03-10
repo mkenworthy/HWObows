@@ -193,7 +193,7 @@ if __name__ == "__main__":
     ## calculated by the dynamical simulations
     ## The files with the 3 suffix include the wider range of 
     ## iwa that we want for this step
-    iwa = np.load('iwa_all3.npz')
+    iwa = np.load(paths.data / 'iwa_all3.npz')
     phase_max = iwa['betamax']
     phase_min = iwa['betamin']
     iwa_list =  iwa['iwa']

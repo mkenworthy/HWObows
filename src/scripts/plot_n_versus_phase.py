@@ -119,7 +119,7 @@ if __name__ == "__main__":
     ## Read in the maximum and minimum scattering angles as 
     ## calculated by the dynamical simulations
     ## This set of files only has 4 IWAs. 
-    iwa = np.load('iwa_all.npz')
+    iwa = np.load(paths.data / 'iwa_all.npz')
     phase_max = iwa['betamax']
     phase_min = iwa['betamin']
     iwa_list =  iwa['iwa']
