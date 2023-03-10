@@ -227,7 +227,8 @@ However, the challenges associated with the design of a coronagraph in UV are en
 
 
 
-\textbf{In this paper we...}
+%\textbf{In this paper we...}
+In this paper we quantify the accessible scattering phase angles for hypothetical terrestrial planets orbiting in the habitable zones of HabWorlds target stars. In \S 2.1 we describe the target list, in \S 2.2 we derive expressions for the range of scattering phase angles in a few different limits, in \S 2.3 we describe Monte Carlo simulations to marginalize over the unknown orbital inclination and eccentricity of planets in these systems, and in \S 2.4 we outline how the planet/star contrast changes as a function of orbital phase.  We present and discuss our results in \S 3 and conclude in \S 4.  %the   the way that inclination and coronagraph inner working angle can limit the accessible phase angles  
 % We minimally explore the contrast ratio as we are primarily exploring whether these scattering angles are reachable with inner working angle and outer working angle considered.
 
 % We do not consider the particulars of specific planet scenarios as that work is completed by foward models
@@ -250,7 +251,8 @@ However, the challenges associated with the design of a coronagraph in UV are en
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Observing scattering phenomena}
+%\section{Observing scattering phenomena}
+\section{Methods}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -300,9 +302,10 @@ The target list is constructed assuming a maximum planet magnitude of $R_c = 31$
 %with an occurrence rate of rocky planets in the optimistic habitable zone to be $\eta_{\oplus}$ = 0.24 \citep{decadal}. 
 The corresponding adopted habitable zone limits are a semi-major axis of \SIrange{0.95}{1.67}{\au} for a solar twin, planet sizes between \SIrange{0.8}{1.4}{} Earth radii, and for non-solar stars, scale as square root of the bolometric luminosity normalized to the Sun. 
 %
-This range of orbital separation corresponds to the \enquote{conservative habitable zone} \citep{kasting93, kopparapu13}.
+This range of orbital separation corresponds to the \enquote{conservative habitable zone} \citep{kasting93, kopparapu13}. 
+The authors of the report determined that these are the nearby stars (maximum distance \SI{25}{\parsec}) for which exo-Earths would be the most observable for an imaging survey of habitable zones with a \SI{6}{\meter} telescope. 
 
-The authors of the report determined that these are the nearby stars (maximum distance \SI{25}{\parsec}) for which exo-Earths would be the most observable for an imaging survey of habitable zones with a \SI{6}{\meter} telescope.
+In what follows, we consider hypothetical Earth-size planets orbiting at the right distance from each star to receive the same flux as the Earth receives from the Sun. By construction, such planets should be observable at quadrature phase by HabWorlds. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -339,7 +342,7 @@ We define the angle $\Delta \varphi$ such that:
 
 The on-sky projected planet distance, $r_\mathrm{proj}$ (in \si{\au}) is shown in \cref{fig:scattering-angle} assuming a non-eccentric circular orbit with a semi-major $a$ (in \si{\au}) at a distance $d_*$ (in \si{\parsec}) from the observer. 
 %
-The scattering phase angle $\phi$ is this set up follows the equation,
+The scattering phase angle $\varphi$ is this set up follows the equation,
 \begin{equation}
     \sin(\varphi) = \frac{r_\mathrm{proj}}{a}
 \end{equation}
@@ -364,9 +367,9 @@ Using \cref{eq:Delta_phi}, we deduce:
     \label{fig:scattering-angle}
 \end{figure}
 
-\Cref{fig:scatterplot} shows $\Delta \phi$ for the systems in the target list assuming a $3 \lambda / D$ coronagraph at $\SI{600}{\nano\meter}$. 
+\Cref{fig:scatterplot} shows $\Delta \varphi$ for the systems in the HabWorlds target list assuming an IWA of 62 mas ($3 \lambda / D$ coronagraph at $\SI{600}{\nano\meter}$). 
 %
-This assumes each planet has a semi-major axis such that it receives an Earth-equivalent instellation, which is provided in the input star list.
+%This assumes each planet has a semi-major axis such that it receives an Earth-equivalent instellation, which is provided in the input star list.
 %
 For edge-on circular orbits, it will be possible to observe Rayleigh scattering for all targets and rainbows will be accessible in some cases.
 
@@ -392,11 +395,11 @@ Most systems will not be viewed as edge on from Earth.
 %
 For a given system with inclination $i$, we have identified 2 regimes, which are shown in \cref{fig:orb-grid}:
 
-(1)~If the inclination is face-on enough such that the coronagraph mask does not cover any part of the projected orbit on-sky, then the maximum scattering phase angle coverage depends solely on the disk inclination ;
+(1)~If the inclination is relatively face-on, then the coronagraph mask does not obscure any part of the sky-projected orbit, and the maximum scattering phase angle coverage depends solely on the disk inclination ;
 
-(2)~When parts of the disk (minimum and maximum scattering phase angles) are hidden by the focal plane mask, the scattering phase angle coverage does not depend on the inclination and only on the \IWA\ and orbit semi-major axis. 
+(2)~When parts of the orbit  are hidden by the focal plane mask, the scattering phase angle coverage only depends on the \IWA\ and orbital semi-major axis. 
 
-\begin{figure}
+\begin{figure}[htb]
    \centering
    \includegraphics[width=0.99\columnwidth]{figures/orb-grid.pdf}
    \caption{
@@ -408,10 +411,10 @@ For a given system with inclination $i$, we have identified 2 regimes, which are
     \script{plot-orb-grid.py}
 \end{figure}
 
-Using \cref{eq:scattering_angle}, we deduce the 2 regime equation for inclined circular orbits: 
+Using \cref{eq:scattering_angle}, we deduce the equation for inclined circular orbits: 
 \begin{equation}
 \label{eq:Delta_phi_max}
-    \Delta \phi = 
+    \Delta \varphi = 
     \begin{cases}
         2 \cdot i & \textrm{for} \cos(i) > \dfrac{\mathrm{IWA}\cdot d_* }{a}
   \\ 
@@ -421,15 +424,56 @@ Using \cref{eq:scattering_angle}, we deduce the 2 regime equation for inclined c
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Eccentric orbits}
+%\subsubsection{Eccentric orbits}
 
-\todo{how was the angle coverage calculated in the monte carlo?}
-
-\timmy{I think so far, the MC code doesn't compute angle coverage. I came up with this quick and dirty sketch to help us get started:}
 
 %The inclination $i$ is sampled such that $\cos(i)$ follows a uniform distribution, $\cos(i) \sim \mathcal{U}(0, 1)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Monte Carlo Simulations}
+
+\subsubsection{Circular randomly inclined orbits}
+\label{sec:circular}
+
+For each star on the \hwo\ target list, we generate XX hypothetical habitable planets at the Earth-equivalent-flux semi-major axis. 
+%
+The orbital inclinations are randomly drawn from a distribution uniform in $\cos i$. 
+%
+We then use \cref{eq:Delta_phi_max} to determine the range of accessible scattering phase angles for each hypothetical planet. 
+The solid lines in Figure \ref{fig:betaallofit} show the cumulative distribution for the most extreme scattering phase angles accessible for the \hwo\ target list, depending on the choice of inner working angle.  
+
+\todo{what does this plot show, how many systems could we see?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure*}[htb]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/accessible_phase_angles.png}  
+    \caption{
+        The big kahuna
+    }
+    \label{fig:betaallofit}
+    \script{plot_n_versus_phase.py}
+\end{figure*}
+
+\subsubsection{Eccentric randomly inclined orbits}
+\label{sec:eccentric}
+We repeat the Monte Carlo simulation from \cref{sec:circular} assuming the orbital eccentricity follows a beta distribution with shape parameters $a=0.867$ and $b=3.03$ \citep{2013MNRAS.434L..51K}. 
+%
+We randomly drew 1000 random orbits for each star and determined the sky-projected orbits following, e.g., \cite{2010exop.book...15M}. Eccentricities were drawn from the beta distribution and inclinations were uniform in $\cos i$. 
+%
+We then filtered on \IWA's of 1, 2, 3 and 4 times $\lambda / D$, before identifying which targets would be observable at the scattering phase angles where ocean glint, rainbows, or the Rayleigh peak occur. 
+%
+\Cref{fig:ball-o-yarn} shows a sample of the generated orbits with the filtered \IWA's. The dashed lines in Figure \ref{fig:betaallofit} show the cumulative distribution for the most extreme scattering phase angles accessible, when accounting for orbital eccentricity.  Kepler's second law ensures that eccentric planets spend more time at orbital separations greater than their semi-major axis, and hence are more likely to peak out from behind the coronagraph IWA and extreme orbital phases (albeit with worse contrast due to the greater star--planet separation). 
+
+\todo{how was the angle coverage calculated in the monte carlo?}
+
+
+\timmy{I think so far, the MC code doesn't compute angle coverage. I came up with this quick and dirty sketch to help us get started:}
+
+
+%
+%Each plot has been scaled such that the habitable zone occupies the same radius, hence the \IWA's vary in apparent size compared to the orbit. 
 
 \subsection{Simulating contrast curves}
 \textbf{Kim and David}
@@ -491,32 +535,7 @@ The resulting contrast curves are shown in \cref{fig:contrasts} for three of the
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Circular randomly inclined orbits}
-\label{sec:circular}
 
-For each star on the \hwo\ target list, we generate XX hypothetical habitable planets at the Earth-equivalent-flux semi-major axis. 
-%
-The orbital inclinations are randomly drawn from a distribution uniform in $\cos i$. 
-%
-We then use \cref{eq:Delta_phi_max} to determine the range of accessible scattering phase angles for each hypothetical planet.
-%
-\todo{Figure X, where the plot for this?} shows the cumulative distribution for the most extreme scattering phase angles accessible for the \hwo\ target list, depending on the choice of inner working angle.  
-
-\todo{what does this plot show, how many systems could we see?}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Eccentric randomly inclined orbits}
-\label{sec:eccentric}
-We repeat the Monte Carlo simulation from \cref{sec:circular} assuming the orbital eccentricity follows a beta distribution with shape parameters $a=0.867$ and $b=3.03$ (cf. \citet{Guimond_2019} and references therein). 
-%
-We randomly drew 1000 eccentricities from the beta distribution for each star and determined the orbits. 
-%
-We then filtered on \IWA\ for multiples of 1, 2, 3 and 4 $\lambda / D$, before identifying which targets would be observable at the scattering phase angles where ocean glint, rainbows, or the Rayleigh peak occur. 
-%
-\Cref{fig:ball-o-yarn} shows a sample of the generated orbits with the filtered \IWA's. 
-%
-%Each plot has been scaled such that the habitable zone occupies the same radius, hence the \IWA's vary in apparent size compared to the orbit. 
 
 \todo{Is there a plot for this? How many systems could we see? Why is it different to non-eccentric cases?}
 
@@ -560,15 +579,7 @@ We then filtered on \IWA\ for multiples of 1, 2, 3 and 4 $\lambda / D$, before i
 \end{figure*}
 
 
-\begin{figure*}
-    \centering
-    \includegraphics[width=0.95\textwidth]{figures/accessible_phase_angles.png}  
-    \caption{
-        The big kahuna
-    }
-    \label{fig:betaallofit}
-    \script{plot_n_versus_phase.py}
-\end{figure*}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
