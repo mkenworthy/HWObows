@@ -7,6 +7,13 @@ from samplers import *
 
 from tqdm import tqdm
 import time
+import paths
+
+import sys 
+
+if (len(sys.argv) != 2):
+	print('need one command line argument (iwa, iwa2 or iwa3). Stopping...')
+	quit()
 
 np.random.seed(42) # set a seed so the plots and data output are reporducible for showyourwork!
 
@@ -28,17 +35,27 @@ nplanets = 1000
 # number of epochs to sample along the orbit of the planet
 norbitsample = 1000
 
-# IWA ranges
-iwa = np.array([21, 42, 63, 84]) # iwa.py
-iwa = np.linspace(20,120,5) # inner working angles (in mas) to compute betamax at iwa2.npy
-iwa = np.linspace(20,120,20) # iwa3.npy
+# IWA ranges as selected for three possible iwa
 
-
+op = sys.argv[1]
+if op == 'iwa':
+	iwa = np.array([21, 42, 63, 84])
+	tag = ''
+elif op == 'iwa2':
+	iwa = np.linspace(20,120,5) # inner working angles (in mas) to compute betamax
+	tag = '2'
+elif op == 'iwa3':
+	iwa = np.linspace(20,120,20)
+	tag = '3'
+else:
+	print('not a valid command line argument. Stopping...')
+	quit()
+print(f'option selected was {op}')
 # read in the stars
 from astropy.io import ascii
 
 fname = "2646_NASA_ExEP_Target_List_HWO_Table.csv"
-t = ascii.read(fname ,header_start = 1, data_start = 2)
+t = ascii.read(paths.data / fname ,header_start = 1, data_start = 2)
 
 nstars = len(t)
 print(f'# read in {nstars} stars from {fname}')
@@ -136,14 +153,16 @@ for l in tqdm(t): # loop over all the stars in the table
 
 	cax+=1 # increase figure number
 
-np.save('iwa2.npy',iwa)
-np.save('betamax2.npy',betamax)
-np.save('betamin2.npy',betamin)
-
 if plotit:
 	plt.draw()
 	plt.savefig('ball_of_yarn.png',dpi=100)
 	plt.savefig('ball_of_yarn.pdf')
 	plt.show()
+else:
+	print(f'saving the data with command line option {op}')
+	np.save(paths.data / f'iwa{tag}.npy',iwa)
+	np.save(paths.data / f'betamax{tag}.npy',betamax)
+	np.save(paths.data / f'betamin{tag}.npy',betamin)
+
 
 	
