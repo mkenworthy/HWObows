@@ -29,7 +29,10 @@ nplanets = 1000
 norbitsample = 1000
 
 # IWA ranges
-iwa = np.linspace(20,120,5) # inner working angles (in mas) to compute betamax at
+iwa = np.array([21, 42, 63, 84]) # iwa.py
+iwa = np.linspace(20,120,5) # inner working angles (in mas) to compute betamax at iwa2.npy
+iwa = np.linspace(20,120,20) # iwa3.npy
+
 
 # read in the stars
 from astropy.io import ascii
