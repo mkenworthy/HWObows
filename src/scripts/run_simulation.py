@@ -12,7 +12,7 @@ import paths
 np.random.seed(42) # set a seed so the plots and data output are reporducible for showyourwork!
 
 # number of planet sims per star
-nplanets = 20
+nplanets = 1000
 
 # number of epochs to sample along the orbit of the planet
 norbitsample = 1000
