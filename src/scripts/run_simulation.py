@@ -9,11 +9,11 @@ from tqdm import tqdm
 import time
 import paths
 
-import sys 
+#import sys 
 
-if (len(sys.argv) != 2):
-	print('need one command line argument (iwa, iwa2 or iwa3). Stopping...')
-	quit()
+#if (len(sys.argv) != 2):
+#	print('need one command line argument (iwa, iwa2 or iwa3). Stopping...')
+#	quit()
 
 np.random.seed(42) # set a seed so the plots and data output are reporducible for showyourwork!
 
@@ -36,8 +36,8 @@ nplanets = 1000
 norbitsample = 1000
 
 # IWA ranges as selected for three possible iwa
-
-op = sys.argv[1]
+op = snakemake.params['whichsim']
+#op = sys.argv[1]
 if op == 'iwa':
 	iwa = np.array([21, 42, 63, 84])
 	tag = ''

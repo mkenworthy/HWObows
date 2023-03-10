@@ -16,10 +16,12 @@ rule make_iwa_files:
         "src/data/iwa_all.npz"
     cache:
         True
+    params:
+        whichsim="iwa"
     conda:
         "environment.yml"
     script:
-        "src/scripts/run_simulation.py iwa"
+        "src/scripts/run_simulation.py"
 
 rule make_iwa3_files:
     input:
@@ -28,7 +30,9 @@ rule make_iwa3_files:
         "src/data/iwa_all3.npz"
     cache:
         True
+    params:
+        whichsim="iwa3"
     conda:
         "environment.yml"
     script:
-        "src/scripts/run_simulation.py iwa3"
+        "src/scripts/run_simulation.py"
