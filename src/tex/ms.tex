@@ -158,17 +158,31 @@ planets and satellites: terrestrial planets -- instrumentation: high angular res
 %\textcolor{red}{introduce motivation, specs for habitable worlds observatory and the document we got the target list from.}
 
 
-Surface liquid water is the definition of planetary habitability: water is required for life as we know it, and life will only be detectable on an exoplanet if it is present at the surface. Hence the search for life on exoplanets typically focuses on habitable planets. To first order, the presence of surface liquid water can be predicted by the flux it receives from its star. The habitable zone (HZ) describes the range of semi-major axes around a given main sequence star for which an Earth twin could maintain surface liquid water \citep{kasting93}.  The HZ is convenient because a planet can be deemed habitable based on solely on its orbital separation, but it remains an untested hypothesis. Ideally, we will empirically establish the presence of liquid water on an exoplanet before trying to interpret its putative biosignatures.    
+Surface liquid water is closely related to planetary habitability: water is required for life as we know it, and life on exoplanets will most likely on be detectable if it is present at the surface. 
+
+To first order, the presence of surface liquid water can be predicted by the flux a planet receives from its star. The habitable zone (HZ) describes the range of semi-major axes around a given main sequence star for which an Earth-like planet could maintain surface liquid water \citep{kasting93}.  The HZ is convenient because a planet can be deemed habitable based on solely on its orbital separation, but it remains an untested hypothesis. %Ideally, we will empirically establish the presence of liquid water on an exoplanet before trying to interpret its putative biosignatures.  
 
 %\textcolor{blue}{Kim will enhance the polarimetry stuff, and we should break into multiple paragraphs.}\\
+
 %\textbf{Why glint [Kim]}
 % probe of surface conditions; habitability
-\cite{2001Natur.412..885F} first noted the potential for time-resolved photometry and polarimetry to identify water oceans on the surface of an exoplanet. Rotational variability of an exoplanet's reflected light colours can be inverted into a rough map of the planet's surface, with dark regions being suggestive of oceans \citep{2009ApJ...700..915C}, but specular reflection, a.k.a. glint, remains the most direct means to infer liquids on the surface of other worlds \citep[e.g., methane lakes on Titan;][]{2010GeoRL..37.7104S}.  \cite{2006astro.ph.10518M}  quantified how photometric and polarimetric scattered light orbital phase variations might betray the presence of oceans on terrestrial exoplanets.   
-%--> No it was talked about previous to this, per the paper cited here in fact... "Stam & Hovenier(2006) independently examined the observability of the polarized signatures of an Earth-likeextrasolar planet, including Rayleigh scattering and sea-surface glint. Schneider (2006) had similar ideas." -KB
+
+\cite{2001Natur.412..885F} noted the potential for time-resolved photometry to identify water oceans on the surface of an exoplanet, which was further explored by \citet{williams2004} and \citet{giados2006}. Rotational variability of an exoplanet's reflected light colours can be inverted into a rough map of the planet's surface, with dark regions being suggestive of oceans \citep{2009ApJ...700..915C}, but specular reflection, a.k.a. glint, remains the most direct means to infer liquids on the surface of other worlds \citep[e.g., methane lakes on Titan;][]{2010GeoRL..37.7104S}. \citet{lustig2019} explored mapping exoplanets from their ocean glint in polarized light.
+
+In polarized light the glint appears at similar phase angles but its peak can be extended further particularly in the presence of atmospheric winds \citep{kopparla2018}.
+%\cite{2006astro.ph.10518M} quantified how photometric and polarimetric scattered light orbital phase variations might betray the presence of oceans on terrestrial exoplanets.  
+\citet{Takahashi2021} used polarimetric Earthshine measurements to detect the presence of the ocean.
 \cite{2008Icar..195..927W} simulated photometric and polarimetric phase curves of directly imaged terrestrial planets. They noted that surface oceans would be detectable because they are more reflective and exhibit a peak in polarization at crescent phases. 
 
+
+
+%"Stam & Hovenier (2006) independently examined the observability of the polarized signatures of an Earth-like extrasolar planet, including Rayleigh scattering and sea-surface glint. Schneider (2006) had similar ideas." -KB
+
+%% MARKER FOR WHERE KIM LEFT OFF PLEASE LEAVE %%%
+
+% Move to Clouds?
 In practice, clouds complicate the detection of ocean glint because they obscure the underlying surface and are themselves non-Lambertian scatterers. \cite{Zugger_2010} simulated photometric and polarized phase variations for planets including the effects of partial cloud coverage and ocean waves. Although the presence of clouds and atmospheric Rayleigh scattering weaken the signal of an underlying ocean, they again find that oceans are detectable and distinguishable from other sources of polarization. \cite{2010ApJ...721L..67R} compared observations of the Earth's scattering phase curve to comprehensive radiative transfer simulations; they found that the photometric brightening of Earth at crescent phases is mostly due to forward scattering from clouds, with a relatively small contribution from ocean glint.
-\citet{Zugger_2011} note that ocean glint is best observed in near infrared opacity windows because of the reduced Rayleigh scattering at long wavelengths. This has the added advantage of minimizing the latitude--albedo effect, which could otherwise be a false-positive for photometric brightening at crescent phases due to glint \citep{2012ApJ...752L...3C}. Most recently, \cite{2019A&A...626A.129T,2022A&A...664A.172T} simulated the photometric and polarimetric signatures of terrestrial planets with inhomogeneous clouds. The bottom line is that a direct imaging mission sensitive to the phase-dependent reflected light photometry and polarization of an  exoplanet could establish its habitability. \textcolor{blue}{Tighten the above two paragraphs and combine with the following.}
+\citet{Zugger_2011} note that ocean glint is best observed in near infrared opacity windows because of the reduced Rayleigh scattering at long wavelengths. This has the added advantage of minimizing the latitude--albedo effect, which could otherwise be a false-positive for photometric brightening at crescent phases due to glint \citep{2012ApJ...752L...3C}. Most recently, \cite{2019A&A...626A.129T,2022A&A...664A.172T} simulated the photometric and polarimetric signatures of terrestrial planets with inhomogeneous clouds. The bottom line is that a direct imaging mission sensitive to the phase-dependent reflected light photometry and polarization of an  exoplanet could establish its habitability.
 
 \textcolor{blue}{Science motivation below: Kim}\\
 \textbf{Why Polarization curves worth looking at [Kim]}
@@ -189,7 +203,7 @@ In practice, clouds complicate the detection of ocean glint because they obscure
  
 
 
-%Polarimetry provides the possibility to detect molecules, hazes, clouds and different surfaces  as they all produce unique polarization signatures which cannot be disentagled by using broadband flux alone. Polarimetry measurements of terrestrial exoplanet atmospheres therefore have the potential to provide empirical constraints on atmospheric properties that are inaccessible through other observational techniques. Polarimetry has previously played an important role in the understanding of solar system planet atmospheres, for instance, polarimetric measurements of Venus’ atmosphere suggested that the upper atmosphere of Venus is dominated by a haze of liquid sulphuric acid droplets \citep{Venus74}, which has been confirmed by in situ observations.
+%Polarimetry provides the possibility to detect molecules, hazes, clouds and different surfaces  as they all produce unique polarization signatures which cannot be disentagled by using broadband flux alone. Polarized measurements of terrestrial exoplanet atmospheres therefore have the potential to provide empirical constraints on atmospheric properties that are inaccessible through other observational techniques. Polarimetry has previously played an important role in the understanding of solar system planet atmospheres, for instance, polarimetric measurements of Venus’ atmosphere suggested that the upper atmosphere of Venus is dominated by a haze of liquid sulphuric acid droplets \citep{Venus74}, which has been confirmed by in situ observations.
 
 \textbf{Why rainbow worth it [Kim]} %calc; retrieve species including for non terrestrials; droplet liklihood of liquid surface; lit review bailey et below
 
@@ -446,11 +460,12 @@ The solid lines in Figure \ref{fig:betaallofit} show the cumulative distribution
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure*}[htb]
+\begin{figure*}[t]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/accessible_phase_angles.png}  
     \caption{
         The big kahuna
+        \timmy{What are the dashed vs. solid lines?}
     }
     \label{fig:betaallofit}
     \script{plot_n_versus_phase.py}
