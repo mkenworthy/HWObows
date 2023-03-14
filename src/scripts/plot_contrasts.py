@@ -51,7 +51,7 @@ F_670 = interpolate.interp1d(data_trees[0],data_trees[1])
 
 orbital_phase = np.linspace(0,2*np.pi,200)
 
-inclination = np.radians(63)
+inclination = np.radians(90)
 
 alpha = np.arccos(np.cos(orbital_phase)*np.sin(inclination))
 
