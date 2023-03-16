@@ -219,12 +219,11 @@ To first order, the presence of surface liquid water can be predicted by the flu
 \subsection{Ocean Glint}
 \cite{2001Natur.412..885F} noted the potential for time-resolved reflected light photometry to identify water oceans on the surface of an exoplanet.  \cite{2008Icar..195..927W} performed simulations of scattered light from directly imaged terrestrial exoplanets. 
 %to demonstrate that phase-resolved photometry and polarization of a directly-imaged exoplanet would betray the presence of large surface oceans. 
-They noted that surface oceans would be detectable because they are more reflective and exhibit a peak in polarization at crescent phases. %Rotational variability of an exoplanet's reflected light colours can be inverted into a rough map of the planet's surface, with dark regions being suggestive of oceans \citep{2009ApJ...700..915C}, but
-Specular reflection, a.k.a. glint, remains the most direct means to infer liquids on the surface of other worlds \citep[e.g., methane lakes on Titan;][]{2010GeoRL..37.7104S}. %\citet{lustig2019} explored mapping exoplanets at crescent phases using ocean glint.
-
-In polarized light the glint appears at similar phase angles but its peak can be extended further particularly in the presence of atmospheric winds \citep{kopparla2018}.
+They showed that oceans would be detectable because they are more reflective and exhibit a peak in polarization at crescent phases. %Rotational variability of an exoplanet's reflected light colours can be inverted into a rough map of the planet's surface, with dark regions being suggestive of oceans \citep{2009ApJ...700..915C}, but
+Specular reflection, a.k.a. glint, remains the most direct means to infer liquids on the surface of other worlds \citep[e.g., Titan's methane lakes;][]{2010GeoRL..37.7104S}. %\citet{lustig2019} explored mapping exoplanets at crescent phases using ocean glint.
+Specular reflection appears at similar phase angles in both unpolarized and polarized light and its peak orbital phase can be extended by atmospheric winds, which produce waves and hence increase the size of the glint spot \citep{2011Icar..211..722B,kopparla2018}.
 %\cite{2006astro.ph.10518M} quantified how photometric and polarimetric scattered light orbital phase variations might betray the presence of oceans on terrestrial exoplanets.  
-\citet{Takahashi2021} used polarimetric Earthshine measurements to detect the presence of the ocean.
+\citet{Takahashi2021} used polarimetric Earthshine measurements to detect the presence of the ocean, proving that the method works in practice for an unresolved world.
 %\cite{2008Icar..195..927W} simulated photometric and polarimetric phase curves of directly imaged terrestrial planets. They noted that surface oceans would be detectable because they are more reflective and exhibit a peak in polarization at crescent phases. 
 
 % NEEDS Paragraph on mapping connection to tectonics
@@ -245,6 +244,7 @@ In practice, clouds complicate the detection of ocean glint because they obscure
 
 
 \subsection{Polarized Phase Curves}
+\textcolor{blue}{Recap all of polarized phase curve work, including stuff not about ocean glint. Introduce the polarization signals of Rayleigh scattering, rainbow and glory.}
 %compare to features in nonpol (strength rainbow); current capabilties?, errors from 3 papers, 
 
 % add latitude albedo degeneracy break here \citep{2012ApJ...752L...3C}
@@ -270,7 +270,7 @@ In practice, clouds complicate the detection of ocean glint because they obscure
 
 %Polarimetry provides the possibility to detect molecules, hazes, clouds and different surfaces  as they all produce unique polarization signatures which cannot be disentagled by using broadband flux alone. Polarized measurements of terrestrial exoplanet atmospheres therefore have the potential to provide empirical constraints on atmospheric properties that are inaccessible through other observational techniques. Polarimetry has previously played an important role in the understanding of solar system planet atmospheres, for instance, polarimetric measurements of Venus’ atmosphere suggested that the upper atmosphere of Venus is dominated by a haze of liquid sulphuric acid droplets \citep{Venus74}, which has been confirmed by in situ observations.
 
-\subsection{Rainbows}
+%\subsection{Rainbows}
 %calc; retrieve species including for non terrestrials; droplet liklihood of liquid surface; lit review bailey et below
 
 %The rai
@@ -279,7 +279,7 @@ In practice, clouds complicate the detection of ocean glint because they obscure
 %cloud coverage paper in polarisation :
 %\cite{rossi17} computed flux and polarisation of reflected starlight for different types of cloud cover on Earth-like planets and determined different types of cloud cover can be distinguished from each other. %Alternative options or papers here.... Kim can write this tomorrow , needs other Stam, Karalidi, Kopparla, maybe Gordon, need to reference rainbows in Bailey paper.  Look at citations in Gordon paper (our bib)... he has a really thorough lit review --KB
 
-
+\subsection{Habitable Worlds Observatory}
 The National Academy of Sciences Astronomy \& Astrophysics 2020 Decadal Survey \citep{decadal} recommended the first in a new \enquote{Great Observatories} program a telescope with the capability to detect signatures of habitability for about 25 habitable zone planets.
 %
 This assertion requires an instrument with a coronograph capable of high contrast imaging in the optical-near infrared.
@@ -308,6 +308,7 @@ However, the challenges associated with the design of a coronagraph in UV are en
 
 
 %\textbf{In this paper we...}
+\subsection{Outline}
 In this paper we quantify the accessible scattering phase angles for hypothetical terrestrial planets orbiting in the habitable zones of HabWorlds target stars. In \S 2.1 we describe the target list, in \S 2.2 we derive expressions for the range of scattering phase angles in a few different limits, in \S 2.3 we describe Monte Carlo simulations to marginalize over the unknown orbital inclination and eccentricity of planets in these systems, and in \S 2.4 we outline how the planet/star contrast changes as a function of orbital phase.  We present and discuss our results in \S 3 and conclude in \S 4.  %the   the way that inclination and coronagraph inner working angle can limit the accessible phase angles  
 % We minimally explore the contrast ratio as we are primarily exploring whether these scattering angles are reachable with inner working angle and outer working angle considered.
 
@@ -347,6 +348,8 @@ In addition, the observatory will utilise a coronagraph to suppress the stellar 
 The \IWA\ of the coronagraph is currently undecided and will be driven by both the science requirements and technological limitations. 
 %In this work, we investigate the scattering phase coverage obtainable for several choices for the \IWA\ of the observatory. 
 %We also consider the Outer Working Angle (OWA) but for most targets this is not a limiting factor. 
+%From the HabWorlds report. Inner Working Angle: The IWA defines the region near the star that cannot be accessed for direct imaging due to a coronagraphic mask, starshade obscuration, or an interferometric null. It depends on the architecture of the telescope, the starlight suppression system used, and the observation wavelength. While a nominal value could be defined by making assumptions about the design for Habitable Worlds Observatory, we choose instead to derive the IWA from the star list itself and Astro2020’s requirement that ~100 cumulative habitable zones be surveyed by direct imaging. As shown in the main table, an IWA near ~70 mas will be needed to access ~100 cumulative habitable zones, and would need to be achieved at all wavelengths of interest for spectral characterization. For any specific telescope and starlight suppression system architecture the IWA is typically proportional to wavelength; thus, the number of accessible HZs will strongly decrease as IWA(lambda) increases.
+
 For ease of comparison, \cref{tab:IWA_OWA} indicates the angular separations corresponding to multiples of $\lambda / D$ for a \SI{6}{\meter} telescope at a wavelength of $\lambda = \SI{-1}{\nano\meter}$ \todo{Update value!}.
 
 \begin{table}
