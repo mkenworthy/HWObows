@@ -6,6 +6,10 @@ Utility functions for computing beta_min / beta_max.
 # IMPORTS
 # -----------------------------------------------------------------------------
 
+import warnings
+
+from PyAstronomy import pyasl
+from scipy.interpolate import interp1d
 from scipy.spatial.transform import Rotation
 
 import astropy.units as u
@@ -49,8 +53,9 @@ def get_xyz_positions(
 
     # Compute the radius for each phase (and ensure that it is in AU)
     r = (
-        semimajor_axis * (1 - eccentricity**2) /
-        (1 + eccentricity * np.cos(2 * np.pi * orbital_phases))
+        semimajor_axis
+        * (1 - eccentricity**2)
+        / (1 + eccentricity * np.cos(2 * np.pi * orbital_phases))
     ).to(u.AU)
 
     # Compute the x, y, z coordinates for each phase
@@ -81,7 +86,7 @@ def get_beta_min_and_beta_max(
     arg_periapsis: u.Quantity[u.rad],
     lon_asc_node: u.Quantity[u.rad],
     inclination: u.Quantity[u.rad],
-    distance: u.Quantity[u.pc]
+    distance: u.Quantity[u.pc],
 ) -> tuple[np.ndarray, np.ndarray]:
     """
     Compute the minimum and maximum beta values for each given IWA.
@@ -136,7 +141,6 @@ def get_beta_min_and_beta_max(
     # Loop over all IWA values is more efficient than computing than calling
     # this function multiple times for each IWA, because we can re-use `xyz`
     for i, iwa in enumerate(iwas):
-
         # Define a mask for the points on the orbit that are outside the IWA,
         # that is, the points that are not occulted by the coronagraph.
         mask = separations > iwa
@@ -150,6 +154,89 @@ def get_beta_min_and_beta_max(
             beta_max[i] = np.rad2deg(np.max(beta[mask])) * u.deg
         except ValueError:
             beta_max[i] = 0 * u.deg
+
+    return beta_min, beta_max
+
+
+def matts_approach(
+    iwas: np.ndarray[u.Quantity[u.mas]],
+    semimajor_axis: u.Quantity[u.mas],
+    eccentricity: u.Quantity[u.one],
+    arg_periapsis: u.Quantity[u.rad],
+    lon_asc_node: u.Quantity[u.rad],
+    inclination: u.Quantity[u.rad],
+    distance: u.Quantity[u.pc],
+) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Compute the minimum and maximum beta values for each given IWA.
+
+    This function is a re-implementation of Matt's approach for
+    computing beta_min and beta_max, which seems to be more accurate?
+
+    Args:
+        iwas: List of inner working angles.
+        semimajor_axis: Semi-major axis of the orbit.
+        eccentricity: Eccentricity; 0 < e < 1 for ellipctic orbits.
+        arg_periapsis: Argument of the periapsis.
+        lon_asc_node: Longitude of the ascending node.
+        inclination: Orbital inclination; 0° = face-on, 90° = edge-on.
+        distance: Distance to the target star.
+
+    Returns:
+        A 2-tuple `(beta_min, beta_max)`, where `beta_min` and
+        `beta_max` are numpy arrays of shape `(len(iwas),)`.
+    """
+
+    # If the semi-major axis is given in mas, convert it to AU
+    if semimajor_axis.unit == u.mas:
+        with u.set_enabled_equivalencies(u.dimensionless_angles()):
+            semimajor_axis = (semimajor_axis * distance).to(u.au)
+
+    # If the IWAs are given in mas, convert them to AU
+    if iwas[0].unit == u.mas:
+        with u.set_enabled_equivalencies(u.dimensionless_angles()):
+            iwas = (iwas * distance).to(u.au)
+
+    # Compute a Kepler orbit using the PyAstronomy package
+    # noinspection PyUnresolvedReferences
+    ke = pyasl.KeplerEllipse(
+        a=semimajor_axis.to(u.au).value,
+        per=1,
+        e=eccentricity.to(u.one).value,
+        tau=0,
+        Omega=lon_asc_node.to(u.deg).value,
+        i=inclination.to(u.deg).value,
+        w=arg_periapsis.to(u.deg).value,
+    )
+
+    # Compute the x, y, z positions for a full orbit, where x, y is the plane
+    # of the sky, and z is the line of sight. This is relatively expensive, so
+    # we use a low resolution and interpolate to upsample.
+    # In most cases, there error is less than 0.001%, but the speedup compared
+    # to `ke.xyzPos()` on the full orbit is around two orders of magnitude!
+    epochs = np.linspace(0, 1, 500)
+    xyz = ke.xyzPos(epochs)
+    x, y, z = xyz[::, 0], xyz[::, 1], xyz[::, 2]
+    x = interp1d(epochs, x, kind="cubic")(np.linspace(0, 1, 100_000)) * u.au
+    y = interp1d(epochs, y, kind="cubic")(np.linspace(0, 1, 100_000)) * u.au
+    z = interp1d(epochs, z, kind="cubic")(np.linspace(0, 1, 100_000)) * u.au
+
+    # Compute the radius and scattering angle for all points on the orbit
+    rho = np.sqrt(x**2 + y**2)
+    scattering_angle = np.arctan2(rho, z).to(u.deg)
+
+    # Duplicate the scattering angle for each IWA and compute a mask
+    # New shape: (len(scattering_angle), len(iwas))
+    masked_scattering_angle = np.tile(scattering_angle, (len(iwas), 1)).T
+    masked_scattering_angle[(rho[:, np.newaxis] < iwas)] = np.nan
+
+    # Compute beta_min and beta_max for each IWA
+    # If the orbit is fully occulted, we need to ignore the warning (but we
+    # still want to return NaNs for the corresponding beta values).
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", r"All-NaN (slice|axis) encountered")
+        beta_min = np.nanmin(masked_scattering_angle, axis=0)
+        beta_max = np.nanmax(masked_scattering_angle, axis=0)
 
     return beta_min, beta_max
 
@@ -174,9 +261,10 @@ if __name__ == "__main__":
     eccentricity = 0.3 * u.one
     lon_asc_node = np.pi / 6 * u.rad
     arg_periapsis = 0 * u.rad
-    inclination = np.pi / 2 * u.rad
+    inclination = 0 * np.pi / 2 * u.rad
 
-    # Compute beta_min and beta_max
+    # Compute beta_min and beta_max using Sophia's approach
+    print("\nSophia's approach")
     beta_min, beta_max = get_beta_min_and_beta_max(
         iwas=iwas,
         semimajor_axis=semimajor_axis,
@@ -187,6 +275,21 @@ if __name__ == "__main__":
         distance=distance,
     )
 
+    print(f"iwas     = {np.around(iwas, 2)}")
+    print(f"beta_min = {np.around(beta_min, 2)}")
+    print(f"beta_max = {np.around(beta_max, 2)}")
+
+    # Compute beta_min and beta_max using Matt's approach
+    print("\nMatt's approach")
+    beta_min, beta_max = matts_approach(
+        iwas=iwas,
+        semimajor_axis=semimajor_axis,
+        eccentricity=eccentricity,
+        arg_periapsis=arg_periapsis,
+        lon_asc_node=lon_asc_node,
+        inclination=inclination,
+        distance=distance,
+    )
     print(f"iwas     = {np.around(iwas, 2)}")
     print(f"beta_min = {np.around(beta_min, 2)}")
     print(f"beta_max = {np.around(beta_max, 2)}")

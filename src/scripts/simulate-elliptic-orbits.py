@@ -16,7 +16,7 @@ import h5py
 import numpy as np
 import pandas as pd
 
-from compute_beta import get_beta_min_and_beta_max
+from compute_beta import matts_approach
 from paths import data as data_dir
 from samplers import sample_e, sample_i
 
@@ -88,7 +88,7 @@ if __name__ == "__main__":
         lon_asc_node = float(np.random.uniform(0, 2 * np.pi)) * u.rad
 
         # Compute beta_min and beta_max
-        beta_min, beta_max = get_beta_min_and_beta_max(
+        beta_min, beta_max = matts_approach(
             iwas=iwas,
             semimajor_axis=semimajor_axis,
             eccentricity=eccentricity,
