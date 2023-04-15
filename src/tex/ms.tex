@@ -154,8 +154,11 @@
     \newauthor
     Laurent Pueyo$^{18}$,
     Frans Snik$^{5}$,
+    Daphne M. Stam$^{30}$,
+    Victor Trees$^{31,32}$,
     Dirk van Dam$^{5}$,
     Kyle van Gorkom$^{15}$,
+    \newauthor
     Maaike van Kooten$^{11}$ 
     \newauthor \\%
     Affiliations are listed at the end of the paper
@@ -182,8 +185,9 @@ The range of scattering phases accessible for an exoplanet can be limited by its
 Planets that orbit close to edge-on have accessible phase angles limited by obscuration by the coronagraph. 
 We use the list of target stars for the Habitable Worlds Observatory to estimate the number of exo-Earths that could be searched for non-Lambertian scattering phenomena. 
 We find that exo-Earths in systems listed in this Habitable Worlds Observatory catalog will have a detectable Rayleigh scattering peak. 
-The glint signature at scattering phases of $\sim$50--70$^\circ$ would be accessible to the Habitable Worlds Observatory in $\sim$20 systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in $\sim$55 systems, assuming a 60\,mas inner working angle (\IWA). 
-The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with \IWA.     \end{abstract}
+The glint signature at planetary phase angles of 
+%$\sim$50--70$^\circ$ 
+$\sim$110--130$^\circ$ would be accessible to the Habitable Worlds Observatory in $\sim$14 systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in $\sim$42 systems, assuming a 62\,mas inner working angle (\IWA; 3$\lambda/D$ for a 6-m telescope at 600nm). Increasing the \IWA to 2$\lambda/D$, increases the number of systems with detectable rainbows and glints by factors of roughly 2 and 3, respectively. The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with \IWA.     \end{abstract}
 
 \begin{keywords}
 planets and satellites: terrestrial planets -- 
@@ -192,6 +196,7 @@ planets and satellites: atmospheres
 \end{keywords}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Introduction}
 \label{sec:intro}
 
@@ -199,130 +204,58 @@ planets and satellites: atmospheres
 \begin{figure*}%[t]
    \centering
    \includegraphics[width=\linewidth]{figures/Fig1IWAPol.png}
-   \caption{BOTT PLOT this is a holder until Kim updates the figure {\color{Green}Victor Trees: The glory (in the backscattering direction) and diffraction peak (in the forward scattering direction) are distinct features in the total reflected flux, but not in the degree of polarization. In principle, the degree of polarization goes to zero in the forward and backward scattering directions. See e.g. Fig. 1 of \citet{stam2008}, Fig. 5 of \citet{trees2022}, Fig. 3 of \citet{karalidi2011} and \citet{hansentravis1974}.}}
+   \caption{BOTT PLOT this is a holder until Kim updates the figure}
     \label{fig:bottplot}
 \end{figure*}
 %--------------------------------------------------------------------------------
 
-%\textcolor{red}{introduce motivation, specs for habitable worlds observatory and the document we got the target list from.}
+Signatures of habitability like ocean glint and optical effects from condensates--- like the rainbow---should be some of the most distinct signals in an exoplanet's phase curve, particularly in polarized light.  However, depending on system architectures, some of these features can be obscured by the inner working angle of a coronagraph.
 
-Liquid water is closely related to planetary habitability because it is essential for life as we know it. 
-Indeed, to be able to detect such life forms, this liquid water should be on the surface of an exoplanet instead of below it.
-To first order, the presence of surface liquid water can be predicted by the flux a planet receives from its star. The habitable zone (HZ) describes the range of semi-major axes around a given main sequence star for which a rocky planet would have the right temperature to maintain liquid surface water \citep{kasting93}. 
-The HZ is a convenient concept because with it a planet can be deemed habitable based on solely its orbital separation, but it remains an untested hypothesis. 
-We therefore prefer to establish the presence of liquid surface water on an exoplanet before attempting to interpret biosignatures in the planet's atmosphere. 
-% Ideally, we will empirically establish the presence of liquid water on an exoplanet before trying to interpret its putative biosignatures.  
+Surface liquid water is closely related to planetary habitability because it is essential for life as we know it. 
+To first order, the presence of liquid surface water can be predicted by the flux a planet receives from its star. The habitable zone (HZ) describes the range of semi-major axes around a given main sequence star for which a rocky planet (or moon) may have the right temperature to maintain liquid surface water \citep{kasting93}. 
+ However, there are many factors that influence a planet's surface temperature and ability to hold liquid surface water, such as the atmospheric surface pressure and geological activity. 
+Establishing the presence of liquid surface water on an exoplanet therefore provides important context for interpreting possible biosignatures. Providing additional context to the habitability of an exoplanet is the presence of a water-cycle as evidenced by the characterization of a rainbow and other cloud optical effects. 
 
-%\textcolor{blue}{Kim will enhance the polarimetry stuff, and we should break into multiple paragraphs.}\\
-
-%\textbf{Why glint [Kim]}
-% probe of surface conditions; habitability
-
-\subsection{Ocean Glint, Cloud Glory and Rainbows}
-%
-Starlight incident on liquid water on the surface of an Earth-like exoplanet is reflected back into space towards the observer. This Fresnel (or specular) reflection leaves a mirror image of the star on the water surface, called the glint, which broadens with increasing water surface roughness driven by the wind speed \citep{CoxMunk1954}. The strength of the Fresnel reflection increases with increasing reflection angle locally on the planet, resulting in a stronger glint. Consequently, in the total reflected flux by the exoplanet as a whole, the signal of the glint is most prominent at the largest planetary phase angles.
-%Within our Solar System, the glint has been used to detect methane lakes on Titan} \citep[][]{2010GeoRL..37.7104S}.
-
-\cite{2001Natur.412..885F} noted the potential for time-resolved reflected 
-light photometry to identify landmasses and oceans of liquid on the surface of 
-a rotating exoplanet. \cite{2010ApJ...721L..67R} compared observations of the Earth's scattering phase curve to radiative transfer simulations; they found that the photometric brightening of Earth at crescent phases is mostly due to clouds, with a relatively small contribution from ocean glint. In practice, clouds complicate the detection of ocean glint because they can obscure the underlying surface and can act as strong forward scatterers, mimicking the ocean glint in the total reflected flux at large phase angles. Scattering of light by the atmospheric gas, i.e. Rayleigh scattering, also blurs the glint. The Rayleigh optical thickness of a planet's atmosphere is smaller in the near-infrared (NIR) than in the visible, which improves the visibility of the glint \citep{Zugger_2011}. NIR phase measurements also minimize the latitude--albedo effect, which could otherwise be a false-positive for photometric brightening at crescent phases due to glint \citep{2012ApJ...752L...3C}. 
-
- %Rotational mapping of an exoplanet at gibbous phases would reveal oceans as dark regions \citep{2009ApJ...700..915C} whose albedo would increase sharply at crescent phases \citep{lustig2019}.
-
-Except for only the total reflected flux at various wavelengths, the degree of polarization (the polarized flux divided by the total flux) and direction of polarization of the light could also be measured. The degree of polarization has practical advantages, because it is a relative measure: instrument errors could be cancelled out upon division of the polarized flux by the total flux, depending on the telescope design. As the starlight of a solar-type star is often considered to be unpolarized \citep{kemp1987}, and gets polarized during the reflection by the exoplanet, measuring polarized light increases the contrast between the exoplanet and its host star. The degree of polarization itself also provides information about the exoplanet's atmosphere and surface. In fact, most scattering phenomena in the atmosphere are more sensitive to the scattering angle in the degree of polarization than in the total (polarized plus unpolarized) flux \citep{hansentravis1974}. Also for detecting exo-oceans, measuring the degree of polarization could be an asset. The glint is a strong source of polarized reflected flux, and the degree of polarization of the light reflected by the (cloud-free) water surface peaks at the Brewster angle, which occurs at larger angular planet-star separations than the glint in the total flux \citep[see e.g.][]{Zugger_2010,treesandstam2019}. 
- 
-%to demonstrate that phase-resolved photometry and polarization of a directly-imaged exoplanet would betray the presence of large surface oceans. 
-%They showed that oceans would be detectable because they are more reflective and exhibit a peak in polarization at crescent phases (Figure~\ref{fig:bottplot}). 
-%Specular reflection appears at similar phase angles in both unpolarized and polarized light and its peak orbital phase can be extended by atmospheric winds, which fuel surface waves and hence broaden the size of the glint spot 
-%\cite{2006astro.ph.10518M} quantified how photometric and polarimetric scattered light orbital phase variations might betray the presence of oceans on terrestrial exoplanets.  
-%\cite{2008Icar..195..927W} simulated photometric and polarimetric phase curves of directly imaged terrestrial planets. They noted that surface oceans would be detectable because they are more reflective and exhibit a peak in polarization at crescent phases. 
-% NEEDS Paragraph on mapping connection to tectonics
-% NEEDS KOPPARLA (prob refer to , BERDYUGINA, ROSSI? (cloud?), HU?, added... blend cloud hinderance into argument for context to lead into rainbows, mention Lietzow and jeremy there., maybe some more mention of the Earthshine observations Karalidi, Gordon, etc
-%"Stam & Hovenier (2006) independently examined the observability of the polarized signatures of an Earth-like extrasolar planet, including Rayleigh scattering and sea-surface glint. Schneider (2006) had similar ideas." -KB
-
-\cite{2008Icar..195..927W} performed simulations of reflected light from directly imaged exoplanets with oceans, and found strong peaks in the degree of polarization at the Brewster angles, but did not take into account Rayleigh scattering gas on top of the oceans. \cite{Zugger_2010} simulated photometric and polarized phase variations at visible wavelengths for ocean planets including the effects of Rayleigh scattering gas and a horizontally homogeneous cloud cover. They concluded that detection of an ocean glint signature in polarization is severely limited by the presence of clouds. \citet{kopparla2018} explored the ocean glint signatures in the signal from a multi-planetary (TRAPPIST-1) system, with TRAPPIST-1e being the ocean planet. They concluded that, although measuring in polarized light would increase the contrast between the ocean planet and the total signal of the multi-planetary system, the glint detectability is limited by Rayleigh scattering and clouds on the ocean planet and its neighbour planets.
-
-%Although the presence of clouds and atmospheric Rayleigh scattering weaken the signal of an underlying ocean, they %again 
-%find that oceans are detectable and distinguishable from other sources of polarization. 
-%{\color{Green} 
-\citet{treesandstam2019} simulated the total and polarized fluxes and the degree of polarization of light reflected by ocean planets with a \textit{patchy} cloud cover. They showed that the alternation of cloud-free and cloud-covered glint, as the cloud pattern changes in time, can result in strong fluctuations in the degree of polarization phase curves at continuum wavelengths (i.e. at wavelengths at which the light is not absorbed by gases in the exoplanet's atmosphere), with generally high polarization 
-when the glint is visible and low polarization when the glint is covered. Fluctuations of the polarization continuum phase curves are also expected when continents rotate over the glint \citep{groot2020}. If the telescope's integration time is too long to resolve those temporal variations, the fluctuations will results in noisier phase curves. Nonetheless, the polarization phase curves of partially cloudy planets with oceans at optical and near infrared wavelengths intersect \citep{treesandstam2019}, providing a possible avenue to distinguish between an exo-ocean and forward scattering clouds. 
-
-\textit{<Observing the Earth as an exoplanet>}
-Measurements of Earthshine (i.e. the reflected sunlight by the Earth incident on the dark side of the Moon) indeed reported higher degrees of polarization in the continuum at long wavelengths than at short wavelengths, which could be attributed to the ocean glint \citep{Emde2017,sterzik2019,takahashi2021}.
-
-%\textit{\citet{sterzik2019} and \citet{Takahashi2021} used polarimetric Earthshine 
-%measurements to detect the presence of the ocean, proving that the method 
-%works in practice for a spatially unresolved world.}
-
-The optical properties of an Earth-like exoplanet orbiting its host star may vary along the phase curve, e.g., because of the planet's seasons and changing weather systems in time. Recent simulations by \citet{trees2022} showed that signatures of the glint could also be found in the degree of polarization spectra (i.e., as functions of wavelength with 1 nm resolution), measured at a single phase angle. Taking into account the absorption of light by gases in the exoplanet's atmosphere, they computed that the degree of polarization of ocean planets is lower across gaseous absorption bands with respect to the continuum, while for dry planets, it is higher \citep[see][]{stam2008}. Those dips, instead of peaks, can already be searched for at intermediate phase angles ($90^\circ$-$130^\circ$), thus at the largest angular planet-star separations, and also occur for high planetary cloud fractions as long as the glint is (partially) cloud-free. Comparing the degree of polarization in the continuum and at a wavelength (band) where gases partly absorb the light, could potentially allow for an ocean detection with only one measurement in time. In this paper, we neglect absorption by gases and do not focus on phase variations of the spectra, but on the phase variations at single wavelengths in the continuum.
- 
-%Phase variations of polarized light could also reveal other non-Lambertian scattering phenomena (Figure~\ref{fig:bottplot}). 
-
-The degree of polarization of light scattered by spherical cloud droplets strongly depends on the scattering angle \citep[see][]{hansentravis1974}, and consequently, on the phase angle for an Earth-like exoplanet with liquid water clouds \citep{stam2008}. The scattering angle dependent variations of the degree of polarization for different droplet sizes are more distinct than in the total reflected flux \citep{karalidi2011}, and the sign of the degree of polarization (i.e. the direction of polarization) changes at various angles \citep{stam2008,trees2022}. In particular, the degree of polarization shows peaks at the primary and secondary rainbow angles, caused by reflection of light inside the spherical droplets, and the shapes of the peaks depend on the wavelength, particle size (distribution) and type of liquid  \citep{hansentravis1974,bailey2007,bailey2018}. 
-A measurement of rainbow features in polarized light would be a strong indicator of spherically shaped (i.e. liquid) particles in the exoplanet's atmosphere, as they are not expected to originate from reflection by the planet's surface or non-spherical (ice) cloud particles \citep{Karalidi2012ice}. In the total reflected flux, thus without the separation of the polarized light, the rainbow features are virtually unobservable \citep{karalidi2011}. The benefits of those rainbow features in polarized light for cloud characterization on other planets than the Earth have been proven by \citet{hansenhovenier1974}, who fitted model calculations through measurements of the degree of polarization phase curves of Venus. %Because Venus is an inner planet as seen from the Earth, it can be observed from the Earth at phase angles ranging from almost $0^\circ$ to $180^\circ$ . 
-%They retrieved that the main cloud deck of Venus consists of a 75\% sulfuric acid solution, with a droplet effective radius of 1.05 $\mu$m and effective variance of 0.07.
+%The phase curves showing these features are distinct depending on the characteristics of the planet in both polarized and unpolarized measurements. Polarized and unpolarized phase curves and spectra each have their own strengths in characterization outlined below.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exoplanet Phase Curves}
+An exoplanet observed in an edge-on orbit will move through all phases and thus all scattering angles, while those viewed at higher inclinations will pass through a subset of these scattering angles. If the planet is rotating, this supplies additional regular variations that can be used to place constraints on the heterogeneity of the planet and potentially map it.
+
+The strengths of detailed phase curve analysis include mapping \citep{2001Natur.412..885F, berdyugina2019surface}, the detection of dark areas or glint indicative of seas \citep{groot2020, cowan2008inverting, lustig2019}, and the characterization of clouds through forward- and back-scatter, rainbows, and glories. In polarized light an added potential benefit is the suppression of starlight from quiescent stars without explicitly requiring a coronagraph or starshade \citep{kemp1987}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Ocean Glint}
+
+%As ocean glint is one of the few sources of specular reflection and is strongly polarized, it provides one of the best means to detect a signature of habitability in exoplanet phase curves. 
+Ocean glint is from the specular (Fresnel) reflection of light off of smooth liquid surfaces at crescent phases. In the total flux the signal of the glint will be most prominent at small planetary phase (large scattering) angles. The maximum polarization occurs at the Brewster angle determined by the refractive indices at the interface; between air and liquid water this occurs at 53 degrees  \citep[a scattering angle of 127 degrees; see e.g. ][]{2008Icar..195..927W}. It therefore varies slightly by wavelength and by sea and atmosphere composition. In general on a planet the glint will be strongest in red wavelengths where the Rayleigh contribution to both the phase curve and attenuation are minimized \citep{Zugger_2011} and, conveniently, where the latitude-albedo effect (a degeneracy between polar brightness and glint) is also minimized \citep{2012ApJ...752L...3C}.  The strengthened glint signature at longer wavelengths has been observed in Earthshine measurements \citep{Emde2017,sterzik2019, takahashi2021}.
+The broadening of the glint feature in the presence of wind-driven waves is well-described by the Cox-Munk solution \citep{CoxMunk1954}, shifts in both polarized and unpolarized light, and broadens across scattering angles in polarized light \citep{kopparla2018, Zugger_2010, treesandstam2019, trees2022}. 
 
 
-%... glory ...\citep{2014A&A...566L...1G} ... and halos ... ice clouds ...
+The glint provides evidence of surface liquid bodies, which taken in the context of the temperature and condensates may be interpreted as the presence of liquid water. The forward scattering from clouds can be confused with glint \citep{Robinson_2010} further motivating also probing the rainbow angle for context.  The cloud coverage fraction on ocean worlds can also be constrained with observations spanning the ultraviolet to near-infrared by the point phase curves at all wavelengths intersect in polarized light \citep{treesandstam2019}.  Additionally, 
+ \citet{trees2022} showed that glint can also be detected in spectropolarimetry while the planet is at phase angles placing it at the wide separations more easily probed with coronagraphs.
+%how use to map, 
+%seen in Earthshine
+%strong signal for exoplanets
+% disentangled from cloud coupled with rainbow
+%disentangled from lattitude albedo coupled in polarization
 
 
-%%% KIM's BOOKMARK FOR HERLSELF, PLEASE DO NOT DELETE %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{Rainbows and Glories}
+Rainbows, glories and other optical effects from condensates provide a wealth of information about an exoplanet \citep{karalidi2012rainbow, stam2008}. In our own Solar System the polarized back scatter from Titan provided evidence that the world's reflectance was due to haze rather than a surface \citep{zellner1973polarization}, on Venus the rainbow and phase curve behavior with wavelength showed the clouds were $\sim$75\% H$_2$SO$_4$ -- water mixture also constraining the droplet size distribution \citep{hansenhovenier1974}, and the glory was later used to rule out some solutions for the unknown UV absorber \citep{petrova2018glory}.
 
-%\subsection{Polarized Phase Curves}
-%\textcolor{blue}{Recap all of polarized phase curve work, including stuff not about ocean glint. Introduce the polarization signals of Rayleigh scattering, rainbow and glory.}
-%compare to features in nonpol (strength rainbow); current capabilties?, errors from 3 papers, 
-
-% add latitude albedo degeneracy break here \citep{2012ApJ...752L...3C}
-
-%This has the added advantage of minimizing the latitude--albedo effect, which could otherwise be a false-positive for photometric brightening at crescent phases due to glint \citep{2012ApJ...752L...3C}. 
-
- %\cite{2019A&A...626A.129T,2022A&A...664A.172T} simulated the photometric and polarimetric signatures of terrestrial planets with inhomogeneous clouds.
-
- %Phase curves of planets are more complex than simple Lambertian curves.
- %
- %The phase curve of an edge on system in unpolarized light is dominated by the reflectance and backscatter of the surface, clouds, and atmosphere.
- %
- %Though this behaviour is not Lambertian, the planet will, in general, get brighter at fuller phases (small scattering angles) with a peak at full phase from cloud backscatter \citep[see, for example,][]{kopparla2018}.
- %
- %In cases where surface liquid (sea) is present, the specular reflection can create a notable addition to the phase curve at broad scattering angles near crescent phase \citep{Robinson_2010}.
- %
- %Exoplanet phase curves can also contain a rainbow signature at gibbous phases (moderately narrow scattering angles), though this is a small feature in comparison to the reflectance.
-
- %In polarized light, additional structure in the phase curve can enable phenomena like ocean glint, rainbows, and the Rayleigh scattering to be more easily distinguished.  Notably, in the polarized phase curve the rainbow may be an especially strong feature and the maximum reflectance signal (from Rayleigh scattering) occurs 
-
- 
-
-
-%Polarimetry provides the possibility to detect molecules, hazes, clouds and different surfaces  as they all produce unique polarization signatures which cannot be disentagled by using broadband flux alone. Polarized measurements of terrestrial exoplanet atmospheres therefore have the potential to provide empirical constraints on atmospheric properties that are inaccessible through other observational techniques. Polarimetry has previously played an important role in the understanding of solar system planet atmospheres, for instance, polarimetric measurements of Venus’ atmosphere suggested that the upper atmosphere of Venus is dominated by a haze of liquid sulphuric acid droplets \citep{Venus74}, which has been confirmed by in situ observations.
-
-
-\subsection{Rainbows {\color{Green} [Victor: The rainbows are already discussed in previous section.]}}
-
-A well-characterized rainbow feature in the phase curve of a planet provides a wealth of information about the atmosphere and condensates. The rainbow feature is visible in both polarized and unpolarized phase curves, but is particularly prominent in polarized light because it is strongly polarized and the fractional polarization from other sources like Rayleigh scattering is reduced at narrow scattering angles where many rainbows occur. The location of the rainbow peak in the phase curve shifts depending on the refractive index of the condensate and thus will shift depending on the species, and for most species the peak will also shift slightly with wavelength. The relative height of the rainbow compared to the Rayleigh peak with wavelength provides evidence of the depth of the cloud top height. The size distribution of droplets also effects the polarized rainbow and other optical effects.
-% Shape/phase
-% 
-% cite Bailey
-
-As a characterization tool the rainbow and other cloud optical features are vital, and in studies of habitability they can provide evidence that water is the dominant condensate providing context to the glint feature.  In this work we identify our ideal rainbow angle as %...
-
-In our own Solar System the additional information inherent in condensate polarization allowed the identification of the species and droplet size distribution of the clouds on Venus \citep{Hansen1974}, the discernment between a snowy surface and hazy thick atmosphere on Titan \citep{Zellner1973}, and may have eliminated some prospects for the unknown UV absorber on Venus \citep{Petrova2018}. 
-
-
-
-%\cite{rossi17} computed flux and polarisation of reflected starlight for different types of cloud cover on Earth-like planets and determined different types of cloud cover can be distinguished from each other. %Alternative options or papers here.... Kim can write this tomorrow , needs other Stam, Karalidi, Kopparla, maybe Gordon, need to reference rainbows in Bailey paper.  Look at citations in Gordon paper (our bib)... he has a really thorough lit review --KB
-
-
-
+In unpolarized light the forward scattering and backscatter from clouds can dramatically change the shape of a phase curve from Lambertian. While the glory and rainbow are technically visible in any phase curve, their strongly polarized nature coupled with the suppression of signal from other effects at gibbous and full phases in polarized light make them far easier to characterize in polarized light (both in the degree of polarization and in full Stokes measurements) \citep{karalidi2011, stam2008, treesandstam2019}. The rainbow angle depends on the refractive index and therefore varies with wavelength and depending on the species. The feature being far more narrow than the glint allows more exact determination of the species. The droplet size distribution also effects the shape of the rainbow and clouds of species in a solid phase can diverge from the Mie scattering that produces these features greatly, producing other optical effects particularly at narrow scattering angles \citep{bailey2007, hansentravis1974, Karalidi2012ice}. In this paper we define our optimal angle for rainbow detection as the peak of the water droplet rainbow in visible wavelengths.  However, extending observations to angles closer to the star (smaller scattering angles, i.e.\ larger phase angles) would allow the full shape of the rainbow to be characterized and ensure the characterization of rainbows from other possible HZ condensates. The glory is produced when the droplet radii much smaller than the wavelength of light and can allow further characterization as their angle, intensity, and shape also vary with the complex refractive index but primarily occur within 20 degrees scattering angle very close to full phase. %The glory (in the backscattering direction) and diffraction peak (in the forward scattering direction) are distinct features in the total reflected flux, but not in the degree of polarization. In principle, the degree of polarization goes to zero in the forward and backward scattering directions. See e.g. Fig. 1 of \citet{stam2008}, Fig. 5 of \citet{trees2022}, Fig. 3 of \citet{karalidi2011} and \citet{hansentravis1974}.}}
 
 
 \subsection{Habitable Worlds Observatory}
-The National Academy of Sciences Astronomy \& Astrophysics 2020 Decadal Survey \citep{decadal} recommended the first in a new \enquote{Great Observatories} program a telescope with the capability to detect signatures of habitability for about 25 habitable zone planets.
+
+The National Academy of Sciences Astronomy \& Astrophysics 2020 Decadal Survey \citep{decadal} recommended the first in a new \enquote{Great Observatories} program a telescope with the capability to detect signatures of habitability on about 25 habitable zone planets.
 %
-This assertion requires an instrument with a coronograph capable of high contrast imaging in the optical-near infrared.
+This assertion requires an instrument with a coronograph capable of high contrast imaging at optical to near infrared wavelengths.
 %
 Following this release, NASA recently announced the start of the development of the Habitable Worlds Observatory (\hwo).
 %
@@ -332,27 +265,25 @@ The performance and precise characteristics of this telescope (on-axis or off-ax
 %
 The development will be heavily influenced by the LUVOIR \citep{LUVOIR2019} and HabEx \citep{HabEx_2020} preparatory studies.
 %
-The Inner Working angle (\IWA) of the resulting telescope will be dependent on these choices, which in turn will have a significant impact on the expected exo-Earth yield \citep{Stark2019_exoplanetyield}.
+The Inner Working angle (\IWA) of the resulting telescope will depend on these choices, which in turn will have a significant impact on the expected exo-Earth yield \citep{Stark2019_exoplanetyield}.
 
-Extreme Coronagraph for Living Planetary Systems (ECLIPS) coronograph for LUVOIR was a proposed \SIrange{200}{2000}{\nano\meter} instrument for exoplanet characterisation, with a similar coronagraph operating between \num{450} and \SI{1800}{\nano\meter} planned for HabEx.
+The Extreme Coronagraph for Living Planetary Systems (ECLIPS) coronograph for LUVOIR was a proposed \SIrange{200}{2000}{\nano\meter} instrument for exoplanet characterisation, with a similar coronagraph operating between \num{450} and \SI{1800}{\nano\meter} planned for HabEx.
 %
-POLLUX, a proposed UV instrument for the LUVOIR study could also allow the detection of polarised light from hot Jupiters at \SI{300}{\nano\meter} \citep{Bouret2018_pollux}.
+POLLUX, a proposed UV instrument for the LUVOIR study could also detect  polarised light from hot Jupiters at \SI{300}{\nano\meter} \citep{Bouret2018_pollux}.
 %
-However, the challenges associated with the design of a coronagraph in UV are enormous, and it is unlikely that \hwo will include a UV high-contrast instrument sensitive to Earth-like planets.
+However, because of the challenges associated with the design of a coronagraph in the UV, it appears to be unlikely that \hwo will include a UV high-contrast instrument sensitive to Earth-like planets.
 
 
 %We ignore contrast in this study
 %OWA -> should go in discussions
 
 
-
-
 %\textbf{In this paper we...}
 \subsection{Outline}
 
-In this paper, we quantify the phase angles that are accessible for direct
-observations for hypothetical terrestrial planets orbiting in the habitable 
-zones of HabWorlds target stars. 
+In this paper, we quantify the planetary phase angles that would be 
+accessible for direct observations for hypothetical terrestrial planets 
+orbiting in the habitable zones of HabWorlds target stars. 
 In \S 2.1, we describe the target list, in \S 2.2 we derive expressions for the 
 range of phase angles given a few different limits, in \S 2.3, we describe 
 Monte Carlo simulations to marginalize over the unknown orbital inclination and 
@@ -697,10 +628,63 @@ As shown in \cref{fig:betaallofit}, allowing the planet's orbit to be eccentric 
 \subsection{Observable scattering phenomenon}
 \label{sec:results_scattering_phenomena}
 
+In this section we consider the number of stars around which different scattering phenomena could be observable for different \IWA. We first define the phase angles over which various these phenomena are accessible, in Table~\ref{tab:phase_ranges}. We note that these ranges should all be considered approximate, as the exact phase angles where these effects are dominant depend on the details of the atmospheric and surface properties, as well as the wavelengths being observed. Nonetheless, this exercise can provide valuable insights on the effects of \IWA choice. 
+
 \cref{fig:accessible_phase_angles} shows the number of systems in which key scattering phenomena will be observable for different \IWA. The \IWA\ of \hwo's coronograph will depend on the primary mirror diameter, observing wavelength and how well a coronograph of a given size can suppress the glare of the host star. The smaller the \IWA, the more features we will be observable and in more systems. 
+
+\begin{table}
+    \centering
+    \caption{
+        The ranges of phase angles for the different scattering phenomena considered here.
+    }
+    \label{tab:phase_ranges}
+    \begin{tabular}{ c c c c } 
+    \toprule
+     & $\varphi_{min}$ & $\varphi_{peak}$ & $\varphi_{max}$ \\
+    \midrule
+    \midrule
+    Rainbows & 22 & 42 & 63 \\
+    Rayleigh & 50 & 70 & 110 \\
+    Ocean Glint & 130 & 150 & 170 \\
+    Glory & 0 & 5 & 10 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+
+    % features = {r'Rainbow': (127,138,158),
+    %         r"Rayleigh": (90,110,130),
+    %         r"Ocean Glint": (50,30,10),
+    %         r"Glory": (10,5,0),
+    %         }
+
 
 The Rayleigh scattering feature appears near quadrature and is therefore observable in the most systems. This feature is caused by atmospheric gases and can therefore be used to determine if a planet has an atmosphere. The rainbow feature appears further from quadrature but will still be observable in a significant fraction of systems. This feature will only be present if the atmosphere contains spherical droplets, potentially indicating the presence of liquid water. The position and shape of the peak is sensitive to the properties of the droplets allowing their nature to be determined if the peak of the rainbow feature can be reached. The ocean glint feature occurs even further from quadrature and so is obserable in fewer systems. In most systems, only the first half of the feature is observable but this can still be used to identify a liquid ocean on the surface of the planet. A key indicator of habitabitily. Finally, it is possible to view the glory scattering feature in one system, Alpha Cen A.
 \todo{maybe we want a table of some numbers in this section}
+
+\begin{table}
+    \centering
+    \caption{
+        Number of stars around which the peak phase angle of each phenomena is detectable, expressed in $mas$ and $\lambda/D$ for $\lambda=600$nm. 
+    }
+    \label{tab:phase_ranges}
+    \begin{tabular}{ c c c c } 
+    \toprule
+      & \multicolumn{3}{c}{IWA}
+    \\
+     & 21$mas$ & 41$mas$ & 62$mas$
+    \\
+     & $2\lambda/D$ & $3\lambda/D$ & $4\lambda/D$ 
+    \\
+    \midrule
+    \midrule
+    Rainbows & 90 & 42 & 18 \\
+    Rayleigh & 152 & 115 & 65 \\
+    Ocean Glint & 43 & 14 & 5 \\
+    % Glory & 0 & 5 & 10 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -848,7 +832,10 @@ $^{25}$ Subaru Telescope, NAOJ, USA \\
 $^{26}$ College of Optical Sciences, University of Arizona, Tucson, AZ 87521, USA \\
 $^{27}$ Astrobiology Center, 2 Chome-21-1, Osawa, Mitaka, Tokyo, 181-8588, Japan \\
 \affiliationtarget{28}{$^{28}$} NASA Nexus for Exoplanet System Science, Virtual Planetary Laboratory Team, Seattle, WA 98195, USA \\
-\affiliationtarget{29}{$^{29}$} ETH Zurich, Institute for Particle Physics \& Astrophysics, Wolfgang-Pauli-Str. 27, 8092 Zurich, Switzerland
+\affiliationtarget{29}{$^{29}$} ETH Zurich, Institute for Particle Physics \& Astrophysics, Wolfgang-Pauli-Str. 27, 8092 Zurich, Switzerland \\
+\affiliationtarget{30}{$^{30}$} Delft University of Technology, Kluyverweg 1, 2629 HS Delft, The Netherlands \\
+\affiliationtarget{32}{$^{31}$} Department of Geoscience \& Remote Sensing, Delft University of Technology, Stevinweg 1, 2628 CN, Delft, the Netherlands \\
+\affiliationtarget{31}{$^{32}$} Royal Netherlands Meteorological Institute (KNMI), Utrechtseweg 297, 3731 GA, de Bilt, The Netherlands \\
 \endgroup
 
 
