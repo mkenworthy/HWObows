@@ -193,12 +193,13 @@ We use the list of target stars for the Habitable Worlds Observatory to estimate
 We find that exo-Earths in systems listed in this Habitable Worlds Observatory catalog will have a detectable Rayleigh scattering peak. 
 %
 The glint signature at planetary phase angles of 
-%$\sim$50--70$^\circ$ 
-$\sim$110--130$^\circ$ would be accessible to the Habitable Worlds Observatory in $\sim$14 systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in $\sim$42 systems, assuming a 62\,mas inner working angle (\IWA; 3$\lambda/D$ for a 6-m telescope at 600nm).
+$\sim$50--70$^\circ$ 
+%\sim$110--130$^\circ$ 
+would be accessible to the Habitable Worlds Observatory in $\sim$14 systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in $\sim$42 systems, assuming a 62\,mas inner working angle (\IWA; 3$\lambda/D$ for a 6-m telescope at 600nm).
 %
 Increasing the \IWA to 2$\lambda/D$, increases the number of systems with detectable rainbows and glints by factors of roughly 2 and 3, respectively.
 %
-The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with \IWA.     \end{abstract}
+The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with \IWA{}.    \end{abstract}
 
 \begin{keywords}
 planets and satellites: terrestrial planets -- 
@@ -215,7 +216,7 @@ planets and satellites: atmospheres
 \begin{figure*}%[t]
    \centering
    \includegraphics[width=\linewidth]{figures/Fig1IWAPol.png}
-   \caption{BOTT PLOT this is a holder until Kim updates the figure}
+   \caption{An illustration of phase curves for two homogeneous planets in an edge on system with oceans and an Earth-like atmosphere. The cloudy scenario includes an Earth-like water cloud deck at low altitudes. Below the plot, the features that the phase angles and scattering angles are most sensitive to are shown. In reality, as can be seen by the examples above, these features overlap.  Throughout the paper we approximate feature sensitivity ranges as those that capture the rise an fall of peaks in polarized light for most habitable zone species in the UV, Optical, and IR (scattering angles: glint $\sim$50--70$^\circ$; rainbow $\sim$140--160$^\circ$}; Rayleigh narrow of quadrature, and other forward and backscattering effects at the widest and narrowest scattering angles).
     \label{fig:bottplot}
 \end{figure*}
 %--------------------------------------------------------------------------------
@@ -329,7 +330,7 @@ The Extreme Coronagraph for Living Planetary Systems (ECLIPS) coronograph for LU
 %
 POLLUX, a proposed UV instrument for the LUVOIR study could also detect  polarised light from hot Jupiters at \SI{300}{\nano\meter} \citep{Bouret2018_pollux}.
 %
-However, because of the challenges associated with the design of a coronagraph in the UV, it appears to be unlikely that \hwo will include a UV high-contrast instrument sensitive to Earth-like planets.
+However, because of the challenges associated with the design of a coronagraph in the UV, it appears to be unlikely that \hwo{} will include a UV high-contrast instrument sensitive to Earth-like planets.
 
 %We ignore contrast in this study
 %OWA -> should go in discussions
@@ -337,11 +338,11 @@ However, because of the challenges associated with the design of a coronagraph i
 %\textbf{In this paper we...}
 \subsection{Outline}
 
-In this paper, we quantify the planetary phase angles that would be accessible for direct observations for hypothetical terrestrial planets orbiting in the habitable zones of HabWorlds target stars.
+In this paper, we quantify the planetary phase angles that would be accessible for direct observations for hypothetical terrestrial planets orbiting in the habitable zones of HabWorlds (HWO) target stars.
 %
 In \S 2.1, we describe the target list, in \S 2.2 we derive expressions for the range of phase angles given a few different limits, in \S 2.3, we describe Monte Carlo simulations to marginalize over the unknown orbital inclination and eccentricity of planets in these systems, and in \S 2.4, we outline how the planet/star contrast changes as a function of the planet's orbital phase.  
 %
-We present and discuss our results in \S 3 and conclude in \S 4. 
+We present and discuss our results in \S 3 and conclude in \S 4. It is important to note that the phases for each feature throughout this paper are approximate, that features overlap, and that the maximum peak can vary with composition and wavelength.
 %the   the way that inclination and coronagraph inner working angle can limit the accessible phase angles  
 % We minimally explore the contrast ratio as we are primarily exploring whether these scattering angles are reachable with inner working angle and outer working angle considered.
 
@@ -368,16 +369,16 @@ We present and discuss our results in \S 3 and conclude in \S 4.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\hwo\ and Stellar Sample}
+\subsection{\hwo{} and Stellar Sample}
 %\textcolor{blue}{Merge the 2 sections here into "Assumed technical specifications and sample"? I don't think this needs to be 2 subsections}
-\hwo\ is still in the early stages of development, and the exact telescope and instrument design is as of yet undecided. 
+\hwo{} is still in the early stages of development, and the exact telescope and instrument design is as of yet undecided. 
 %
 In this work, we assume a \SI{6}{\meter} primary mirror, which is the currently favoured design for the observatory.
 %
 The observatory will utilise a coronagraph to suppress the stellar light and facilitate high-contrast observations of faint accompanying exoplanet. 
 %
 The \IWA{} of the coronagraph is currently undecided and will be driven by both the science requirements and technological limitations. 
-%In this work, we investigate the scattering phase coverage obtainable for several choices for the \IWA\ of the observatory. 
+%In this work, we investigate the scattering phase coverage obtainable for several choices for the \IWA{} of the observatory. 
 %We also consider the Outer Working Angle (OWA) but for most targets this is not a limiting factor. 
 %From the HabWorlds report. Inner Working Angle: The IWA defines the region near the star that cannot be accessed for direct imaging due to a coronagraphic mask, starshade obscuration, or an interferometric null. It depends on the architecture of the telescope, the starlight suppression system used, and the observation wavelength. While a nominal value could be defined by making assumptions about the design for Habitable Worlds Observatory, we choose instead to derive the IWA from the star list itself and Astro2020’s requirement that ~100 cumulative habitable zones be surveyed by direct imaging. As shown in the main table, an IWA near ~70 mas will be needed to access ~100 cumulative habitable zones, and would need to be achieved at all wavelengths of interest for spectral characterization. For any specific telescope and starlight suppression system architecture the IWA is typically proportional to wavelength; thus, the number of accessible HZs will strongly decrease as IWA(lambda) increases.
 For ease of comparison, \cref{tab:IWA_OWA} lists the angular separations corresponding to multiples of $\lambda / D$ for a \SI{6}{\meter} telescope at representative visible and near infrared wavelengths of $\lambda = \SI{600}{\nano\meter}$ and $\SI{1}{\micro\meter}$.
@@ -406,7 +407,7 @@ For ease of comparison, \cref{tab:IWA_OWA} lists the angular separations corresp
 \end{table}
 
 
-\hwo\ is currently envisioned to observe the stars stated in the NASA Exoplanet Exploration Program's Mission Star List for the Habitable Worlds Observatory.
+\hwo{} is currently envisioned to observe the stars stated in the NASA Exoplanet Exploration Program's Mission Star List for the Habitable Worlds Observatory.
 %
 \footnote{\url{https://exoplanets.nasa.gov/internal_resources/2645_NASA_ExEP_Target_List_HWO_Documentation_2023.pdf}}
 %
@@ -439,7 +440,7 @@ The range of scattering phase angles that can be observed will depend on the \IW
     \caption{
         An illustration of an edge-on circular orbit showing that the coronagraph can obscure the exoplanet at high and low scattering phase angles.
         %
-        This can prevent observations of scattering phenomena which could be used to indicate the habitability and atmospheric composition of the exoplanet. 
+        This can prevent observations of scattering phenomena which could be used to indicate the habitability and atmospheric composition of the exoplanet. The phase angle, $\varphi$, is shown in red and is the complement to the scattering angle in edge on systems.
         %\timmy{Maybe mention that this is a simplified illustration with a circular orbit, plus we are basically looking at an edge-on system?}
     }
     \label{fig:annotated-orbit}
@@ -511,7 +512,7 @@ Using \cref{eq:Delta_phi}, we deduce:
     \label{fig:scattering-angle}
 \end{figure}
 
-\Cref{fig:scatterplot} shows $\Delta \varphi$ for the systems in the \hwo\ target list, assuming an IWA of \SI{62}{\mas} ($3 \lambda / D$ coronagraph at $\SI{600}{\nano\meter}$). 
+\Cref{fig:scatterplot} shows $\Delta \varphi$ for the systems in the \hwo{} target list, assuming an IWA of \SI{62}{\mas} ($3 \lambda / D$ coronagraph at $\SI{600}{\nano\meter}$). 
 \timmy{60 (as in the abstract), or 62?}
 %
 %This assumes each planet has a semi-major axis such that it receives an Earth-equivalent instellation, which is provided in the input star list.
@@ -587,13 +588,13 @@ Using \cref{eq:scattering_angle}, we deduce the equation for inclined circular o
 \subsubsection{Circular randomly inclined orbits}
 \label{sec:circular}
 
-For each star on the \hwo\ target list, we generate $1000$  hypothetical habitable planets at the Earth-equivalent-flux semi-major axis. 
+For each star on the \hwo{} target list, we generate $1000$  hypothetical habitable planets at the Earth-equivalent-flux semi-major axis. 
 %
 The orbital inclinations are randomly drawn from a distribution uniform in $\cos i$. 
 %
 We then use \cref{eq:Delta_phi_max} to determine the range of accessible scattering phase angles for each hypothetical planet.
 %
-The solid lines in \cref{fig:betaallofit} show the cumulative distribution of the maximum and minimum accessible scattering phase angles normalised to the total number of systems in \hwo\ target list, depending on the choice of inner working angle.  
+The solid lines in \cref{fig:betaallofit} show the cumulative distribution of the maximum and minimum accessible scattering phase angles normalised to the total number of systems in \hwo{} target list, depending on the choice of inner working angle.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -630,7 +631,7 @@ The dashed lines in \cref{fig:betaallofit} shows the normalised cumulative distr
 %
 We also calculate which targets would be observable at the scattering phase angles where ocean glint, rainbows, or the Rayleigh peak occur.
 %
-The cumulative distribution over \IWA\ of the number of systems, normalised to the total number of systems, where each scattering phenomena is visible is shown in \cref{fig:accessible_phase_angles}.
+The cumulative distribution over \IWA{} of the number of systems, normalised to the total number of systems, where each scattering phenomena is visible is shown in \cref{fig:accessible_phase_angles}.
 %
  
 \subsection{Simulating contrast curves}
@@ -687,7 +688,7 @@ The resulting contrast curves are shown in \cref{fig:contrasts} for three of the
     %
     The polarised component is indicated by the colored dots for which the color represents the scattering phase angle from quadrature.
     %
-    The light grey points show the quadrature contrasts of the other targets in the star list and the dashed lines indicate $1,2$ and $3$ times the \IWA\ for \hwo.
+    The light grey points show the quadrature contrasts of the other targets in the star list and the dashed lines indicate $1,2$ and $3$ times the \IWA{} for \hwo.
     }
     \label{fig:contrasts}
     \script{plot_contrasts.py}
@@ -807,7 +808,7 @@ The accessible scattering phase angles is not the factor that needs to be consid
 %
 The contrast of the planet is also an important factor to consider.
 %
-\cref{fig:contrasts} shows approximate contrast curves for three of the stars in the \hwo\ target list assuming edge-on orbits.
+\cref{fig:contrasts} shows approximate contrast curves for three of the stars in the \hwo{} target list assuming edge-on orbits.
 %
 The over all contrast varies significantly for each system and throughout the orbit.
 %
@@ -837,7 +838,7 @@ However, when its design is being finalised, it will be important to consider bo
         %
         The concentric circles marked by the dashed lines indicate inner working angles of 20.6, 41.3, 61.9, and \SI{82.5}{\mas}, corresponding to 1, 2, 3, and 4\,$\lambda / D$ respectively (assuming $\lambda = \SI{600}{\nano\meter}$ and $D = \SI{6}{\meter}$).
         %
-        The figure illustrates that the \IWA\ can significantly affect the range of scattering phases observable with each orbit.
+        The figure illustrates that the \IWA{} can significantly affect the range of scattering phases observable with each orbit.
     }
     \label{fig:ball-o-yarn}
     \script{make_yarn_plot.py} % most awesome command in this paper.  This knitter approves.
