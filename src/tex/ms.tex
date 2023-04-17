@@ -80,7 +80,7 @@
 \definecolor{C6}{HTML}{386df9}
 \definecolor{C7}{HTML}{8000ff}
 
-\newcommand{\rainbows}{%
+\newcommand{\rainbows}{% MAK: KEEP this formatting for MNRAS submission. It deserves this!
     \textcolor{C0}{r}%
     \textcolor{C1}{a}%
     \textcolor{C2}{i}%
@@ -192,12 +192,11 @@ We use the list of target stars for the Habitable Worlds Observatory to estimate
 %
 We find that exo-Earths in systems listed in this Habitable Worlds Observatory catalog will have a detectable Rayleigh scattering peak. 
 %
-The glint signature at planetary phase angles of 
-$\sim$50--70$^\circ$ 
+The glint signature at planetary phase angles of $\sim$50--70$^\circ$ 
 %\sim$110--130$^\circ$ 
-would be accessible to the Habitable Worlds Observatory in $\sim$14 systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in $\sim$42 systems, assuming a 62\,mas inner working angle (\IWA; 3$\lambda/D$ for a 6-m telescope at 600nm).
+would be accessible to the Habitable Worlds Observatory in $\sim$14 systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in $\sim$42 systems, assuming a 62\,mas inner working angle (\IWA{}; 3$\lambda/D$ for a 6-m telescope at 600nm).
 %
-Increasing the \IWA to 2$\lambda/D$, increases the number of systems with detectable rainbows and glints by factors of roughly 2 and 3, respectively.
+Increasing the \IWA{} to 2$\lambda/D$, increases the number of systems with detectable rainbows and glints by factors of roughly 2 and 3, respectively.
 %
 The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with \IWA{}.    \end{abstract}
 
@@ -324,7 +323,7 @@ The performance and precise characteristics of this telescope (on-axis or off-ax
 %
 The development will be heavily influenced by the LUVOIR \citep{LUVOIR2019} and HabEx \citep{HabEx_2020} preparatory studies.
 %
-The Inner Working angle (\IWA) of the resulting telescope will depend on these choices, which in turn will have a significant impact on the expected exo-Earth yield \citep{Stark2019_exoplanetyield}.
+The Inner Working angle (\IWA{}) of the resulting telescope will depend on these choices, which in turn will have a significant impact on the expected exo-Earth yield \citep{Stark2019_exoplanetyield}.
 
 The Extreme Coronagraph for Living Planetary Systems (ECLIPS) coronograph for LUVOIR was a proposed \SIrange{200}{2000}{\nano\meter} instrument for exoplanet characterisation, with a similar coronagraph operating between \num{450} and \SI{1800}{\nano\meter} planned for HabEx.
 %
@@ -513,7 +512,7 @@ Using \cref{eq:Delta_phi}, we deduce:
 \end{figure}
 
 \Cref{fig:scatterplot} shows $\Delta \varphi$ for the systems in the \hwo{} target list, assuming an IWA of \SI{62}{\mas} ($3 \lambda / D$ coronagraph at $\SI{600}{\nano\meter}$). 
-\timmy{60 (as in the abstract), or 62?}
+%\timmy{60 (as in the abstract), or 62?}
 %
 %This assumes each planet has a semi-major axis such that it receives an Earth-equivalent instellation, which is provided in the input star list.
 %
@@ -603,7 +602,7 @@ The solid lines in \cref{fig:betaallofit} show the cumulative distribution of th
     \includegraphics[width=0.95\textwidth]{figures/accessible_phase_angles.png}  
     \caption{
         \todo{shouldn't lambda/D for 600nm give 21, 41, 62, 83 mas?} 
-        Cumulative distributions of the most extreme scattering phase angle accessible for different \IWA where the solid lines are for randomly inclined circular orbits and the dashed lines are for randomly orientated elliptical orbits.
+        Cumulative distributions of the most extreme scattering phase angle accessible for different \IWA{} where the solid lines are for randomly inclined circular orbits and the dashed lines are for randomly orientated elliptical orbits.
         %
         The top x axis indicates the minimum scattering phase angle and the bottom x axis indicates the maximum.
         %
@@ -621,11 +620,11 @@ The solid lines in \cref{fig:betaallofit} show the cumulative distribution of th
 \label{sec:eccentric}
 We repeat the Monte Carlo simulation from \cref{sec:circular} assuming the orbital eccentricity follows a beta distribution with shape parameters $a=0.867$ and $b=3.03$ \citep{2013MNRAS.434L..51K}. 
 %
-We randomly drew 1000 random orbits for each star and determined the sky-projected orbits following, e.g., \cite{2010exop.book...15M}. Eccentricities were drawn from the beta distribution, and inclinations were uniform in $\cos i$. \Cref{fig:ball-o-yarn} shows a sample of the generated orbits with the filtered \IWA's
+We randomly drew 1000 random orbits for each star and determined the sky-projected orbits following, e.g., \cite{2010exop.book...15M}. Eccentricities were drawn from the beta distribution, and inclinations were uniform in $\cos i$. \Cref{fig:ball-o-yarn} shows a sample of the generated orbits with the filtered \IWA{}'s
 %
 %Each plot has been scaled such that the habitable zone occupies the same radius, hence the \IWA's vary in apparent size compared to the orbit.
 %
-We then calculated the minimum and maximum accessible scattering phase angles for of \IWA's of 21, 42, 63 and 84 mas which correspond to 1, 2, 3 and 4 times $\lambda / D$ at $\SI{600}{\nano\meter}$.
+We then calculated the minimum and maximum accessible scattering phase angles for of \IWA{}'s of 21, 42, 63 and 84 mas which correspond to 1, 2, 3 and 4 times $\lambda / D$ at $\SI{600}{\nano\meter}$.
 %
 The dashed lines in \cref{fig:betaallofit} shows the normalised cumulative distribution of the accessible angles for each of the \IWA, when accounting for orbital eccentricity.
 %
@@ -785,7 +784,7 @@ A key indicator of habitability. Finally, it is possible to view the glory scatt
     \toprule
       & \multicolumn{3}{c}{IWA}
     \\
-     & 21$mas$ & 41$mas$ & 62$mas$
+     & 21\,$mas$ & 41\,$mas$ & 62\,$mas$
     \\
      & $2\lambda/D$ & $3\lambda/D$ & $4\lambda/D$ 
     \\
@@ -937,6 +936,8 @@ Specific grant funding and any other specific requirements
 KMB acknowledges support from NASA Habitable
 %
 Worlds grant No. 80NSSC20K152, and previous support for related work supported by NASA Astrobiology Institute's Virtual Planetary Laboratory under Cooperative Agreement Number NNA13AA93A.
+%
+This paper has been formatted in the {\tt showyourwork!} framework, which includes the computer code to reproduce the figures, including the associated data, within an online repository to make it reproducible \citep{Luger2021}.
 
 % Add references
 \bibliographystyle{mnras}
