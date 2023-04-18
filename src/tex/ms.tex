@@ -80,7 +80,7 @@
 \definecolor{C6}{HTML}{386df9}
 \definecolor{C7}{HTML}{8000ff}
 
-\newcommand{\rainbows}{%
+\newcommand{\rainbows}{% MAK: KEEP this formatting for MNRAS submission. It deserves this!
     \textcolor{C0}{r}%
     \textcolor{C1}{a}%
     \textcolor{C2}{i}%
@@ -176,7 +176,7 @@
 \maketitle
 
 \begin{abstract}
-NASA recently announced the Habitable Worlds Observatory (HWO), a coronagraphic mission to detect rocky planets in habitable zones, establish their habitability, and search for biosignatures. 
+NASA recently announced the Habitable Worlds Observatory (\hwo), a coronagraphic mission to detect rocky planets in habitable zones, establish their habitability, and search for biosignatures. 
 %Numerous instrumental and observational challenges have still to be overcome to design a coronagraphic mission with that goal. After a research phase aiming at the detection of a few tens of exo-Earth in the habitable zone, the Habitable Worlds Observatory will use its spectroscopic and polarimetric capabilities to probe these planets' atmosphere and surface properties. 
 Surface liquid water is central to the definition of planetary habitability.
 %
@@ -192,12 +192,11 @@ We use the list of target stars for the Habitable Worlds Observatory to estimate
 %
 We find that exo-Earths in systems listed in this Habitable Worlds Observatory catalog will have a detectable Rayleigh scattering peak. 
 %
-The glint signature at planetary phase angles of 
-$\sim$50--70$^\circ$ 
+The glint signature at planetary phase angles of $\sim$50--70$^\circ$ 
 %\sim$110--130$^\circ$ 
-would be accessible to the Habitable Worlds Observatory in $\sim$14 systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in $\sim$42 systems, assuming a 62\,mas inner working angle (\IWA; 3$\lambda/D$ for a 6-m telescope at 600nm).
+would be accessible to the Habitable Worlds Observatory in $\sim$14 systems, and the rainbow of water clouds at phases of 140--160$^\circ$ would be accessible in $\sim$42 systems, assuming a 62\,mas inner working angle (\IWA{}; 3$\lambda/D$ for a 6-m telescope at 600nm).
 %
-Increasing the \IWA to 2$\lambda/D$, increases the number of systems with detectable rainbows and glints by factors of roughly 2 and 3, respectively.
+Increasing the \IWA{} to 2$\lambda/D$, increases the number of systems with detectable rainbows and glints by factors of roughly 2 and 3, respectively.
 %
 The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with \IWA{}.    \end{abstract}
 
@@ -324,7 +323,7 @@ The performance and precise characteristics of this telescope (on-axis or off-ax
 %
 The development will be heavily influenced by the LUVOIR \citep{LUVOIR2019} and HabEx \citep{HabEx_2020} preparatory studies.
 %
-The Inner Working angle (\IWA) of the resulting telescope will depend on these choices, which in turn will have a significant impact on the expected exo-Earth yield \citep{Stark2019_exoplanetyield}.
+The Inner Working angle (\IWA{}) of the resulting telescope will depend on these choices, which in turn will have a significant impact on the expected exo-Earth yield \citep{Stark2019_exoplanetyield}.
 
 The Extreme Coronagraph for Living Planetary Systems (ECLIPS) coronograph for LUVOIR was a proposed \SIrange{200}{2000}{\nano\meter} instrument for exoplanet characterisation, with a similar coronagraph operating between \num{450} and \SI{1800}{\nano\meter} planned for HabEx.
 %
@@ -338,7 +337,7 @@ However, because of the challenges associated with the design of a coronagraph i
 %\textbf{In this paper we...}
 \subsection{Outline}
 
-In this paper, we quantify the planetary phase angles that would be accessible for direct observations for hypothetical terrestrial planets orbiting in the habitable zones of HabWorlds (HWO) target stars.
+In this paper, we quantify the planetary phase angles that would be accessible for direct observations for hypothetical terrestrial planets orbiting in the habitable zones of \hwo{} target stars.
 %
 In \S 2.1, we describe the target list, in \S 2.2 we derive expressions for the range of phase angles given a few different limits, in \S 2.3, we describe Monte Carlo simulations to marginalize over the unknown orbital inclination and eccentricity of planets in these systems, and in \S 2.4, we outline how the planet/star contrast changes as a function of the planet's orbital phase.  
 %
@@ -373,7 +372,7 @@ We present and discuss our results in \S 3 and conclude in \S 4. It is important
 %\textcolor{blue}{Merge the 2 sections here into "Assumed technical specifications and sample"? I don't think this needs to be 2 subsections}
 \hwo{} is still in the early stages of development, and the exact telescope and instrument design is as of yet undecided. 
 %
-In this work, we assume a \SI{6}{\meter} primary mirror, which is the currently favoured design for the observatory.
+In this work, we assume a \SI{6}{\meter} primary mirror, as suggested in the The National Academy of Sciences Astronomy \& Astrophysics 2020 Decadal Survey.
 %
 The observatory will utilise a coronagraph to suppress the stellar light and facilitate high-contrast observations of faint accompanying exoplanet. 
 %
@@ -460,26 +459,7 @@ We define the angle $\Delta \varphi$ such that:
     = \varphi_\mathrm{max} - \varphi_\mathrm{min}
     =  2(\varphi_\mathrm{max} - 90^\circ) 
     =  2(90^\circ-\varphi_\mathrm{min} ) 
-\end{equation}
-% \begin{equation}
-%     \label{eq:Delta_phi}
-%     \Delta \varphi 
-%     = \varphi_\mathrm{max} - \varphi_\mathrm{min}
-%     =  2(\varphi_\mathrm{max} - 90) 
-%     =  2(\varphi_\mathrm{min} + 90)
-% \end{equation}
-
-% {\color{Green} Victor Trees: Do you mean:
-%INDEED, THERE MUST HAVE BEEN A TYPO, THX!
-% %
-% \begin{equation}
-%     \Delta \varphi 
-%     = \varphi_\mathrm{max} - \varphi_\mathrm{min}
-%     =  2(\varphi_\mathrm{max} - 90^\circ) 
-%     =  2(90^\circ-\varphi_\mathrm{min} ) \notag
-% \end{equation}
-%
-% } 
+\end{equation} 
 
 The on-sky projected planet distance, $r_\mathrm{proj}$ (in \si{\au}) is shown in \cref{fig:scattering-angle} assuming a non-eccentric circular orbit with a semi-major $a$ (in \si{\au}) at a distance $d_*$ (in \si{\parsec}) from the observer. 
 %
@@ -513,7 +493,7 @@ Using \cref{eq:Delta_phi}, we deduce:
 \end{figure}
 
 \Cref{fig:scatterplot} shows $\Delta \varphi$ for the systems in the \hwo{} target list, assuming an IWA of \SI{62}{\mas} ($3 \lambda / D$ coronagraph at $\SI{600}{\nano\meter}$). 
-\timmy{60 (as in the abstract), or 62?}
+%\timmy{60 (as in the abstract), or 62?}
 %
 %This assumes each planet has a semi-major axis such that it receives an Earth-equivalent instellation, which is provided in the input star list.
 %
@@ -598,16 +578,16 @@ The solid lines in \cref{fig:betaallofit} show the cumulative distribution of th
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure*}[t]
+\begin{figure*}%[t]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/accessible_phase_angles.png}  
     \caption{
         \todo{shouldn't lambda/D for 600nm give 21, 41, 62, 83 mas?} 
-        Cumulative distributions of the most extreme scattering phase angle accessible for different \IWA where the solid lines are for randomly inclined circular orbits and the dashed lines are for randomly orientated elliptical orbits.
+        Cumulative distributions of the most extreme scattering phase angle accessible for different \IWA{} where the solid lines are for randomly inclined circular orbits and the dashed lines are for randomly orientated elliptical orbits.
         %
         The top x axis indicates the minimum scattering phase angle and the bottom x axis indicates the maximum.
         %
-        These are symmetric about quadrature (90 degrees) \todo{is this true for elliptical orbits?}.
+        These are symmetric about quadrature (90 degrees).
         %
         The y axis indicates the number of systems divided by the number of Monte Carlo samples and is thus normalised to the number of systems in the target list.
         %
@@ -621,11 +601,11 @@ The solid lines in \cref{fig:betaallofit} show the cumulative distribution of th
 \label{sec:eccentric}
 We repeat the Monte Carlo simulation from \cref{sec:circular} assuming the orbital eccentricity follows a beta distribution with shape parameters $a=0.867$ and $b=3.03$ \citep{2013MNRAS.434L..51K}. 
 %
-We randomly drew 1000 random orbits for each star and determined the sky-projected orbits following, e.g., \cite{2010exop.book...15M}. Eccentricities were drawn from the beta distribution, and inclinations were uniform in $\cos i$. \Cref{fig:ball-o-yarn} shows a sample of the generated orbits with the filtered \IWA's
+We randomly drew 1000 random orbits for each star and determined the sky-projected orbits following, e.g., \cite{2010exop.book...15M}. Eccentricities were drawn from the beta distribution, and inclinations were uniform in $\cos i$. \Cref{fig:ball-o-yarn} shows a sample of the generated orbits with the filtered \IWA{}'s
 %
 %Each plot has been scaled such that the habitable zone occupies the same radius, hence the \IWA's vary in apparent size compared to the orbit.
 %
-We then calculated the minimum and maximum accessible scattering phase angles for of \IWA's of 21, 42, 63 and 84 mas which correspond to 1, 2, 3 and 4 times $\lambda / D$ at $\SI{600}{\nano\meter}$.
+We then calculated the minimum and maximum accessible scattering phase angles for of \IWA{}'s of 21, 42, 63 and 84 mas which correspond to 1, 2, 3 and 4 times $\lambda / D$ at $\SI{600}{\nano\meter}$.
 %
 The dashed lines in \cref{fig:betaallofit} shows the normalised cumulative distribution of the accessible angles for each of the \IWA, when accounting for orbital eccentricity.
 %
@@ -635,7 +615,6 @@ The cumulative distribution over \IWA{} of the number of systems, normalised to 
 %
  
 \subsection{Simulating contrast curves}
-\todo{Kim and David: is this done?}
 
 A second parameter that is crucial for detecting features like rainbows and ocean glint on Earth-like planets is the contrast, that is, the relative flux of the reflected light from the planet divided by the stellar flux. 
 %
@@ -711,7 +690,7 @@ As shown in \cref{fig:betaallofit}, allowing the planet's orbit to be eccentric 
 %
 This is because, Kepler's second law ensures that eccentric planets spend more time at orbital separations greater than their semi-major axis, and hence are more likely to peak out from behind the coronagraph \IWA{} and extreme orbital phases (albeit with worse contrast due to the greater star--planet separation).
 %
-The eccentricity does not significantly effect the number of systems for smaller inner working angles as the systems in \hwo{} target list where chosen based on their on-sky separation quadrature and therefore the shape of the orbit has little affect for \IWA{} smaller than cut used in the selection. It is, however, important to account for orbital eccentricity when the \IWA{} of the coronoagraph is larger than the \IWA{} used to filter the target list otherwise the number of systems observable at extreme phase angles would be under predicted.
+The eccentricity does not significantly effect the number of systems for \IWA{} smaller than cut used in the selection of the systems in \hwo{} target list. It is, however, important to account for orbital eccentricity when the \IWA{} of the coronoagraph is larger than the \IWA{} used to filter the target list otherwise the number of systems observable at extreme phase angles would be under predicted.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -740,7 +719,7 @@ The smaller the \IWA{}, the more features we will be observable and in more syst
     \label{tab:phase_ranges}
     \begin{tabular}{ c c c c } 
     \toprule
-     & $\varphi_{min}$ & $\varphi_{peak}$ & $\varphi_{max}$ \\
+     & $\varphi_\text{min}$ & $\varphi_\text{peak}$ & $\varphi_\text{max}$ \\
     \midrule
     \midrule
     Rainbows & 22 & 42 & 63 \\
@@ -759,33 +738,29 @@ The smaller the \IWA{}, the more features we will be observable and in more syst
     %         }
 
 
-The Rayleigh scattering feature appears near quadrature and is therefore observable in the most systems.
-%
-This feature is caused by atmospheric gases and can therefore be used to determine if a planet has an atmosphere.
+The Rayleigh scattering feature, which can used to determine if a planet has an atmosphere, appears near quadrature and is therefore observable in the most systems.
 %
 The rainbow feature appears further from quadrature but will still be observable in a significant fraction of systems.
 %
-This feature will only be present if the atmosphere contains spherical droplets, potentially indicating the presence of liquid water.
-%
 The position and shape of the peak is sensitive to the properties of the droplets allowing their nature to be determined if the peak of the rainbow feature can be reached.
 %
-The ocean glint feature occurs even further from quadrature and so is observable in fewer systems. In most systems, only the first half of the feature is observable but this can still be used to identify a liquid ocean on the surface of the planet.
+The ocean glint feature occurs even further from quadrature and so is observable in fewer systems. 
+%
+In most systems, only the first half of the feature is observable but this can still be used to identify a liquid ocean on the surface of the planet.
 %
 A key indicator of habitability. Finally, it is possible to view the glory scattering feature in one system, Alpha Cen A.
-%
-\todo{maybe we want a table of some numbers in this section}
 
 \begin{table}
     \centering
     \caption{
-        Number of stars around which the peak phase angle of each phenomena is detectable, expressed in $mas$ and $\lambda/D$ for $\lambda=600$nm. 
+        Number of stars around which the peak phase angle of each phenomena is detectable, expressed in $mas$ and $\lambda/D$ for $\lambda=600$nm and  $D=6$m. 
     }
     \label{tab:nstars_detect}
     \begin{tabular}{ c c c c } 
     \toprule
       & \multicolumn{3}{c}{IWA}
     \\
-     & 21$mas$ & 41$mas$ & 62$mas$
+     & 21\,$mas$ & 41\,$mas$ & 62\,$mas$
     \\
      & $2\lambda/D$ & $3\lambda/D$ & $4\lambda/D$ 
     \\
@@ -804,7 +779,7 @@ A key indicator of habitability. Finally, it is possible to view the glory scatt
 \subsection{Contrast Curves}
 \label{sec:results_contrast}
 
-The accessible scattering phase angles is not the factor that needs to be considered when determining what scattering features are observable.
+The accessible scattering phase angles is not the only factor that needs to be considered when determining what scattering features are observable.
 %
 The contrast of the planet is also an important factor to consider.
 %
@@ -817,13 +792,6 @@ The observability of these planets will depend on the star light suppression of 
 It is not possible to predict how much the state of the art of coronagraphy will have advanced by the time \hwo{} is built.
 %
 However, when its design is being finalised, it will be important to consider both the accessible scattering phase angles and contrast limits when deciding on the \IWA{} of the coronagraph, if these features are to be observed.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\subsection{The glory of Alpha Cen}%Halelujah
-%\label{sec:ealpha-cen}
-%\textbf{Glory science, what it tells us (Kim)}
-% Kim will write para on science of glory (what tells us, vaguely why appears here) 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -843,15 +811,6 @@ However, when its design is being finalised, it will be important to consider bo
     \label{fig:ball-o-yarn}
     \script{make_yarn_plot.py} % most awesome command in this paper.  This knitter approves.
 \end{figure*}
- 
-%\begin{figure*}
-%    \centering
-%    \includegraphics[width=0.6\textwidth]{figures/features_plot_peak.png}  
-%    \caption{
-%        Number of systems vs inner working angle
-%    }
-%    \label{fig:accessible_phase_angles}
-%\end{figure*}
 
 \begin{figure*}
     \centering
@@ -871,11 +830,6 @@ However, when its design is being finalised, it will be important to consider bo
     \script{plot_features_vs_iwa.py}
 \end{figure*}
 
-
-
-%\subsection{Contrast Curves}
-%\label{sec:contrast}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusions}
@@ -893,22 +847,23 @@ We primarily focused on the range of scattering phase angles and therefore which
 %
 Coronagraphy is a rapidly advancing field, and it is hard to predict what the capabilities of \hwo{} will be.
 %
-Assuming a \SI{60}{\mas} \IWA{}, all 160 systems in the NASA Exoplanet Exploration Program's Mission Star List for the Habitable Worlds Observatory would be observable at scattering phases with Rayleigh features, but the rainbows of water clouds would only be accessible in $\sim$55 systems, and ocean glint in $\sim$20 systems.
+Assuming a \SI{62}{\mas} \IWA{}, all 160 systems in the NASA Exoplanet Exploration Program's Mission Star List for the Habitable Worlds Observatory would be observable at scattering phases with Rayleigh features, but the rainbows of water clouds would only be accessible in $\sim$42 systems, and ocean glint in $\sim$14 systems.
 %
-The habitability of Earth analogs in the remaining 140 systems would have to be established by less direct means like rotational mapping to identify continents and oceans \citep[e.g.,][]{2009ApJ...700..915C,lustig2019}.   
+The habitability of Earth analogs in the remaining 146 systems would have to be established by less direct means like rotational mapping to identify continents and oceans \citep[e.g.,][]{2009ApJ...700..915C,lustig2019}.   
 %
-
 The number of habitable zones that can be probed by \hwo{} increases with decreasing \IWA{}. 
 %
 The desire to detect and characterize a large number of Earth-like exoplanets, and the intrinsic frequency of such planets, will drive the choice of coronagraphic \IWA{} for this mission.
 %
-We have shown that only $\sim$10\% of Earth-like exoplanets imaged with \hwo{} could be imaged at a sufficiently wide range of phase angles to establish the presence of surface liquid water via its specular reflection.  
+We have shown that with a $6$m primary mirror and \IWA $= 3\lambda/D$ at $600$nm coronograph, only $\sim$10\% of Earth-like exoplanets imaged with \hwo{} could be imaged at a sufficiently wide range of phase angles to establish the presence of surface liquid water via its specular reflection.  
 %
 The habitability of remaining targets would have to be established by less direct means.
 %
+This could be improved by increasing the primary mirror diameter or decreasing the \IWA of the coronograph.
+%
 While we briefly considered the contrast ratio of the scattering features, we did not investigate the feasibility of detecting them given their contrast. 
 %
-This will be an important task once the instrument design and capabilities are better defined and could drive the design of the coronagraph. 
+This will be an important task once the instrument design and capabilities are better defined and could drive the design of the coronagraph and the primary mirror diameter. 
 
 \section*{Software/Data Availability}
 
@@ -937,6 +892,8 @@ Specific grant funding and any other specific requirements
 KMB acknowledges support from NASA Habitable
 %
 Worlds grant No. 80NSSC20K152, and previous support for related work supported by NASA Astrobiology Institute's Virtual Planetary Laboratory under Cooperative Agreement Number NNA13AA93A.
+%
+This paper has been formatted in the {\tt showyourwork!} framework, which includes the computer code to reproduce the figures, including the associated data, within an online repository to make it reproducible \citep{Luger2021}.
 
 % Add references
 \bibliographystyle{mnras}
