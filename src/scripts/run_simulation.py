@@ -21,7 +21,7 @@ norbitsample = 1000
 op = snakemake.params['whichsim']
 #op = sys.argv[1]
 if op == 'iwa':
-	iwa = np.array([21, 42, 63, 84])
+	iwa = np.array([21, 41, 62, 83])
 	tag = ''
 elif op == 'iwa2':
 	iwa = np.linspace(20,120,5) # inner working angles (in mas) to compute betamax
