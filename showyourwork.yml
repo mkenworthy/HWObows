@@ -31,36 +31,41 @@ datasets:
       2646_NASA_ExEP_Target_List_HWO_Table.csv: src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
  #     beta_max_3_lambda_over_d.csv: src/data/beta_max_3_lambda_over_d.csv
       Reflected_light_curves_Trees_Stam_2019.txt: src/data/Reflected_light_curves_Trees_Stam_2019.txt
-#      betamax.npy: src/data/betamax.npy 
-#      betamin.npy: src/data/betamin.npy 
-#      betamax3.npy: src/data/betamax3.npy 
-#      betamin3.npy: src/data/betamin3.npy 
-#      iwa.npy: src/data/iwa.npy 
+#      betamax.npy: src/data/betamax.npy
+#      betamin.npy: src/data/betamin.npy
+#      betamax3.npy: src/data/betamax3.npy
+#      betamin3.npy: src/data/betamin3.npy
+#      iwa.npy: src/data/iwa.npy
 #      iwa3.npy: src/data/iwa3.npy
 # Custom file dependencies
 
+
 dependencies:
-    src/scripts/create-scatterplot.py:
-      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-      - src/data/beta_max_3_lambda_over_d.csv
-    src/scripts/make_yarn_plot.py:
-      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-    src/scripts/plot_contrasts.py:
-      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-      - src/data/Reflected_light_curves_Trees_Stam_2019.txt
-    src/scripts/plot_n_versus_phase.py:
-      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-      - src/data/iwa_all.npz
-    src/scripts/plot_features_vs_iwa.py:
-      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-      - src/data/iwa_all3.npz
-    src/scripts/make_beta_max_3_lambda_over_d_csv:
-      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-    src/scripts/src/scripts/run_simulation.py:
-      - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+
+  # Scripts that generate data files
+  src/scripts/make_beta_max_3_lambda_over_d_csv:
+    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+  src/scripts/src/scripts/simulate-elliptical-orbits.py:
+    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+
+  # Scripts that generate figures
+  src/scripts/create-scatterplot.py:
+    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+    - src/data/beta_max_3_lambda_over_d.csv
+  src/scripts/make_yarn_plot.py:
+    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+  src/scripts/plot_contrasts.py:
+    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+    - src/data/Reflected_light_curves_Trees_Stam_2019.txt
+  src/scripts/plot_n_versus_phase.py:
+    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+    - src/data/iwa_all.npz
+  src/scripts/create-figure-9.py:
+    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+    - src/data/iwa_all3.npz
 
 
- 
+
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms
 
