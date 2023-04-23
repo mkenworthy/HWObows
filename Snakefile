@@ -8,7 +8,6 @@ rule make_betamax_csv_file:
      script:
         "src/scripts/make_beta_max_3_lambda_over_d_csv.py"
 
-
 rule make_iwa_files:
     input:
         "src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv"
