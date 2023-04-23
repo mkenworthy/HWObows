@@ -1,11 +1,11 @@
 import pandas as pd
 import numpy as np
-from src.scripts.utils import paths
-from src.scripts.utils.constants import *
+from utils import paths
+from utils.constants import *
 
 # telescope d and wlen are imported from hwo file to make consistent for all the codes
 
-# givea a nan for the first element because it tries to calculate 
+# givea a nan for the first element because it tries to calculate
 # arccos of 1.032, presumably this is alpha or proxima cen
 
 df = pd.read_csv(paths.data / '2646_NASA_ExEP_Target_List_HWO_Table.csv')

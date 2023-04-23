@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 from scipy import interpolate
 
-from src.scripts.utils import paths
+from utils import paths
 
 
 # -----------------------------------------------------------------------------
@@ -42,7 +42,7 @@ df = pd.read_csv(paths.data / '2646_NASA_ExEP_Target_List_HWO_Table.csv')
 
 hab_zones = np.array(df['EEIDmas'].values[1:],dtype=float) #in mas
 contrasts =np.array(df['Contrast'].values[1:],dtype=float)
-names = np.array(df['CommonID'].values[1:],dtype=str) 
+names = np.array(df['CommonID'].values[1:],dtype=str)
 
 data_trees = np.loadtxt(paths.data / 'Reflected_light_curves_Trees_Stam_2019.txt')
 
@@ -68,7 +68,7 @@ pad_inches = 0.025
 fig,axs = plt.subplots(nrows=1, ncols=3,
     figsize=(9 - 2 * pad_inches, 3.5 - 2 * pad_inches)
 )
-             
+
 xlims= np.array([1e3,2e2,1e2])
 
 for i,name_one in enumerate(names_array):
@@ -99,7 +99,7 @@ for i,name_one in enumerate(names_array):
     ax.set_yscale('log')
 
     if i>0:
-       ax.get_yaxis().set_visible(False)  
+       ax.get_yaxis().set_visible(False)
 
     ax.set_xlim(0,xlims[i])
     ax.set_ylim(8e-12,3e-8)
@@ -109,7 +109,7 @@ for i,name_one in enumerate(names_array):
 
     ax.set_xlabel('Separation [mas]')
     ax.set_ylabel('Contrast')
-    
+
     # Manually construct a color bar and add it to the plot
     if i==2:
         divider = make_axes_locatable(ax)

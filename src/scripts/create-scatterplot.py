@@ -17,8 +17,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from src.scripts.utils.plotting import set_fontsize
-from src.scripts.utils import paths
+from utils.plotting import set_fontsize
+from utils import paths
 
 
 # -----------------------------------------------------------------------------

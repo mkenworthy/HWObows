@@ -17,11 +17,10 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
-from src.scripts.utils.phases import kep3d
-from src.scripts.utils.samplers import sample_e, sample_i
-from src.scripts.utils.plotting import CBF_COLORS
-
-from src.scripts.utils import paths
+from utils.phases import kep3d
+from utils.samplers import sample_e, sample_i
+from utils.plotting import CBF_COLORS
+from utils import paths
 
 
 # -----------------------------------------------------------------------------

@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import interpolate as si
-from src.scripts.utils import paths
-from src.scripts.utils.constants import *
+from utils import paths
+from utils.constants import *
 
 CBF_COLORS = [
     "#5790fc",  # blue
@@ -21,8 +21,8 @@ def make_features_plot_multi(betas,hab_zones,features,iwa_list = [1,2,3,4],eta_e
                        save_fig=False,cmap_name='Spectral'):
     '''
     A function to make a multi-panneled plot of four different scattering features
-    Showing the numner of accessible systems for the 
-    low end, middle and upper end of the phase angle ranges of each feature, as a function of IWA. 
+    Showing the numner of accessible systems for the
+    low end, middle and upper end of the phase angle ranges of each feature, as a function of IWA.
 
     betas - the maximum scattering angle parameter, here defined as beta = phase_angle_max - 90
     iwa_list - list of IWAs you want to use, shape [n_iwas]
@@ -39,7 +39,7 @@ def make_features_plot_multi(betas,hab_zones,features,iwa_list = [1,2,3,4],eta_e
 
     # if ax is None:
     #     fig, axis = plt.subplots(1,1)
-    # else: 
+    # else:
     #     axis=ax
 
     fig,axes = plt.subplots(2,2,figsize=(12,5),sharex=True,sharey=True)
@@ -51,8 +51,8 @@ def make_features_plot_multi(betas,hab_zones,features,iwa_list = [1,2,3,4],eta_e
         highs = []
 
         for i in range(len(iwa_list)):
-        
-            #This helps identify which systems aren't detected at all. 
+
+            #This helps identify which systems aren't detected at all.
             # There are easier ways, but this is legacy and works
             beta_max = np.degrees(np.arccos(iwa_list[i]/(hab_zones)))
 
@@ -65,17 +65,17 @@ def make_features_plot_multi(betas,hab_zones,features,iwa_list = [1,2,3,4],eta_e
             cdf = np.cumsum(pdf)
 
             normalized_cdf = (1-cdf)*np.sum(np.isfinite(beta_max))
-            
+
             #Deal with angles below 90
             these_angles = np.array(features[feature])
             # print(these_angles)
-            for m,angle in enumerate(these_angles): 
+            for m,angle in enumerate(these_angles):
                 if angle < 90:
                     these_angles[m] = 90+(90-(angle))
 
             #Interpolate the inverse cdfs to the specified angles
             interp_cdf = si.interp1d(bins_count[1:],normalized_cdf,fill_value = 'extrapolate',kind='slinear')(these_angles)
-            
+
             #Append the values to lists for future plotting
             lows.append(interp_cdf[0])
             meds.append(interp_cdf[1])
@@ -90,29 +90,29 @@ def make_features_plot_multi(betas,hab_zones,features,iwa_list = [1,2,3,4],eta_e
         #     axes[k].text(80,100,feature,color='C{:d}'.format(k))
         # elif k == 3:
         #     axes[k].text(70,20,feature,color='C{:d}'.format(k))
-        # else: 
+        # else:
         #     axes[k].text(70,80,feature,color='C{:d}'.format(k))
 
         ### Colors according to a colormaps
         cmap = mpl.cm.get_cmap(cmap_name)
-        
+
         low_rgba = cmap((these_angles[0]-90)/90)
         med_rgba = cmap((these_angles[1]-90)/90)
         high_rgba = cmap((these_angles[2]-90)/90)
-        
+
         axes[k].plot(iwa_list,lows,'--',color=low_rgba,label="Start of Feature")
         axes[k].plot(iwa_list,meds,color=med_rgba,label="Approximate Peak of Feature")
         axes[k].plot(iwa_list,highs,'-.',color=high_rgba,label="Past Feature Peak")
 
-        #Location of the text labels. Hardcoded :( 
+        #Location of the text labels. Hardcoded :(
         if k == 1:
             axes[k].text(80,100,feature,color=med_rgba)
         elif k == 3:
             axes[k].text(70,20,feature,color=med_rgba)
-        else: 
+        else:
             axes[k].text(70,80,feature,color=med_rgba)
-            
-        #Where do we set the axis labels? - Deprecated, see below. 
+
+        #Where do we set the axis labels? - Deprecated, see below.
         # if (k == 2) or (k == 0):
             # axes[k].set_ylabel(r"Number of systems")
         # if (k == 2) or (k == 3):
@@ -152,7 +152,7 @@ def make_features_plot_multi(betas,hab_zones,features,iwa_list = [1,2,3,4],eta_e
     #Squeeze the plots together
     fig.subplots_adjust(wspace=0, hspace=0)
 
-    #### Setup the x and y axis labels. 
+    #### Setup the x and y axis labels.
     ylabel_axis = fig.add_subplot(111,frameon=False)
     plt.tick_params(labelcolor='none',which='both',top=False,bottom=False,left=False,right=False)
     plt.ylabel(r"Number of systems",labelpad=25)
@@ -189,9 +189,9 @@ if __name__ == "__main__":
  #   d = 6 #telescope diameter
  #   wavelength = 600e-9
 
-    ## Read in the maximum and minimum scattering angles as 
+    ## Read in the maximum and minimum scattering angles as
     ## calculated by the dynamical simulations
-    ## The files with the 3 suffix include the wider range of 
+    ## The files with the 3 suffix include the wider range of
     ## iwa that we want for this step
     iwa = np.load(paths.data / 'iwa_all3.npz')
     phase_max = iwa['betamax']
@@ -201,11 +201,11 @@ if __name__ == "__main__":
 #    phase_min=np.load(paths.data / "betamin3.npy")
 #    iwa_list=np.load(paths.data / "iwa3.npy")
     # Note: We pass in beta to the plotting function here, based on phase_max
-    # Beta is an intermediate parameter used here. 
+    # Beta is an intermediate parameter used here.
     # The maximum scattering angle is equal to 90+beta degrees
     # The minimum scattering angle is equal to 90-beta degrees
 
-    ## Here we define the names of the features that will go in each plot, 
+    ## Here we define the names of the features that will go in each plot,
     ## As well as the lower range, middle of the range and upper range of the features'
     ## phase angles (in degrees)
     features = {r'Rainbow': (127,138,158),

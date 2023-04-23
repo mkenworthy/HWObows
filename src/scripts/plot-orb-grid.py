@@ -1,23 +1,21 @@
-import numpy as np
-from src.scripts.utils import paths
-#from scipy.interpolate import interp1d
-#import astropy.constants as c
-import astropy.units as u
 from astropy.time import Time
-
-import matplotlib.pyplot as plt
 from matplotlib.patches import Arrow
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
-from mpl_toolkits import mplot3d
 
-from src.scripts.utils.orbfunc import xyz_position, phase
+import astropy.units as u
+import numpy as np
+import matplotlib.pyplot as plt
+
+from utils import paths
+from utils.orbfunc import xyz_position, phase
+
 
 ##########################################################################################
 
 
 
 params = {
-    'time periapsis passage':Time('2021-09-29T00:00:00', format='fits'), 
+    'time periapsis passage':Time('2021-09-29T00:00:00', format='fits'),
     'orbital period':1*u.day,
     'semi-major axis':1*u.au,
     'eccentricity':0.0,
@@ -36,7 +34,7 @@ def setup_plot(fig, i, oplane=False, losplane=False):
     ax = fig.add_subplot(4, 3, i, projection='3d')
     ax.set_proj_type('ortho')
     ax.margins(-0.499)
-    
+
     # plot orbit
     ax.plot3D(xyz[:,0], xyz[:,1], xyz[:,2], 'k-', lw=2)
 
@@ -44,7 +42,7 @@ def setup_plot(fig, i, oplane=False, losplane=False):
     if losplane==True:
         lossurfx, lossurfy = np.meshgrid(np.linspace(-0.65,0.65,10),np.linspace(-0.65,0.65,10))
         x1 = ax.plot_surface(lossurfx, lossurfy, np.zeros((10,10)), color='g', edgecolor=(0,0,0,0.15), alpha=0.1, label='Plane of Nodes')
-        
+
         ### Trying to catch a version dependent error in matplotlib, may not work for all versions ###
         try:
             x1._facecolors2d = x1._facecolor3d
@@ -54,10 +52,10 @@ def setup_plot(fig, i, oplane=False, losplane=False):
                 x1._facecolors2d = x1._facecolor3d
                 x1._edgecolors2d = x1._edgecolor3d
             except:
-            	pass 	
+            	pass
         ###############################################################################################
-        
-        
+
+
     # plane of orbit
     if oplane==True:
         A = np.ones((len(time),3)); A[:,0] = xyz[:,0]; A[:,1] = xyz[:,1]; A = np.matrix(A)
@@ -67,7 +65,7 @@ def setup_plot(fig, i, oplane=False, losplane=False):
 
         surfx, surfy = np.meshgrid(np.linspace(np.min(xyz[:,0]),np.max(xyz[:,0]),10),np.linspace(np.min(xyz[:,1]),np.max(xyz[:,1]),10))
         x2 = ax.plot_surface(surfx, surfy, fit[0,0]*surfx + fit[1,0]*surfy + fit[2,0], color='m', alpha=0.1, label='Plane of Orbit')
-        
+
         ### Trying to catch a version dependent error in matplotlib, may not work for all versions ###
         try:
             x2._facecolors2d = x2._facecolor3d
@@ -77,21 +75,21 @@ def setup_plot(fig, i, oplane=False, losplane=False):
                 x2._facecolors2d = x2._facecolor3d
                 x2._edgecolors2d = x2._edgecolor3d
             except:
-            	pass 	
+            	pass
         ###############################################################################################
-    
+
     # mark points
     ax.plot3D([0],[0],[0], 'C1*', label='Star', markersize=15)
-    
+
     ax.set_xlim(0.7,-0.7)
     ax.set_ylim(-0.7,0.75)
     ax.set_zlim(-0.2,0.2)
     ax.axis('off')
-    
+
     return ax
-    
-##########################################################################################    
-    
+
+##########################################################################################
+
 xyz = xyz_position(time, params).to(u.au).value
 
 fig = plt.figure(figsize=(15,20)) #plt.figaspect(1)*2)
