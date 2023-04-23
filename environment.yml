@@ -4,7 +4,7 @@ name: hwobows
 dependencies:
   - conda-forge::numpy
   - conda-forge::pip
-  - conda-forge::python
+  - conda-forge::python==3.10  # Python 3.11 seems to break snakemake?
   - pip:
       - matplotlib==3.7
       - pandas
