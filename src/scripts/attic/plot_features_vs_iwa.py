@@ -1,3 +1,8 @@
+"""
+This is the original script for generating Figure 9. It is not used in
+the paper, but is kept here for reference.
+"""
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
