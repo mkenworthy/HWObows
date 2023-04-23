@@ -1,5 +1,8 @@
 """
 Script to run Monte Carlo simulations of elliptic orbits.
+
+This is an alternative version of the data generation script that was
+NOT actually used in the end. It is kept here for reference.
 """
 
 # -----------------------------------------------------------------------------
