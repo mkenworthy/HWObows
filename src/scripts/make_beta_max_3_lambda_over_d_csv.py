@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-import paths
-from hwo import *
+from src.scripts.utils import paths
+from src.scripts.utils.constants import *
 
 # telescope d and wlen are imported from hwo file to make consistent for all the codes
 

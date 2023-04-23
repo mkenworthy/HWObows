@@ -10,7 +10,8 @@ import numpy as np
 import pandas as pd
 from scipy import interpolate
 
-import paths
+from src.scripts.utils import paths
+
 
 # -----------------------------------------------------------------------------
 # AUXILIARY FUNCTIONS

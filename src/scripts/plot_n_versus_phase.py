@@ -1,8 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import paths
-from hwo import *
+from src.scripts.utils import paths
 
 CBF_COLORS = [
     "#5790fc",  # blue

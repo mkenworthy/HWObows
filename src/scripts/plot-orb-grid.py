@@ -1,5 +1,5 @@
 import numpy as np
-import paths
+from src.scripts.utils import paths
 #from scipy.interpolate import interp1d
 #import astropy.constants as c
 import astropy.units as u
@@ -10,7 +10,7 @@ from matplotlib.patches import Arrow
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from mpl_toolkits import mplot3d
 
-from orbfunc import xyz_position, phase
+from src.scripts.utils.orbfunc import xyz_position, phase
 
 ##########################################################################################
 

@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import interpolate as si
-import paths
-from hwo import *
+from src.scripts.utils import paths
+from src.scripts.utils.constants import *
 
 CBF_COLORS = [
     "#5790fc",  # blue

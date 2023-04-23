@@ -1,5 +1,6 @@
 """
-Create a color-coded scatter plot the the target list.
+Create Figure 4: Scatter plot of the target list color-coded by the
+degrees from quadrature when assuming edge-on, circular orbits.
 """
 
 # -----------------------------------------------------------------------------
@@ -8,7 +9,6 @@ Create a color-coded scatter plot the the target list.
 
 from typing import Any
 
-from matplotlib.colorbar import Colorbar
 from matplotlib.lines import Line2D
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
@@ -17,9 +17,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from utils import set_fontsize
-
-import paths
+from src.scripts.utils.plotting import set_fontsize
+from src.scripts.utils import paths
 
 
 # -----------------------------------------------------------------------------
