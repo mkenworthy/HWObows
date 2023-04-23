@@ -21,7 +21,7 @@ rule make_iwa_files:
     conda:
         "environment.yml"
     script:
-        "src/scripts/run_simulation.py"
+        "src/scripts/simulate-elliptical-orbits.py"
 
 rule make_iwa3_files:
     input:
@@ -35,4 +35,4 @@ rule make_iwa3_files:
     conda:
         "environment.yml"
     script:
-        "src/scripts/run_simulation.py"
+        "src/scripts/simulate-elliptical-orbits.py"
