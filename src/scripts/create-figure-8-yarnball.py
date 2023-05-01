@@ -1,5 +1,5 @@
 """
-Create the yarn ball plot with random eccentric orbits.
+Create Figure 8: The yarn ball plot with random eccentric orbits.
 """
 
 # -----------------------------------------------------------------------------
@@ -207,14 +207,11 @@ if __name__ == "__main__":
     # -------------------------------------------------------------------------
 
     # Define inner working angles (IWA) in mas for computing beta_max
-    iwas = np.array([convert_lod_to_mas(_) for _ in [1, 2, 3, 4]])
-
-    # Set up output arrays
-    beta_min = np.zeros((n_stars, n_planets, iwas.size))
-    beta_max = np.zeros((n_stars, n_planets, iwas.size))
+    iwas = np.array([convert_lod_to_mas(iwa) for iwa in [1, 2, 3, 4]])
 
     # Loop over all the stars in the table
     print("Simulating orbits:", flush=True)
+    # noinspection PyTypeChecker
     for n, target in tqdm(enumerate(targets), total=n_stars, ncols=80):
 
         # Define shortcuts
@@ -246,9 +243,6 @@ if __name__ == "__main__":
             w = wsamp[m]
             anode = anodesamp[m]
 
-            # TODO: This is where we need to compute beta_min and beta_max
-            #   for the given IWA values and store them in the output arrays
-
             # Plot some orbits (if desired)
             if create_plot and (n < len(axes)) and (m < n_orbits_to_plot):
                 epochs = np.linspace(tperi, tperi + P, 100, endpoint=True)
@@ -263,15 +257,12 @@ if __name__ == "__main__":
     # Save results
     # -------------------------------------------------------------------------
 
-    # TODO: This is where we need to save the output arrays for beta_min and
-    #   beta_max to disk. (Currently, we do not compute values for them.)
-
     if create_plot:
 
         print('Saving plot...', end=' ', flush=True)
 
         fig.tight_layout(pad=0)
-        file_path = paths.figures / "ball_of_yarn.pdf"
+        file_path = paths.figures / "figure-9-yarnball.pdf"
         plt.savefig(
             file_path,
             bbox_inches="tight",

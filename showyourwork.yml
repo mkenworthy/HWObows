@@ -49,18 +49,18 @@ dependencies:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
 
   # Scripts that generate figures
-  src/scripts/create-scatterplot.py:
+  src/scripts/create-figure-4-scatterplot.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/beta_max_3_lambda_over_d.csv
-  src/scripts/make_yarn_plot.py:
-    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-  src/scripts/plot_contrasts.py:
-    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-    - src/data/Reflected_light_curves_Trees_Stam_2019.txt
-  src/scripts/plot_n_versus_phase.py:
+  src/scripts/create-figure-6-n-over-phase.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/iwa_all.npz
-  src/scripts/create-figure-9.py:
+  src/scripts/create-figure-7-contrast-over-separation.py:
+    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+    - src/data/Reflected_light_curves_Trees_Stam_2019.txt
+  src/scripts/create-figure-8-yarnball.py:
+    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+  src/scripts/create-figure-9-n-over-iwa.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/iwa_all3.npz
 

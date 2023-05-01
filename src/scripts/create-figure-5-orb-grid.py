@@ -1,3 +1,7 @@
+"""
+Create Figure 5: Grid of orbits with different inclinations and IWAs.
+"""
+
 from astropy.time import Time
 from matplotlib.patches import Arrow
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
@@ -197,4 +201,4 @@ ax.plot3D([0],[0],[0], 'ko', label='Mask', markersize=200, alpha=0.3)
 ax.view_init(elev=-40, azim=0)
 
 plt.subplots_adjust(wspace=0.0, hspace=-0.4)
-plt.savefig(paths.figures / 'orb-grid.pdf')
+plt.savefig(paths.figures / 'figure-5-orb-grid.pdf')
