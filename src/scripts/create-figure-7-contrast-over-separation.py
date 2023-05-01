@@ -156,9 +156,9 @@ for i, name_one in enumerate(names_array):
             color="white",
         )
 
-plt.savefig(
-    paths.figures
-    / "Contrast_vs_separation_inclination_angle_{0}.pdf".format(
-        int(np.degrees(inclination))
-    )
+file_name = (
+    f"figure-7-contrast-over-separation_i={int(np.degrees(inclination))}.pdf"
 )
+file_path = paths.figures / file_name
+
+plt.savefig(file_path, bbox_inches="tight")
