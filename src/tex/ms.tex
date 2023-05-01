@@ -109,9 +109,9 @@
 
 
 % Chasing rainbows with the Habitable Worlds Observatory
-\title{Chasing \rainbows{} with the Habitable Worlds Observatory}
+\title{Chasing \rainbows{} and ocean glint:\\  Inner working angle constraints for the Habitable Worlds Observatory}
 
-%Scattering phase angle probed by directly imaged planets, or
+%phase angle probed by directly imaged planets, or
 %Don't ask us about contrast
 
 
@@ -183,29 +183,29 @@
 \maketitle
 
 \begin{abstract}
-NASA recently announced the Habitable Worlds Observatory (\hwo), a coronagraphic mission to detect rocky planets in habitable zones, establish their habitability, and search them for biosignatures. 
+NASA recently announced the Habitable Worlds Observatory (\hwo), a coronagraphic space mission to detect rocky planets in habitable zones, establish their habitability, and search them for biosignatures. 
 %Numerous instrumental and observational challenges have still to be overcome to design a coronagraphic mission with that goal. After a research phase aiming at the detection of a few tens of exo-Earth in the habitable zone, the Habitable Worlds Observatory will use its spectroscopic and polarimetric capabilities to probe these planets' atmosphere and surface properties. 
 Surface liquid water is central to the definition of planetary habitability.
 %
-Photometric and polarimetric phase variations can show the presence of specularly reflecting oceans on exoplanets, in addition to being sensitive to rainbows and other cloud scattering phenomena. 
+Photometric and polarimetric phase curves of starlight that is reflected by an exoplanet can reveal angular features that are due to ocean glint, and to rainbows and other phenomena caused by scattering by clouds or atmospheric gas.
 %
-Direct imaging missions are optimised to detect planets near quadrature, and the coronagraph may obscure the phases at which these features are strongest. 
+Direct imaging missions are optimised for planets near quadrature, and \hwo's coronagraph may obscure the phase angles where such characteristic features are strongest. 
 %
-The range of scattering phases accessible for an exoplanet can be limited by its orbital inclination or the coronagraph's inner working angle. 
+The range of accessible phase angles for a given exoplanet will depend on the planet's orbital inclination and/or the coronagraph's inner working angle (IWA). 
 %
-Planets that orbit close to edge-on have accessible phase angles limited by coronagraph obscuration. 
+Planets in close-to-edge-on orbits have accessible phase angles limited by coronagraphic obscuration. 
 %
-We use the list of 160 target stars for the Habitable Worlds Observatory to estimate the number of exo-Earths that could be searched for non-Lambertian scattering phenomena. 
+We use \hwo'~catalog of 160 target stars to estimate the number of exo-Earths that could be searched for ocean glint, rainbows, and Rayleigh scattering by gas. 
 %
-We find that any exo-Earths in systems listed in this \hwo\ catalog will have a detectable Rayleigh scattering peak. 
+We find that any exo-Earths in systems in this catalog will have an accessible Rayleigh scattering peak in their polarimetric phase curve. 
 %
-The glint signature at planetary phase angles of $\sim\qtyrange{50}{70}{\degree}$ 
+The ocean glint signature at planetary scattering angles of $\sim\qtyrange{50}{70}{\degree}$ 
 %\sim$110--130$^\circ$ 
-would be accessible to the Habitable Worlds Observatory in $\sim\num{14}$ systems, and the rainbow of water clouds at phases of \qtyrange{140}{160}{\degree} would be accessible in $\sim\num{42}$ systems, assuming a \qty{62}{\mas} inner working angle (\IWA{}; $3\,\lambda/D$ for a \qty{6}{\meter} telescope at \qty{600}{\nano\meter}).
+would be accessible to \hwo~in $\sim\num{14}$ systems, and the rainbow due to water clouds at phase angles of \qtyrange{140}{160}{\degree} would be accessible in $\sim\num{42}$ systems, assuming a \qty{62}{\mas} \IWA{} ($3\,\lambda/D$ for a \qty{6}{\meter} telescope at \qty{600}{\nano\meter}).
 %
-Increasing the \IWA{} to $2\,\lambda/D$ increases the number of systems with detectable rainbows and glints by factors of roughly 2 and 3, respectively.
+Increasing the \IWA{} to $2\,\lambda/D$ increases the number of systems with accessible rainbows and glints by factors of roughly 2 and 3, respectively.
 %
-The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with orbital eccentricity and scales approximately inversely with \IWA{}.  \end{abstract}
+The number of systems in which an exo-Earth could be searched for these scattering phenomena increases with the planet's orbital eccentricity and scales approximately inversely with the \IWA{}.  \end{abstract}
 
 \begin{keywords}
 planets and satellites: terrestrial planets -- 
@@ -219,53 +219,69 @@ planets and satellites: atmospheres
 \label{sec:intro}
 
 %--------------------------------------------------------------------------------
-\begin{figure*}
+%\begin{figure*}
+    %\centering
+    %\includegraphics[width=\linewidth]%{figures/Fig1IWAPol.png}
+%    \caption{
+%        The phase curves of two homogeneous planets with oceans and Earth-like atmospheres in edge-on orbits (the planets thus exhibit scattering angles 
+%        ranging from 0$^\circ$ to 180$^\circ$ along their orbits). 
+%        The cloudy scenario includes a low-altitude, Earth-like water 
+%        cloud deck. 
+%        Below the plot, we are showing the scattering angle ranges that cover the
+%        characteristic features of glories, rainbows, Rayleigh scattering, glint, and forward scattering by cloud particles (note that features partly overlap
+%        with each other).  
+%        Throughout the paper we approximate feature sensitivity ranges as those that capture the rise and fall of peaks in polarized light for most habitable zone species in the UV, Optical, and IR (phase angles: glint $\sim\qtyrange{50}{70}{\degree}$; rainbow $\sim\SIrange{140}{160}{\degree}$; Rayleigh narrow of quadrature, and other forward and backscattering effects at the widest and narrowest phase angles).
+%    }
+%    \label{fig:bottplot}
+%\end{figure*}
+
+\begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{figures/Fig1IWAPol.png}
-    \caption{
-        The phase curves of two homogeneous planets with oceans and Earth-like atmospheres in edge-on orbits (the planets thus exhibit phase angles 
-        ranging from 0$^\circ$ to 180$^\circ$ along their orbits). 
-        The cloudy scenario includes a low-altitude, Earth-like water 
-        cloud deck. 
+    \includegraphics[width=\linewidth]{figures/Phase_curves.pdf}
+    \caption{The phase curves of the polarized flux of a planet with an ocean surface and an Earth-like atmosphere in an edge-on orbit (the planet thus exhibits phase angles ranging from 0$^\circ$ to 180$^\circ$ along its orbit). The cloud fraction is 0.5, the cloud pattern is patchy, and the glint is kept cloud-free to maximize the glint signature \citep[see ][]{treesandstam2019}.
+        %The cloudy scenario includes a low-altitude, Earth-like water 
+        %cloud deck. 
         Below the plot, we are showing the phase angle ranges that cover the
         characteristic features of glories, rainbows, Rayleigh scattering, glint, and forward scattering by cloud particles (note that features partly overlap
         with each other).  
-        Throughout the paper we approximate feature sensitivity ranges as those that capture the rise and fall of peaks in polarized light for most habitable zone species in the UV, Optical, and IR (scattering angles: glint $\sim\qtyrange{50}{70}{\degree}$; rainbow $\sim\SIrange{140}{160}{\degree}$; Rayleigh narrow of quadrature, and other forward and backscattering effects at the widest and narrowest scattering angles).
+        Throughout the paper we approximate feature sensitivity ranges as those that capture the rise and fall of peaks in polarized light for most habitable zone species in the UV, Optical, and IR (phase angles: glint $\sim\qtyrange{50}{70}{\degree}$; rainbow $\sim\SIrange{140}{160}{\degree}$; Rayleigh narrow of quadrature, and other forward and backscattering effects at the widest and narrowest phase angles).
     }
     \label{fig:bottplot}
-\end{figure*}
+\end{figure}
+
+
 %--------------------------------------------------------------------------------
 
 Variations of the flux and in particular the degree of polarization of
 light of the parent star that is reflected by an exoplanet as it moves
 along its orbit that are due to an ocean glint or optical phenomena from scattering by condensates --- like the rainbow --- could be some of the most distinct signatures of habitability.
 %
-However, depending on system architectures, some of these features can be obscured by the inner working angle (\IWA{}) of a telescope's coronagraph.
+However, depending on the architecture of a planetary system, some of these features can be obscured by the inner working angle (\IWA{}) of a telescope's coronagraph.
 
 Liquid surface water is closely related to planetary habitability because it is essential for life as we know it.
 %
 To first order, the presence of liquid surface water can be predicted by the flux a planet receives from its star.
 %
-The habitable zone (HZ) is defined as the range of semi-major axes around a given main sequence star, for which a rocky planet (or moon) may have the right temperature to maintain liquid surface water \citep{kasting93}. 
+The habitable zone (HZ) is defined as the range of semi-major axes around a given main sequence star for which a rocky planet (or moon) may have the right temperature to maintain liquid surface water \citep{kasting93}. 
 %
-However, there are many factors besides the stellar flux that influence a planet's surface temperature and ability to hold liquid surface water, such as the atmospheric surface pressure and, for example, geological activity. 
+However, there are many factors besides the incident stellar flux that influence a planet's surface temperature and ability to hold liquid surface water, such as the atmospheric surface pressure and, for example, geological activity. 
 %
 Establishing the presence of liquid surface water on an exoplanet would therefore provide important context for the interpretation of possible biosignatures.
 %
-Providing additional context to the habitability of an exoplanet would be the presence of a water cycle, as evidenced by the identification of a glint, i.e.\ specular reflection by a liquid surface, or by a rainbow and other optical phenomena that can be attributed to water clouds, as detailed in the next sections.
+Providing additional context to the habitability of an exoplanet would be the presence of a water cycle, as evidenced by the identification of a glint, i.e.\ the specular reflection of incident light by a liquid surface, or by a rainbow and other optical phenomena that can be attributed to light that is scattered by water clouds, as detailed in the next sections.
 
 %The phase curves showing these features are distinct depending on the characteristics of the planet in both polarized and unpolarized measurements. Polarized and unpolarized phase curves and spectra each have their own strengths in characterization outlined below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Exoplanet phase curves}
 
-An exoplanet observed in an edge-on orbit will move through all phases and thus all scattering angles, while those viewed at higher inclinations will pass through a subset of these scattering angles.
+An exoplanet in an edge-on orbit will move through phase angles ranging from $0^\circ$ (full phase), through $90^\circ$ (quadrature), and to $180^\circ$ (the planet's nightside is towards the observer), while planets higher inclination orbits will pass through a subset of phase angles.
 %
-If the planet is rotating, its reflected light signal is expected to show regular variations that can place constraints on the horizontal heterogeneity of the planet.
+If the planet is rotating, its reflected light signal is expected to show temporal variations that can place constraints on the horizontal heterogeneity of the planet.
 
-The strengths of detailed phase curve analysis include mapping \citep{2001Natur.412..885F, berdyugina2019surface, 2022A&A...664A..59M}, the detection of dark areas or glint indicative of seas \citep{groot2020, cowan2008inverting, lustig2019}, and the characterization of clouds through forward- and back-scatter, rainbows, and glories.
+The strengths of detailed phase curve analysis include mapping \citep{2001Natur.412..885F, berdyugina2019surface, 2022A&A...664A..59M}, the detection of dark areas or glint indicative of seas \citep{groot2020, cowan2008inverting, lustig2019}, and the characterization of clouds through forward- and back-scattering, rainbows, and glories.
 %
-An added potential benefit of observing polarized light is the suppression of starlight from quiescent stars without explicitly requiring a coronagraph or starshade as these stars themselves can be considered to be unpolarized \citep{kemp1987}.
+An added potential benefit of observing the state of polarization of the reflected light is the suppression of starlight from quiescent stars without explicitly requiring a coronagraph or starshade as the light of these stars themselves can be considered to be unpolarized \citep{kemp1987}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -280,7 +296,7 @@ the moon from the nightside \citep{2010GeoRL..37.7104S}.
 %
 In the total flux, the glint signal is indeed most prominent at small planetary phase (large scattering) angles.
 %
-The maximum polarization occurs at the Brewster angle determined by the refractive indices at the interface; between air and liquid water this occurs at \qty{53}{\degree} \citep[i.e., a scattering angle of \qty{127}{\degree}; see, e.g.,][]{2008Icar..195..927W}.
+The maximum polarization occurs at the Brewster angle determined by the refractive indices at the interface; between air and liquid water this occurs at \qty{53}{\degree} \citep[i.e., a phase angle of \qty{127}{\degree}; see, e.g.,][]{2008Icar..195..927W}.
 %
 This angle therefore varies slightly with wavelength and with sea and atmosphere composition.
 %
@@ -289,17 +305,17 @@ In general, the glint on a planet will be strongest at red wavelengths where the
 The strengthened glint signature at longer wavelengths has indeed been observed in Earthshine measurements \citep{Emde2017,sterzik2019, takahashi2021}.
 %
 {\color{red}{check the next sentence:}}
-The broadening of the glint feature in the presence of wind-driven waves is well-described by the Cox-Munk solution \citep{CoxMunk1954}, shifts in both polarized and unpolarized light, and broadens across scattering angles in polarized light \citep{kopparla2018, Zugger_2010, treesandstam2019, trees2022}. 
+The broadening of the glint feature in the presence of wind-driven waves is well-described by the Cox-Munk solution \citep{CoxMunk1954}, shifts in both polarized and unpolarized light, and broadens across phase angles in polarized light \citep{kopparla2018, Zugger_2010, treesandstam2019, trees2022}. 
 
 The glint provides evidence of liquid surface bodies, which, taken in the context of the temperature and types of condensates, may be interpreted as evidence for the presence of liquid water.
 %
 The forward scattering of light by cloud particles could be confused with glint \citep{Robinson_2010}, which further motivated probing the rainbow angle for context.
 %
-This confusion can be solved by measuring the intersection of phase curves at various wavelengths in polarized light (the polarized colour changes from blue, through white, to red), which only occurs when the glint contributes to the signal and at a planetary phase angle depending on the cloud coverage fraction \citep{treesandstam2019}.
+This confusion can be solved by measuring the intersection of phase curves at various wavelengths in polarized light (the polarized colour changes from blue, through white, to red), which only occurs when the glint contributes to the signal and at a planetary scattering angle depending on the cloud coverage fraction \citep{treesandstam2019}.
 %The cloud coverage fraction on ocean worlds could be constrained with observations spanning the ultraviolet to the near-infrared by finding the 
 %angle at which the planet's polarization phase curves at various wavelengths intersect \citep{treesandstam2019}.
 %
-While the glint feature can only be probed when a planet is at crescent phases, \citet{trees2022} showed that reflection by a liquid surface body can also be detected with spectropolarimetry when the planet is at phase angles where it is at the wide separations more easily probed when using coronagraphs.
+While the glint feature can only be probed when a planet is at crescent phases, \citet{trees2022} showed that reflection by a liquid surface body can also be detected with spectropolarimetry when the planet is at scattering angles where it is at the wide separations more easily probed when using coronagraphs.
 %how use to map, 
 %seen in Earthshine
 %strong signal for exoplanets
@@ -308,14 +324,13 @@ While the glint feature can only be probed when a planet is at crescent phases, 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Rainbows and glories}
+\subsection{Rainbows, cloudbows and glories}
 
-Rainbows, glories and other optical phenomena from light that is 
+Rainbows, cloudbows, glories and other optical phenomena from light that is 
 scattered by atmospheric condensates provide a wealth of information 
 about exoplanets \citep{karalidi2012rainbow, stam2008,2014A&A...566L...1G}.%
 \footnote{
-    Note that these are not the familiar rainbows that we see when sunlight is scattered by rain droplets, which are huge particles compared to the wavelength of the light: with our eyes, we cannot see the rainbows that are due to sunlight that is scattered by cloud droplets and that are the focus of this paper. 
-    However, the presence of these bows (which are also referred to as \enquote{cloudbows}) can be revealed by polarimetric measurements.
+    Rainbows occur when light is scattered by rain droplets, which are large compared to the wavelength of the light. Cloudbows refer to features occurring at the same phase angles from smaller cloud particles with the spread in colors invisible to the human eye making them appear white (\citet[see][for further discussion]{Bailey2007}).  
 }
 %
 In our own Solar System, the polarized back scatter from Titan provided evidence that the moon's reflection was due to an atmospheric haze rather than a surface \citep{zellner1973polarization}, the phase curve behaviour of Venus showed not only that the clouds were $\sim\qty{75}{\percent}$ H\textsubscript{2}SO\textsubscript{4}--water mixture but also constrained the droplet size distribution \citep{hansenhovenier1974}. 
@@ -335,16 +350,16 @@ Because the rainbow feature is more narrow than the glint, it would
 allow for a more exact determination of the particle composition.
 %
 Note that the scattering by clouds that consist of solid particles, 
-such as ice crystals, will produce other optical features, such as halo's, particularly at small scattering angles \citep{bailey2007, hansentravis1974, karalidi2012rainbow}.
+such as ice crystals, will produce other optical features, such as halo's, particularly at small phase angles \citep{bailey2007, hansentravis1974, karalidi2012rainbow}.
 %
 
 In this paper, we define our optimal angle for the detection of a rainbow as that of the peak of the water droplet rainbow at visible wavelengths.
 %
-Pushing observations to angles closer to the star (smaller scattering angles, i.e., larger phase angles) would allow the determination of the full shape of this rainbow, and enable the identification of rainbows due to the scattering of light by other possible HZ condensates.
+Pushing observations to angles closer to the star (smaller phase angles, i.e., larger scattering angles) would allow the determination of the full shape of this rainbow, and enable the identification of rainbows due to the scattering of light by other possible HZ condensates.
 %
 The glory 
 %is produced when the droplet radii much smaller than the wavelength of light 
-can allow further characterization of condensates as its angle and shape also depend on the complex refractive index, but this feature occurs within \qty{20}{\degree} scattering angle very close to full phase \citep{hansentravis1974}.
+can allow further characterization of condensates as its angle and shape also depend on the complex refractive index, but this feature occurs within \qty{20}{\degree} phase angle very close to full phase \citep{hansentravis1974}.
 %
 %The glory (in the backscattering direction) and diffraction peak (in the forward scattering direction) are distinct features in the total reflected flux, but not in the degree of polarization. In principle, the degree of polarization goes to zero in the forward and backward scattering directions. See e.g. Fig. 1 of \citet{stam2008}, Fig. 5 of \citet{trees2022}, Fig. 3 of \citet{karalidi2011} and \citet{hansentravis1974}.}}
 
@@ -382,9 +397,12 @@ In this paper, we quantify the planetary phase angles that would be accessible f
 In \cref{subsec:2.1}, we describe the target list, in \cref{subsec:2.2} we derive expressions for the range of phase angles given a few different limits, in \cref{subsec:2.3}, we describe Monte Carlo simulations to marginalize over the unknown orbital inclination and eccentricity of planets in these systems, and in \cref{subsec:2.4}, we outline how the planet/star contrast changes as a function of the planet's orbital phase.  
 %
 We present and discuss our results in \cref{sec:3}, and conclude in \cref{sec:4}. 
-It is important to note that the phases for the angular features throughout this paper are approximate, that features overlap, and that their maximum peak will usually vary with particle composition and wavelength.
-%the   the way that inclination and coronagraph inner working angle can limit the accessible phase angles  
-% We minimally explore the contrast ratio as we are primarily exploring whether these scattering angles are reachable with inner working angle and outer working angle considered.
+It is important to note that the phases angles selected for the optical phenomena throughout this paper are approximate, that phenomena overlap, and that their maximum peak will usually depend on the chemical species and wavelength.
+
+The conventions for angle names vary throughout the literature on exoplanet phase curves. In this paper we define the \textbf{scattering} angle as the local divergence in the propagation direction of the light (large angles for back-scattering, small angles for forward-scattering); the \textbf{phase} angle $\varphi$ as the viewer-star-planet angle, which is zero at full phase and 180 at new phase, and which is the complement of the scattering angle. A planet with a face-on orbit will thus have a phase angle value of 90 degrees for the duration of its orbit. In some plots we ``fold'' the half orbit so that we measure \textbf{degrees from quadrature} (so that both new and full phase are at maxima of 90$^\circ$ for edge on orbits), which is helpful in considering the visibility of the planet with inner working angle. We also note that we are considering here the polarization flux which takes into account the intensity of the polarization and reflectance (illumination) of the planet but additional information can be garnered from full Stokes characterization.
+
+%the   the way that inclination and coronagraph inner working angle can limit the accessible scattering angles  
+% We minimally explore the contrast ratio as we are primarily exploring whether these phase angles are reachable with inner working angle and outer working angle considered.
 
 % We do not consider the particulars of specific planet scenarios as that work is completed by foward models
 
@@ -395,7 +413,7 @@ It is important to note that the phases for the angular features throughout this
 %\section{Plots to Include}
 %\label{sec:plots}
 %\begin{enumerate}
-%    \item \st{Cartoon defining various phase angles: orbital phase, scattering phase, $\beta$ ? (Sophia)}
+%    \item \st{Cartoon defining various scattering angles: orbital phase, scattering phase, $\beta$ ? (Sophia)}
 %    \item Bott plot: annotated polarized and unpolarized phase curves for ocean world and cloudy worlds (Kim)
 %    \item \st{3x3 cartoon showing effect of inclination and IWA compared to orbit (Sophia)}
 %    \item Cumulative distribution functions, both simple (circular, edge-on), bit more realistic (circular, but range of inclinations), and full-on (range of inclinations and eccentricities). Max \& Matthew
@@ -467,12 +485,12 @@ By design, such planets should be observable by \hwo{} at least at their quadrat
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Maximum scattering phase angle coverage}
+\subsection{Maximum phase angle coverage}
 \label{subsec:2.2}
 
-A coronagraph can obscure part of the planet's orbit which, as shown in \cref{fig:annotated-orbit}, can prevent the planet from being observable at high and low scattering angles. 
+A coronagraph can obscure part of the planet's orbit which, as shown in \cref{fig:annotated-orbit}, can prevent the planet from being observable at high and low phase angles. 
 %
-The range of observable scattering phase angles will depend on the \IWA{} of the coronagraph, as well as on the orientation and shape of the exoplanet's orbit.
+The range of observable phase angles will depend on the \IWA{} of the coronagraph, as well as on the orientation and shape of the exoplanet's orbit.
 
 %--------------------------------------------------------------------------
 % Figure 2
@@ -481,8 +499,8 @@ The range of observable scattering phase angles will depend on the \IWA{} of the
     \centering
     \includestandalone{tikz/annotated-orbit}
     \caption{
-        An illustration of a planet in an edge-on circular orbit showing how a coronagraph can obscure the exoplanet at high and low scattering phase angles, and thus prevent observations of scattering features in an exoplanet's phase curve that could help to identify its atmospheric and/or surface composition and habitability. 
-        The phase angle, $\varphi$, is shown in red and is the complement of the scattering angle in edge on systems.
+        An illustration of a planet in an edge-on circular orbit showing how a coronagraph can obscure the exoplanet at high and low phase angles, and thus prevent observations of scattering features in an exoplanet's phase curve that could help to identify its atmospheric and/or surface composition and habitability. 
+        The scattering angle, $\varphi$, is shown in red and is the complement of the phase angle in edge on systems.
     }
     \label{fig:annotated-orbit}
 \end{figure}
@@ -490,7 +508,7 @@ The range of observable scattering phase angles will depend on the \IWA{} of the
 
 \subsubsection{Circular, edge-on orbits}
 
-In the non-eccentric case (i.e., a circular orbit with the coronagraphic mask centred on the star), the minimum ($\varphi_\mathrm{min}$) and maximum ($\varphi_\mathrm{max}$) accessible scattering phase angles are symmetric about 90$^\circ$. 
+In the non-eccentric case (i.e., a circular orbit with the coronagraphic mask centred on the star), the minimum ($\varphi_\mathrm{min}$) and maximum ($\varphi_\mathrm{max}$) accessible phase angles are symmetric about 90$^\circ$. 
 %
 We define the angle $\Delta \varphi$ such that: 
 \begin{equation}
@@ -503,14 +521,14 @@ We define the angle $\Delta \varphi$ such that:
 The on-sky projected planet distance, $r_\mathrm{proj}$ (in \unit{\au}) is shown in \cref{fig:scattering-angle} for a non-eccentric case with a 
 semi-major orbital axis $a$ (in \unit{\au}), at a distance $d_*$ (in \unit{\parsec}) from the observer. 
 %
-The scattering phase angle $\varphi$ is given by
+The phase angle $\varphi$ is given by
 \begin{equation}
     \sin(\varphi) = \frac{r_\mathrm{proj}}{a} \,.
 \end{equation}
 %
 Using small angles, $r_\mathrm{proj} = \delta d_*$ where $\delta$ is the angular separation on-sky.
 %
-We access the minimum scattering angle when the projected distance reaches the inner working angle separation $\delta = \mathrm{IWA}$. 
+We access the minimum phase angle when the projected distance reaches the inner working angle separation $\delta = \mathrm{IWA}$. 
 %
 Using \cref{eq:Delta_phi}, we deduce:
 %
@@ -529,7 +547,7 @@ Using \cref{eq:Delta_phi}, we deduce:
     \caption{
         The on-sky projected planet distance, $r_\mathrm{proj}$, of a planet with a semi-major orbital axis $a$ at a distance $d_*$ from the observer.
         The on-sky angular separation as viewed by the observer is $\delta$.
-        The scattering phase angle, $\varphi$, is the angle between the line of sight to the star and the line connecting the star and planet.  
+        The phase angle, $\varphi$, is the angle between the line of sight to the star and the line connecting the star and planet.  
     }
     \label{fig:scattering-angle}
 \end{figure}
@@ -546,7 +564,8 @@ As can be seen in \cref{fig:scatterplot}, for exoplanets in edge-on circular orb
 %--------------------------------------------------------------------------
 \begin{figure*}
     \centering
-    \includegraphics{figures/scatterplot.pdf}
+    \includegraphics{figures/figure-4-scatterplot.pdf}
+    \script{create-figure-4-scatterplot.py}
     \caption{
         Scatter plot for the target star sample, showing stellar effective 
         temperatures and distances.
@@ -564,7 +583,6 @@ As can be seen in \cref{fig:scatterplot}, for exoplanets in edge-on circular orb
         For example, dark blue circles indicate planets on which most phenomena would be observable because planets that can be observed at the rainbow angle can also be observed at angles exhibiting Rayleigh scattering.
     }
     \label{fig:scatterplot}
-    \script{create-scatterplot.py}
 \end{figure*}
 %--------------------------------------------------------------------------
 
@@ -577,10 +595,10 @@ Most planetary systems will not be viewed as edge-on from Earth.
 For a system with inclination angle $i$, we can identify the following two regimes (see also \cref{fig:orb-grid}):
 \begin{enumerate}
     \item The coronagraph does not obscure any part of the sky-projected orbit: 
-    the maximum scattering phase angle coverage depends solely on $i$. This 
+    the maximum phase angle coverage depends solely on $i$. This 
     holds for orbits that are relatively face-on; 
     \item The coronagraph does obscure parts of the sky-projected orbit: 
-    the scattering phase angle coverage depends only on the \IWA{} and 
+    the phase angle coverage depends only on the \IWA{} and 
     the orbital semi-major axis $a$. 
 \end{enumerate}
 
@@ -589,18 +607,18 @@ For a system with inclination angle $i$, we can identify the following two regim
 %--------------------------------------------------------------------------
 \begin{figure}
    \centering
-   \includegraphics[width=0.99\columnwidth]{figures/orb-grid.pdf}
+   \includegraphics[width=0.99\columnwidth]{figures/figure-5-orb-grid.pdf}
+   \script{create-figure-5-orb-grid.py}
    \caption{
-        The scattering phase angles accessible to a direct imaging mission 
+        The phase angles accessible to a direct imaging mission 
         can be limited by either the orbital inclination angle $i$ or the coronagraphic \IWA{}.
         %
-        If the orbit is close to face-on (top panels), the scattering phase angles probed along the orbit are limited by the inclination angle $i$; for circular orbits, the accessible scattering phases are $\phi \in \qty{90}{\degree} \pm i$. 
+        If the orbit is close to face-on (top panels), the phase angles probed along the orbit are limited by the inclination angle $i$; for circular orbits, the accessible scattering phases are $\phi \in \qty{90}{\degree} \pm i$. 
         %
         For orbits close to edge-on (bottom panels) the planet attains all 
-        phases, but the scattering phase angles near \qty{0}{\degree} and \qty{180}{\degree} are not observable due to obscuration by the coronagraph; for circular orbits, the accessible scattering phases are $\phi \in \qty{90}{\degree} \pm \arcsin({\rm IWA}\cdot d_*/a)$.
+        phases, but the phase angles near \qty{0}{\degree} and \qty{180}{\degree} are not observable due to obscuration by the coronagraph; for circular orbits, the accessible scattering phases are $\phi \in \qty{90}{\degree} \pm \arcsin({\rm IWA}\cdot d_*/a)$.
     }
     \label{fig:orb-grid}
-    \script{plot-orb-grid.py}
 \end{figure}
 %--------------------------------------------------------------------------
 
@@ -629,13 +647,13 @@ circular orbits:
 \subsubsection{Circular, randomly inclined orbits}
 \label{sec:circular}
 
-For each star on the \hwo{} target list, we generate \num{1000} random orbits of hypothetical habitable planets with Earth-equivalent-flux semi-major axes. 
+For each star on the \hwo{} target list, we generate \num{1000} random orbits of hypothetical habitable planets in orbits with semi-major axes that yield an Earth-equivalent-incident stellar flux. 
 %
 The orbital inclination angles $i$ are randomly drawn from a distribution 
-uniform in $\cos i$. 
+that is uniform in $\cos i$. 
 %
 We then use \cref{eq:Delta_phi_max} to determine the range of 
-accessible scattering phase angles for each hypothetical planet.
+accessible phase angles for each hypothetical planet.
 %
 The solid lines in \cref{fig:betaallofit} show the cumulative 
 distribution of the maximum and minimum accessible scattering phase 
@@ -647,13 +665,14 @@ target list for different values of the \IWA{}.
 %--------------------------------------------------------------------------
 \begin{figure*}%[t]
     \centering
-    \includegraphics[width=0.95\textwidth]{figures/accessible_phase_angles.png}  
+    \includegraphics[width=0.95\textwidth]{figures/figure-6-n-over-phase.pdf}
+    \script{create-figure-6-n-over-phase.py}
     \caption{
-        The cumulative distributions of the most extreme scattering phase angles accessible for different \IWA{} and for randomly inclined, circular orbits
+        The cumulative distributions of the most extreme phase angles accessible for different \IWA{} and for randomly inclined, circular orbits
         (solid lines) and randomly inclined, elliptical orbits (dashed lines).
         %
         The top $x$-axis indicates the minimum and the 
-        bottom $x$-axis the maximum accessible scattering phase angle.
+        bottom $x$-axis the maximum accessible phase angle.
         %
         These angles are symmetric about quadrature (90 degrees).
         %
@@ -664,7 +683,6 @@ target list for different values of the \IWA{}.
         The $y$-axis on the right indicates the number of systems, assuming \qty{24}{\percent} of them have an Earth-like planet in their HZ.
     }
     \label{fig:betaallofit}
-    \script{plot_n_versus_phase.py}
 \end{figure*}
 %--------------------------------------------------------------------------
 
@@ -687,7 +705,7 @@ angles for \IWA{}s of \qtylist{21; 42; 63; 84}{\mas} which correspond to 1, 2, 3
 The dashed lines in \cref{fig:betaallofit} show the normalised cumulative 
 distribution of the accessible angles for each of \IWA for eccentric orbits. 
 %
-We also calculate which target planets would be observable at the scattering phase angles where ocean glint, rainbows, or the Rayleigh peak occur.
+We also calculate which target planets would be observable at the phase angles where ocean glint, rainbows, or the Rayleigh peak occur.
 %
 The cumulative distribution over the \IWA{} of the number of planetary systems where all optical phenomena would be observable, normalised to the total number of systems, is shown in \cref{fig:accessible_phase_angles}.
 %
@@ -700,10 +718,10 @@ A second parameter that is crucial for detecting angular features like
 rainbows and ocean glint on Earth-like exoplanets is the contrast, that is, the flux of the reflected light from the planet divided by the stellar flux. 
 %
 While this is not the main focus of this paper, it is important to consider that the total flux contrast and the polarized contrast generally 
-depend on the scattering phase angles, due to a combination of the changing illumination fraction of the observable planetary disk and the non-isotropic reflection by the planet.
+depend on the phase angles, due to a combination of the changing illumination fraction of the observable planetary disk and the non-isotropic reflection by the planet.
 %
 Here, we aim to present some simplified examples of the impact of the 
-scattering angle dependent contrast on the detectability of rainbow and 
+phase angle dependent contrast on the detectability of rainbow and 
 glint features. 
 %
 We note that these calculations are by no means complete or exact, given 
@@ -723,9 +741,9 @@ The contrast is given by \citep[see, e.g.,][]{2023A&A...671A.165M}
     = A_\mathrm{G} \cdot \phi(\alpha) \cdot \left( R_p / a(\alpha) \right)^2 \,,
 \label{eq:contrast}
 \end{equation}
-where $A_\mathrm{G}$ is the planet's geometric albedo, $R_p$ its radius, $\phi(\alpha)$ is the integral phase function at phase angle $\alpha$
+where $A_\mathrm{G}$ is the planet's geometric albedo, $R_p$ its radius, $\phi(\alpha)$ is the integral phase function at scattering angle $\alpha$
 (normalized to \num{1.0} at full phase), and $a$ is the distance between the planet and its host star.
-\todo{here, $\alpha$ is used for the phase angle ... and is the 
+\todo{here, $\alpha$ is used for the scattering angle ... and is the 
 'integral phase function' the same as the 'scattering phase function'?}
 %
 The assumptions that went into the contrast estimations for \hwo{}
@@ -748,7 +766,7 @@ The $\qty{670}{\nano\meter}$ is close to the centre of the Rc band for Vega ($\q
 We normalize the phase function at quadrature and multiply it with the 
 contrast.
 %
-In addition, we map the orbital phase for circular orbits to the scattering phase angle and the on-sky separation given an inclination of \num{90} degrees.
+In addition, we map the orbital phase for circular orbits to the phase angle and the on-sky separation given an inclination of \num{90} degrees.
 %
 Together, they give the reflected light contrast as a function of separation for a full orbit.
 %
@@ -761,7 +779,8 @@ $\epsilon$~Eri, and the M~dwarf Lalande~21185.
 %--------------------------------------------------------------------------
 \begin{figure*}%[t]
    \centering
-   \includegraphics[width=0.99\textwidth]{figures/Contrast_vs_separation_inclination_angle_90.pdf}
+   \includegraphics[width=0.99\textwidth]{figures/figure-7-contrast-over-separation_i=90.pdf}
+    \script{create-figure-7-contrast-over-separation.py}
    \caption{
     The contrast (Eq.~\ref{eq:contrast}) and orbital separation 
     of an Earth-like planet with an ocean surface and patchy clouds 
@@ -770,12 +789,11 @@ $\epsilon$~Eri, and the M~dwarf Lalande~21185.
     The solid, black line indicates the contrast in unpolarized light, 
     with the contrast at quadrature marked by the black dot.
     %
-    The polarized component is indicated by the coloured dots, with the colour representing the scattering phase angle from quadrature.
+    The polarized component is indicated by the coloured dots, with the colour representing the phase angle from quadrature.
     %
     The light grey dots show the contrasts at quadrature of the other targets in the star list, and the dashed lines indicate $1$, $2$ and $3$ times the \IWA{} for \hwo.
     }
     \label{fig:contrasts}
-    \script{plot_contrasts.py}
 \end{figure*}
 %--------------------------------------------------------------------------
 
@@ -786,19 +804,19 @@ $\epsilon$~Eri, and the M~dwarf Lalande~21185.
 %\todo{Is there a plot for this? How many systems could we see? Why is it different to non-eccentric cases?}
 %\timmy{No plot / results yet; see above.}
 %\todo{Sophia: what is features\_plot\_peak.png showing?}
-%\timmy{Good question --- maybe Matt or Max know how the data for this was generated? Matt: yes, it's all in showyourwork right now. I ran 1000 sims for each target with a random eccentric orbit, then pulled out the betamax and betamin angles for each of the 1000 realisations. Max's plots encode the completeness as a function of phase angle, showing that you get about 10 percent more phenomena. }
+%\timmy{Good question --- maybe Matt or Max know how the data for this was generated? Matt: yes, it's all in showyourwork right now. I ran 1000 sims for each target with a random eccentric orbit, then pulled out the betamax and betamin angles for each of the 1000 realisations. Max's plots encode the completeness as a function of scattering angle, showing that you get about 10 percent more phenomena. }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{The effect of eccentricity}
 \label{sec:result_eccentricity}
 
-As shown in \cref{fig:betaallofit}, allowing the planet's orbit to be eccentric can have a noticeable effect on the number of systems that can be observed at each scattering phase angle.
+As shown in \cref{fig:betaallofit}, allowing the planet's orbit to be eccentric can have a noticeable effect on the number of systems that can be observed at each phase angle.
 %
 This is because---as Kepler's second law explains---eccentric planets spend more time at orbital separations greater than their semi-major axis, and hence are more likely to peak out from behind the coronagraph \IWA{} and extreme orbital phases (albeit with worse contrast due to the greater star-planet separation).
 %
 The eccentricity does not significantly affect the number of systems for \IWA{} smaller than cut used in the selection of the systems in the \hwo{} target list. 
-It is, however, important to account for orbital eccentricity when the \IWA{} of the coronagraph is larger than the \IWA{} used to filter the target list; otherwise, the number of systems observable at extreme phase angles would be under-predicted.
+It is, however, important to account for orbital eccentricity when the \IWA{} of the coronagraph is larger than the \IWA{} used to filter the target list; otherwise, the number of systems observable at extreme scattering angles would be under-predicted.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -807,9 +825,9 @@ It is, however, important to account for orbital eccentricity when the \IWA{} of
 
 In this section, we consider the number of stars around which different optical phenomena could be observable for different \IWA{}.
 %
-We first define the phase angles over which various of these phenomena are accessible in \cref{tab:phase_ranges}.
+We first define the scattering angles over which various of these phenomena are accessible in \cref{tab:phase_ranges}.
 %
-We note that these ranges should all be considered approximate, as the exact phase angles where these phenomena are dominant depend on the details of the atmospheric and surface properties, as well as the wavelengths being observed.
+We note that these ranges should all be considered approximate, as the exact scattering angles where these phenomena are dominant depend on the details of the atmospheric and surface properties, as well as the wavelengths being observed.
 %
 Nonetheless, this exercise can provide valuable insights on the effects of \IWA{} choice. 
 
@@ -824,7 +842,7 @@ The smaller the \IWA{}, the more features we will be observable and in more syst
 \begin{table}
     \centering
     \caption{
-        The approximate ranges of phase angles for the different optical phenomena considered in this paper.
+        The approximate ranges of scattering angles for the different optical phenomena considered in this paper.
     }
     \label{tab:phase_ranges}
     \begin{tabular}{ l c c c } 
@@ -864,7 +882,7 @@ Finally, it is possible to view the glory scattering feature in one system, Alph
 \begin{table}
     \centering
     \caption{
-        Number of stars around which the peak phase angle of each phenomenon is detectable, expressed in \unit{\mas} and $\lambda/D$ for $\lambda = \qty{600}{\nano\meter}$ and $D = \qty{6}{\meter}$.
+        Number of stars around which the peak scattering angle of each phenomenon is detectable, expressed in \unit{\mas} and $\lambda/D$ for $\lambda = \qty{600}{\nano\meter}$ and $D = \qty{6}{\meter}$.
     }
     \label{tab:nstars_detect}
     \begin{tabular}{ l c c c } 
@@ -888,7 +906,7 @@ Finally, it is possible to view the glory scattering feature in one system, Alph
 \subsection{Contrast curves}
 \label{sec:results_contrast}
 
-The accessible scattering phase angle is not the only factor that needs to be considered when determining what scattering features are observable.
+The accessible phase angle is not the only factor that needs to be considered when determining what scattering features are observable.
 %
 The contrast of the planet is also an important factor to consider.
 %
@@ -900,7 +918,7 @@ The observability of these planets will depend on the starlight suppression of t
 %
 It is not possible to predict how much the state of the art of coronagraphy will have advanced by the time \hwo{} is built.
 %
-However, when its design is being finalised, it will be important to consider both the accessible scattering phase angles and contrast limits when deciding on the \IWA{} of the coronagraph, if these features are to be observed.
+However, when its design is being finalised, it will be important to consider both the accessible phase angles and contrast limits when deciding on the \IWA{} of the coronagraph, if these features are to be observed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -909,7 +927,8 @@ However, when its design is being finalised, it will be important to consider bo
 %--------------------------------------------------------------------------
 \begin{figure*}
     \centering
-    \includegraphics{figures/ball_of_yarn.pdf}  
+    \includegraphics{figures/figure-9-yarnball.pdf}  
+    \script{create-figure-8-yarnball.py}
     \caption{
         Examples of the eccentric orbits generated for the stellar sample.
         %
@@ -923,7 +942,6 @@ However, when its design is being finalised, it will be important to consider bo
         observable scattering phases for each orbit.
     }
     \label{fig:ball-o-yarn}
-    \script{make_yarn_plot.py} % most awesome command in this paper.  This knitter approves.
 \end{figure*}
 %--------------------------------------------------------------------------
 
@@ -932,8 +950,8 @@ However, when its design is being finalised, it will be important to consider bo
 %--------------------------------------------------------------------------
 \begin{figure*}
     \centering
-    \includegraphics{figures/nplanets_vs_iwa.pdf}
-    \script{create-figure-9.py}
+    \includegraphics{figures/figure-9-n-over-iwa.pdf}
+    \script{create-figure-9-n-over-iwa.py}
     \caption{
         The number of systems for which key optical phenomena (Rayleigh scattering, rainbow, ocean glint, glories) would be observable as functions of the \IWA.
         %
@@ -967,7 +985,7 @@ should be driven by the mission's science goals.
 %
 In this work, we investigated the possibility of using \hwo{} to detect optical phenomena with specific angular features in polarized reflected light, such as rainbows, ocean glint, and glory's, which could establish a planet's habitability. 
 %
-We primarily focused on the range of accessible scattering phase angles given the limitations of the coronagraphic \IWA{} and aimed to investigate which phenomena could potentially be observed.
+We primarily focused on the range of accessible phase angles given the limitations of the coronagraphic \IWA{} and aimed to investigate which phenomena could potentially be observed.
 %
 Coronagraphy is a rapidly advancing field, and it is hard to predict what the capabilities of \hwo{} will be.
 %
@@ -979,7 +997,7 @@ The habitability of Earth-like exoplanets in the remaining 146 systems would hav
 %
 The fraction of habitable zones around stars in the target list that can be probed by \hwo{} increases with decreasing \IWA{}. 
 %
-Additionally, decreasing the \IWA\ also increases the range of phase angles observable in these systems. 
+Additionally, decreasing the \IWA\ also increases the range of scattering angles observable in these systems. 
 %
 Therefore, to increase the number of systems for which key features such as ocean glint can be observed, the primary mirror diameter could be increased and/or the \IWA of the coronagraph could be decreased.
 %
@@ -988,7 +1006,7 @@ While we briefly considered the contrast ratio of the scattering features, we di
 This will be an important task once the instrument design and capabilities are better defined and could drive the design of the coronagraph and the primary mirror diameter. 
 
 %\todo{the paragraph below seems similar to the one above ... merge them?}
-%We have shown that with a \qty{6}{\meter} primary mirror and a coronagraph with an \IWA\ of $3\,\lambda/D$ at \qty{600}{\nano\meter}, only $\sim\qty{10}{\percent}$ of the Earth-like exoplanets targeted by \hwo{} would be observable at a range of phase angles that is wide enough to establish the presence of liquid surface water via the polarization signature of the glint (i.e., specular reflection).  
+%We have shown that with a \qty{6}{\meter} primary mirror and a coronagraph with an \IWA\ of $3\,\lambda/D$ at \qty{600}{\nano\meter}, only $\sim\qty{10}{\percent}$ of the Earth-like exoplanets targeted by \hwo{} would be observable at a range of scattering angles that is wide enough to establish the presence of liquid surface water via the polarization signature of the glint (i.e., specular reflection).  
 %
 %This number could be improved by increasing the primary mirror diameter or decreasing the \IWA of the coronagraph.
 %
@@ -1008,24 +1026,44 @@ This work has made use of \textsf{numpy}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Acknowledgements}
 
-The workshop on which this manuscript is based was made possible thanks to the logistical and financial support of the Lorentz Center, Leiden, Netherlands.
+%The workshop on which this manuscript is based was made possible thanks to the logistical and financial support of the Lorentz Center, Leiden, Netherlands.
 %
-This workshop was supported by NOVA  and by the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement No. 866001 - EXACT).
+%This workshop was supported by NOVA  and by the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement No. 866001 - EXACT).
 %
+%This research has made use of NASA's Astrophysics Data System Bibliographic Services and the SIMBAD database, operated at CDS, Strasbourg, France. 
+%
+%SRV acknowledges funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation program under grant agreement No 805445.
+%
+%SLC acknowledges support from an STFC Ernest Rutherford Fellowship. 
+%
+%TDG acknowledges funding from the Max Planck ETH Center for Learning Systems.
+%
+%Specific grant funding and any other specific requirements
+%
+%KMB acknowledges support from NASA Habitable
+%
+%Worlds grant No. 80NSSC20K152, and previous support for related work supported by NASA Astrobiology Institute's Virtual Planetary Laboratory under Cooperative Agreement Number NNA13AA93A.
+%
+%This paper has been formatted in the {\tt showyourwork!} framework, which includes the computer code to reproduce the figures, including the associated data, within an online repository to make it reproducible \citep{Luger2021}.
+
+The Optimal Exoplanet Imaging workshop (2023) on which this manuscript is based was made possible thanks to the logistical and financial support of the Lorentz Center, Leiden, The Netherlands. 
+%
+The research presented in this paper was initiated at a workshop held in Leiden and partially supported by NOVA (the Netherlands Research School for Astronomy) and by the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement n°866001 - EXACT).
+
 This research has made use of NASA's Astrophysics Data System Bibliographic Services and the SIMBAD database, operated at CDS, Strasbourg, France. 
-%
+
 SRV acknowledges funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation program under grant agreement No 805445.
-%
 SLC acknowledges support from an STFC Ernest Rutherford Fellowship. 
-%
 TDG acknowledges funding from the Max Planck ETH Center for Learning Systems.
-%
-Specific grant funding and any other specific requirements
-%
-KMB acknowledges support from NASA Habitable
-%
-Worlds grant No. 80NSSC20K152, and previous support for related work supported by NASA Astrobiology Institute's Virtual Planetary Laboratory under Cooperative Agreement Number NNA13AA93A.
-%
+KMB acknowledges support from NASA Habitable Worlds grant No. 80NSSC20K152, and previous support for related work from NASA Astrobiology Institute's Virtual Planetary Laboratory under Cooperative Agreement Number NNA13AA93A.
+ILa acknowledges the support by a postdoctoral grant issued by the Centre National d'Études Spatiales (CNES) in France.
+PBa, ILa, and YGu were supported by the Action Spécifique Haute Résolution Angulaire (ASHRA) of CNRS/INSU co-funded by CNES.
+EHP is supported by the NASA Hubble Fellowship grant \#HST-HF2-51467.001-A awarded by the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Incorporated, under NASA contract NAS5-26555.
+L.A. and E.C. acknowledge funding from the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme (ESCAPE, grant agreement No. 101044152).
+O.A. and L.K. acknowledge funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation programme (grant agreement No 819155)
+SYH was funded by the generous support of the Heising-Simons Foundation.
+RJP is supported by NASA under award number 80GSFC21M0002.
+
 This paper has been formatted in the {\tt showyourwork!} framework, which includes the computer code to reproduce the figures, including the associated data, within an online repository to make it reproducible \citep{Luger2021}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
