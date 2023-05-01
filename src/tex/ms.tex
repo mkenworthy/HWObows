@@ -574,7 +574,7 @@ As can be seen in \cref{fig:scatterplot}, for exoplanets in edge-on circular orb
 \begin{figure*}
     \centering
     \includegraphics{figures/figure-4-scatterplot.pdf}
-    \script{create-scatterplot.py}
+    \script{create-figure-4-scatterplot.py}
     \caption{
         Scatter plot for the target star sample, showing stellar effective 
         temperatures and distances.
@@ -616,7 +616,8 @@ For an orbit with an inclination angle $i$, we can identify the following two re
 %--------------------------------------------------------------------------
 \begin{figure}
    \centering
-   \includegraphics[width=0.99\columnwidth]{figures/orb-grid.pdf}
+   \includegraphics[width=0.99\columnwidth]{figures/figure-5-orb-grid.pdf}
+   \script{create-figure-5-orb-grid.py}
    \caption{
         The phase angles accessible to a direct imaging mission 
         can be limited by either the orbital inclination angle $i$ or the coronagraphic \IWA{}.
@@ -627,7 +628,6 @@ For an orbit with an inclination angle $i$, we can identify the following two re
         phases, but the phase angles near \qty{0}{\degree} and \qty{180}{\degree} are not observable due to obscuration by the coronagraph; for circular orbits, the accessible scattering phases are $\phi \in \qty{90}{\degree} \pm \arcsin({\rm IWA}\cdot d_*/a)$.
     }
     \label{fig:orb-grid}
-    \script{plot-orb-grid.py}
 \end{figure}
 %--------------------------------------------------------------------------
 
