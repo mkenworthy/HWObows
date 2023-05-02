@@ -24,7 +24,7 @@ def make_dual_cdf_plot(
     eta_earth=0.24,
     n_bins=20,
     savefig=False,
-    filename="figure-6-n-over-phase.pdf",
+    filename="figure-5-n-over-phase.pdf",
 ):
     """
     A function that plots the 1-cumulative distribution to show the number of planets that can access a given phase angle

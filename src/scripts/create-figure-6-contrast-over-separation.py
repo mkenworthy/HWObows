@@ -157,7 +157,7 @@ for i, name_one in enumerate(names_array):
         )
 
 file_name = (
-    f"figure-7-contrast-over-separation_i={int(np.degrees(inclination))}.pdf"
+    f"figure-6-contrast-over-separation_i={int(np.degrees(inclination))}.pdf"
 )
 file_path = paths.figures / file_name
 

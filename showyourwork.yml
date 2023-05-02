@@ -29,38 +29,31 @@ datasets:
     contents:
       TOI640b.json: src/data/TOI640b.json
       2646_NASA_ExEP_Target_List_HWO_Table.csv: src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
- #     beta_max_3_lambda_over_d.csv: src/data/beta_max_3_lambda_over_d.csv
       Reflected_light_curves_Trees_Stam_2019.txt: src/data/Reflected_light_curves_Trees_Stam_2019.txt
-#      betamax.npy: src/data/betamax.npy
-#      betamin.npy: src/data/betamin.npy
-#      betamax3.npy: src/data/betamax3.npy
-#      betamin3.npy: src/data/betamin3.npy
-#      iwa.npy: src/data/iwa.npy
-#      iwa3.npy: src/data/iwa3.npy
-# Custom file dependencies
 
 
+# Dependencies: Which script needs which data product as an input
 dependencies:
 
   # Scripts that generate data files
-  src/scripts/make_beta_max_3_lambda_over_d_csv:
+  src/scripts/create-data-for-circular-orbits.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-  src/scripts/src/scripts/simulate-elliptical-orbits.py:
+  src/scripts/create-data-for-elliptical-orbits.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
 
   # Scripts that generate figures
   src/scripts/create-figure-4-scatterplot.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-    - src/data/beta_max_3_lambda_over_d.csv
-  src/scripts/create-figure-6-n-over-phase.py:
+    - src/data/phi_max_3_lambda_over_d.csv
+  src/scripts/create-figure-5-n-over-phase.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/iwa_all.npz
-  src/scripts/create-figure-7-contrast-over-separation.py:
+  src/scripts/create-figure-6-contrast-over-separation.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/Reflected_light_curves_Trees_Stam_2019.txt
-  src/scripts/create-figure-8-yarnball.py:
+  src/scripts/create-figure-7-yarnball.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-  src/scripts/create-figure-9-n-over-iwa.py:
+  src/scripts/create-figure-8-n-over-iwa.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/iwa_all3.npz
 

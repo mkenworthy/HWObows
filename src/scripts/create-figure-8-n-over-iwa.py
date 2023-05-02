@@ -177,7 +177,7 @@ fig.tight_layout(pad=0)
 plt.subplots_adjust(wspace=0.1)
 
 # Save the figure
-file_name = "figure-9-n-over-iwa.pdf"
+file_name = "figure-8-n-over-iwa.pdf"
 file_path = paths.figures / file_name
 fig.savefig(
     file_path,

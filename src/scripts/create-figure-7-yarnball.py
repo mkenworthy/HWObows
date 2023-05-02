@@ -262,7 +262,7 @@ if __name__ == "__main__":
         print('Saving plot...', end=' ', flush=True)
 
         fig.tight_layout(pad=0)
-        file_path = paths.figures / "figure-9-yarnball.pdf"
+        file_path = paths.figures / "figure-7-yarnball.pdf"
         plt.savefig(
             file_path,
             bbox_inches="tight",
