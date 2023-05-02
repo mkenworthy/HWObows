@@ -191,7 +191,7 @@ if __name__ == "__main__":
 
     # Save the figure
     fig.tight_layout(pad=0)
-    file_path = paths.figures / "scatterplot.pdf"
+    file_path = paths.figures / "figure-4-scatterplot.pdf"
     plt.savefig(
         file_path,
         dpi=600,
