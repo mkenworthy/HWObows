@@ -7,8 +7,9 @@ dependencies:
   - conda-forge::python==3.10  # Python 3.11 seems to break snakemake?
   - pip:
       - astropy
+      - h5py
       - joblib
-      - matplotlib==3.7
+      - matplotlib
       - pandas
       - scipy
       - tqdm
