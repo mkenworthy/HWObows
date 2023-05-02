@@ -27,6 +27,7 @@ dag:
 datasets:
   10.5072/zenodo.1170227:
     contents:
+      v7_fc50.h5: src/data/v7_fc50.h5
       TOI640b.json: src/data/TOI640b.json
       2646_NASA_ExEP_Target_List_HWO_Table.csv: src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
       Reflected_light_curves_Trees_Stam_2019.txt: src/data/Reflected_light_curves_Trees_Stam_2019.txt
@@ -42,6 +43,8 @@ dependencies:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
 
   # Scripts that generate figures
+  src/scripts/create-figure-1-bott-plot.py:
+    - src/data/v7_fc50.h5
   src/scripts/create-figure-4-scatterplot.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/phi_max_3_lambda_over_d.csv
