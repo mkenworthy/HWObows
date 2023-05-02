@@ -573,8 +573,8 @@ As can be seen in \cref{fig:scatterplot}, for exoplanets in edge-on circular orb
 %--------------------------------------------------------------------------
 \begin{figure*}
     \centering
-    \includegraphics{figures/figure-scatterplot.pdf}
-    \script{create-figure-scatterplot.py}
+    \includegraphics{figures/figure-4-scatterplot.pdf}
+    \script{create-scatterplot.py}
     \caption{
         Scatter plot for the target star sample, showing stellar effective 
         temperatures and distances.
@@ -754,24 +754,23 @@ The contrast is given by \citep[see, e.g.,][]{2023A&A...671A.165M}
     = A_\mathrm{G} \cdot \phi(\alpha) \cdot \left( R_p / a(\alpha) \right)^2 \,,
 \label{eq:contrast}
 \end{equation}
-where $A_\mathrm{G}$ is the planet's geometric albedo, $R_p$ its radius, $\phi(\alpha)$ is the phase function at pangle $\alpha$
-(normalized to \num{1.0} at full phase), and $a$ is the distance between the planet and its host star.
-\todo{here, $\alpha$ is used for the scattering angle ... and is the 
-'integral phase function' the same as the 'scattering phase function'?}
+where $A_\mathrm{G}$ is the planet's geometric albedo, $R_p$ its radius, $\phi(\alpha)$ is the phase function at phase angle $\alpha$
+(normalized to \num{1.0} at full phase, thus at $\alpha=0^\circ$), 
+and $a$ is the distance between the planet and its host star.
 %
 The assumptions that went into the contrast estimations for \hwo{}
-are that $a$ is constant (the orbits are thus circular), the geometric albedo $A_{\rm G}$ is \num{0.2}, and that the scattering phase function, $\phi(\alpha)$, can be described by a simple Lambertian reflectance phase function, which assumes isotropic reflection by the planetary surface.
+are that $a$ is constant (the orbits are thus circular), the geometric albedo $A_{\rm G}$ is \num{0.2}, and that the phase function, $\phi(\alpha)$, can be described by a simple Lambertian reflectance phase function, which assumes isotropic reflection by the planetary surface.
 %
 These calculations give an order-of-magnitude calculation for the 
 contrast of Earth-like planets around nearby stars.
 %
 Therefore, in this work, we will assume that the calculated contrasts 
-in the list correspond to the reflected flux at quadrature and normalize the scattering phase functions to this point.
+in the list correspond to the reflected flux at quadrature and normalize the phase functions to this point.
 %
 We do not aim to accurately calculate the absolute scaling of the contrast, as this depends on many factors and would have required some work for the star list to be redone.
 %
 
-We use the scattering phase functions from \citet{treesandstam2019} 
+We use the phase functions from \citet{treesandstam2019} 
 for an Earth-like planet with an ocean surface with a wind-speed of $\qty{7}{\meter\per\second}$ at $\qty{670}{\nano\meter}$ and covered by patchy clouds.
 %
 The $\qty{670}{\nano\meter}$ is close to the centre of the Rc band for Vega ($\qty{642}{\nano\meter}$). 
