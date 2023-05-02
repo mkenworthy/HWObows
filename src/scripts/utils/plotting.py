@@ -19,8 +19,8 @@ CBF_COLORS = [
     "#3F90DA",  # blue
     "#FFA90E",  # orange
     "#BD1F01",  # red
-    "#94A4A2",  # gray
     "#832DB6",  # purple
+    "#94A4A2",  # gray
     "#A96B59",  # brown
     "#E76300",  # orange
     "#B9AC70",  # tan
