@@ -1,12 +1,12 @@
-rule make_betamax_csv_file:
+rule make_phi_max_csv_file:
      input:
         "src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv"
      output:
-        "src/data/beta_max_3_lambda_over_d.csv"
+        "src/data/phi_max_3_lambda_over_d.csv"
      conda:
         "environment.yml"
      script:
-        "src/scripts/make_beta_max_3_lambda_over_d_csv.py"
+         "src/scripts/create-data-for-circular-orbits.py"
 
 rule make_iwa_files:
     input:
@@ -20,7 +20,7 @@ rule make_iwa_files:
     conda:
         "environment.yml"
     script:
-        "src/scripts/simulate-elliptical-orbits.py"
+        "src/scripts/create-data-for-elliptical-orbits.py"
 
 rule make_iwa3_files:
     input:
@@ -34,4 +34,4 @@ rule make_iwa3_files:
     conda:
         "environment.yml"
     script:
-        "src/scripts/simulate-elliptical-orbits.py"
+        "src/scripts/create-data-for-elliptical-orbits.py"

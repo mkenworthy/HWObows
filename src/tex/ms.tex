@@ -237,10 +237,16 @@ planets and satellites: atmospheres
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\linewidth]{figures/Phase_curves.pdf}
-    \caption{The phase curves of the normalized polarized flux of a planet with a wavy ocean surface and an Earth-like atmosphere in an edge-on orbit (the planet thus exhibits phase angles ranging from 0$^\circ$ to 180$^\circ$ along its orbit). The wind speed over the ocean is 7~m/s. The clouds in the planet's atmosphere consist of spherical water droplets. The cloud coverage fraction is 0.5. The cloud pattern is patchy and the glint is kept cloud-free to maximize the glint signature \citep[see also Fig. 9 of][from which we took the mean signal of 300 planets with randomly generated patchy cloud patterns + 2 standard deviations, representative for cloud-free glint scenarios; the 'noise' at the larger phase angles and longer wavelengths is due to the variation in the location of cloud patches]{treesandstam2019}. The 
-    polarized flux is normalized to the total (unpolarized + polarized) flux (it is thus in fact the degree of polarization). Note that the reference plane for the
-    polarized flux is chosen such that only the polarized components perpendicular or parallel to the plane differ significantly from zero.
+    \includegraphics{figures/figure-1-bott-plot.pdf}
+    \script{create-figure-1-bott-plot.py}
+    \caption{
+        The phase curves of the normalized polarized flux of a planet with a wavy ocean surface and an Earth-like atmosphere in an edge-on orbit (the planet thus exhibits phase angles ranging from \qty{0}{\degree} to \qty{180}{\degree} along its orbit). 
+        The wind speed over the ocean is \qty{7}{\meter\per\second}. 
+        The clouds in the planet's atmosphere consist of spherical water droplets. 
+        The cloud coverage fraction is 0.5. 
+        The cloud pattern is patchy, and the glint is kept cloud-free to maximize the glint signature \citep[see also Fig. 9 of][from which we took the mean signal of 300 planets with randomly generated patchy cloud patterns + 2 standard deviations, representative for cloud-free glint scenarios; the \enquote{noise} at the larger phase angles and longer wavelengths is due to the variation in the location of cloud patches]{treesandstam2019}. 
+        The polarized flux is normalized to the total (unpolarized + polarized) flux (it is thus in fact the degree of polarization). 
+        Note that the reference plane for the polarized flux is chosen such that only the polarized components perpendicular or parallel to the plane differ significantly from zero.
  %   and the latter
  %   is equals the planet's geometric albedo at phase angle $\alpha = 0^\circ$.
         %The cloudy scenario includes a low-altitude, Earth-like water 
@@ -302,7 +308,7 @@ the moon from the nightside \citep{2010GeoRL..37.7104S}.
 %
 In the total flux, the glint signal is indeed expected to be most prominent at large planetary phase angles.
 %
-The maximum polarization of the glint occurs at the Brewster angle, which is determined by the refractive indices at the interface; between air and liquid water this occurs at an angle of reflection of \qty{53}{\degree} \citep[i.e., at a planetary phase angle of \qty{127}{\degree}; see, e.g.,][]{2008Icar..195..927W}.
+The maximum degree of polarization of the glint occurs at the Brewster angle, which is determined by the refractive indices at the interface; between air and liquid water this occurs at an angle of reflection of \qty{53}{\degree} \citep[i.e., at a planetary phase angle of \qty{106}{\degree}; see, e.g.,][]{Zugger_2010,treesandstam2019}.
 %
 This angle therefore varies slightly with the wavelength and the composition of the ocean and the atmosphere.
 %
@@ -312,10 +318,10 @@ In general, the glint on a planet will be strongest at red wavelengths where the
 The stronger glint signature at longer wavelengths has indeed been observed in Earthshine measurements \citep{Emde2017,sterzik2019, takahashi2021}.
 %
 The width across phase angles of the glint feature in total and polarized flux generally
-broadens with increasing wave height \citep{kopparla2018, Zugger_2010, treesandstam2019, trees2022}, which depends strongly on the wind speed over the surface, as described by \citep{CoxMunk1954}.
+broadens with increasing wave height \citep{kopparla2018, Zugger_2010, treesandstam2019, trees2022}, which depends strongly on the wind speed over the surface, as described by \citet{CoxMunk1954}.
 %
 
-The glint provides evidence of liquid surface bodies, which, taken in the context of the temperature and types of condensates, may be interpreted as evidence for the presence of liquid water.
+The glint provides evidence of specular reflecting surface bodies, which, taken in the context of the temperature and types of condensates, may be interpreted as evidence for the presence of liquid water.
 %
 At large phase angles, the forward scattering of light by cloud particles could be confused with glint \citep{Robinson_2010}, which further motivated probing the rainbow angle for context.
 %
@@ -338,7 +344,7 @@ Rainbows, cloudbows, glories and other optical phenomena from light that is
 scattered by atmospheric condensates can dramatically influence the shape of a planet's total flux and polarized phase curves and provide a wealth of information 
 about exoplanets \citep{karalidi2012rainbow, stam2008,Bailey2007,2014A&A...566L...1G}.%
 \footnote{
-    Rainbows occur when light is scattered by rain droplets that are large compared to the wavelength of the light. Cloudbows refer to features occurring at the same phase angles from smaller cloud particles with the spread in colors invisible to the human eye making them appear white \citet[see][for further discussion]{Bailey2007}.  
+    Rainbows occur when light is scattered by rain droplets that are large compared to the wavelength of the light. Cloudbows refer to features occurring at the same phase angles from smaller cloud particles with the spread in colors invisible to the human eye making them appear white \citep[see][for further discussion]{Bailey2007}.  
 }
 %
 In our own Solar System, the polarized back scatter from Titan provided evidence that the moon's reflection was due to an atmospheric haze rather than a surface \citep{zellner1973polarization}, the polarized phase curve of Venus at three wavelengths showed not only that the clouds were $\sim\qty{75}{\percent}$ H\textsubscript{2}SO\textsubscript{4}--water mixture but also constrained the droplet size distribution \citep{hansenhovenier1974}. 
@@ -568,13 +574,11 @@ Combining \cref{eq:Delta_phi} and \cref{eq:sinphi}, we deduce:
 %
 As can be seen in \cref{fig:scatterplot}, for exoplanets in edge-on circular orbits, it will always be possible to observe the angular feature that is representative for Rayleigh scattering, as that occurs around quadrature ($\alpha=90^\circ$), while the rainbow angle (around $\alpha=40^\circ$) will only be accessible for a subset of exoplanets.
 
-%--------------------------------------------------------------------------
 % Figure 4
-%--------------------------------------------------------------------------
 \begin{figure*}
     \centering
     \includegraphics{figures/figure-4-scatterplot.pdf}
-    \script{create-scatterplot.py}
+    \script{create-figure-4-scatterplot.py}
     \caption{
         Scatter plot for the target star sample, showing stellar effective 
         temperatures and distances.
@@ -611,9 +615,7 @@ For an orbit with an inclination angle $i$, we can identify the following two re
     the orbital semi-major axis $a$. 
 \end{enumerate}
 
-%--------------------------------------------------------------------------
-% Figure 5
-%--------------------------------------------------------------------------
+% Old Figure 5
 %\begin{figure}
 %   \centering
 %   \includegraphics[width=0.99\columnwidth]{figures/figure-5-orb-grid.pdf}
@@ -629,10 +631,8 @@ For an orbit with an inclination angle $i$, we can identify the following two re
 %    }
 %    \label{fig:orb-grid}
 %\end{figure}
-%--------------------------------------------------------------------------
 
-Using \cref{eq:scattering_angle}, we deduce the following for inclined 
-circular orbits: 
+Using \cref{eq:scattering_angle}, we deduce the following for inclined circular orbits: 
 \begin{equation}
 \label{eq:Delta_phi_max}
     \Delta \varphi = 
@@ -669,13 +669,11 @@ distribution of the maximum and minimum accessible phase
 angles normalised to the total number of systems in the \hwo{} 
 target list for different values of the \IWA{}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%--------------------------------------------------------------------------
+% Figure 5
 \begin{figure*}%[t]
     \centering
-    \includegraphics[width=0.95\textwidth]{figures/figure-6-n-over-phase.pdf}
-    \script{plot_n_versus_phase.py}
+    \includegraphics[width=0.95\textwidth]{figures/figure-5-n-over-phase.pdf}
+    \script{create-figure-5-n-over-phase.py}
     \caption{
         The cumulative distributions of the most extreme phase angles accessible for different \IWA{} and for randomly inclined, circular orbits
         (solid lines) and randomly inclined, elliptical orbits (dashed lines).
@@ -788,22 +786,22 @@ The resulting contrast curves are shown in \cref{fig:contrasts} for
 three of the closest target stars: the G~dwarf $\alpha$~Cen~A, the K~dwarf 
 $\epsilon$~Eri, and the M~dwarf Lalande~21185.
 
-%--------------------------------------------------------------------------
-\begin{figure*}%[t]
+% Figure 6
+\begin{figure*}
    \centering
-   \includegraphics[width=0.99\textwidth]{figures/figure-7-contrast-over-separation_i=90.pdf}
-    \script{create-figure-7-contrast-over-separation.py}
-   \caption{
-    The contrast (Eq.~\ref{eq:contrast}) and orbital separation 
-    of an Earth-like planet with an ocean surface and patchy clouds 
-    along its orbit with an assumed inclination angle $i$ of \qty{90}{\degree} around $\alpha$~Cen~A, $\epsilon$~Eri, and Lalande~21185.
-    %
-    The solid, black line indicates the contrast in unpolarized light, 
-    with the contrast at quadrature marked by the black dot.
-    %
-    The polarized component is indicated by the coloured dots, with the colour representing the phase angle from quadrature.
-    %
-    The light grey dots show the contrasts at quadrature of the other targets in the star list, and the dashed lines indicate $1$, $2$ and $3$ times the \IWA{} for \hwo.
+    \includegraphics[width=0.99\textwidth]{figures/figure-6-contrast-over-separation_i=90.pdf}
+    \script{create-figure-6-contrast-over-separation.py}
+    \caption{
+        The contrast (Eq.~\ref{eq:contrast}) and orbital separation 
+        of an Earth-like planet with an ocean surface and patchy clouds 
+        along its orbit with an assumed inclination angle $i$ of \qty{90}{\degree} around $\alpha$~Cen~A, $\epsilon$~Eri, and Lalande~21185.
+        %
+        The solid, black line indicates the contrast in unpolarized light, 
+        with the contrast at quadrature marked by the black dot.
+        %
+        The polarized component is indicated by the coloured dots, with the colour representing the phase angle from quadrature.
+        %
+        The light grey dots show the contrasts at quadrature of the other targets in the star list, and the dashed lines indicate $1$, $2$ and $3$ times the \IWA{} for \hwo.
     }
     \label{fig:contrasts}
 \end{figure*}
@@ -932,15 +930,11 @@ It is not possible to predict how much the state of the art of coronagraphy will
 %
 However, when its design is being finalised, it will be important to consider both the accessible phase angles and contrast limits when deciding on the \IWA{} of the coronagraph, if these features are to be observed.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%--------------------------------------------------------------------------
-% Figure 8:
-%--------------------------------------------------------------------------
+% Figure 7: Yarn ball
 \begin{figure*}
     \centering
-    \includegraphics{figures/figure-9-yarnball.pdf}  
-    \script{create-figure-8-yarnball.py}
+    \includegraphics{figures/figure-7-yarnball.pdf}  
+    \script{create-figure-7-yarnball.py}
     \caption{
         Examples of the eccentric orbits generated for the stellar sample.
         %
@@ -955,15 +949,12 @@ However, when its design is being finalised, it will be important to consider bo
     }
     \label{fig:ball-o-yarn}
 \end{figure*}
-%--------------------------------------------------------------------------
 
-%--------------------------------------------------------------------------
-% Figure 9:
-%--------------------------------------------------------------------------
+% Figure 8
 \begin{figure*}
     \centering
-    \includegraphics{figures/figure-9-n-over-iwa.pdf}
-    \script{create-figure-9-n-over-iwa.py}
+    \includegraphics{figures/figure-8-n-over-iwa.pdf}
+    \script{create-figure-8-n-over-iwa.py}
     \caption{
         The number of systems for which key optical phenomena (Rayleigh scattering, rainbow, ocean glint, glories) would be observable as functions of the \IWA.
         %
