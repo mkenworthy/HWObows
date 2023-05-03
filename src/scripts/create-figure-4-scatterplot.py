@@ -40,7 +40,7 @@ if __name__ == "__main__":
     data = pd.read_csv(file_path, header=1)
 
     # Load the beta values
-    file_path = paths.data / "beta_max_3_lambda_over_d.csv"
+    file_path = paths.data / "phi_max_3_lambda_over_d.csv"
     beta_values = np.loadtxt(file_path)
 
     print("Done!")
