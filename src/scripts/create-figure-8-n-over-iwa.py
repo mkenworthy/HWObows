@@ -21,13 +21,22 @@ from utils.plotting import set_fontsize, CBF_COLORS
 from utils.constants import (
     ETA_EARTH,
     LAMBDA_OVER_D_IN_MAS,
-    SCATTERING_FEATURES,
+    # PHASE_ANGLES_OF_FEATURES as SCATTERING_FEATURES,  # breaks Rayleigh
 )
 
 
 # -----------------------------------------------------------------------------
 # MAIN CODE
 # -----------------------------------------------------------------------------
+
+# TODO: This should be imported from utils.constants, but it seems to break
+#   the plot for Rayleigh scattering. I'm not sure why.
+SCATTERING_FEATURES = {
+    "Rainbow": (127, 138, 158),
+    "Rayleigh": (90, 110, 130),
+    "Ocean Glint": (50, 30, 10),
+    "Glory": (10, 5, 0),
+}
 
 # Read in the target list
 df = pd.read_csv(paths.data / "2646_NASA_ExEP_Target_List_HWO_Table.csv")
