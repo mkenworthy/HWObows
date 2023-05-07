@@ -4,8 +4,6 @@ Define constants used in the scripts.
 
 import astropy.units as u
 
-d = 6.0  # diameter in m
-wavelength = 600e-9  # central wavelength in m
 
 # Assumed diameter of HWO
 DIAMETER = u.Quantity(6, u.m)
@@ -15,13 +13,19 @@ DIAMETER = u.Quantity(6, u.m)
 # Survey, Section I.3.1. Value originally from Bryson et al. (2021).
 ETA_EARTH = 0.24
 
-# For each scattering feature, define the start, peak, and end scattering
-# angle (in degrees)
-SCATTERING_FEATURES = {
-    "Rainbow": (127, 138, 158),
-    "Rayleigh": (90, 110, 130),
-    "Ocean Glint": (50, 30, 10),
-    "Glory": (10, 5, 0),
+# Define the start, peak, and end PHASE angle (in degrees) for the
+# different scattering features. See Table 2 in the paper.
+PHASE_ANGLES_OF_FEATURES = {
+    "Glory": (0, 5, 10),
+    "Rainbow": (22, 42, 63),
+    "Rayleigh": (50, 70, 110),
+    "Ocean Glint": (130, 150, 170),
+}
+
+# Define the start, peak, and end SCATTERING angle (in degrees)
+SCATTERING_ANGLES_OF_FEATURES = {
+    key: (180 - end, 180 - peak, 180 - start)
+    for key, (start, peak, end) in PHASE_ANGLES_OF_FEATURES.items()
 }
 
 # Assumed wavelength for the observations
@@ -34,6 +38,27 @@ with u.set_enabled_equivalencies(u.dimensionless_angles()):
 
 
 if __name__ == "__main__":
-    print(f'Telescope diameter is {d:3.1f} m')
-    print(f'Central wavelength is {wavelength * 1e9:5.1f} nm')
-    print("LAMBDA_OVER_D_IN_MAS:", LAMBDA_OVER_D_IN_MAS)
+
+    print("\nCONSTANTS USED IN THE SCRIPTS:\n")
+
+    print('Occurrence rate of rocky planets in the optimistic habitable zone:')
+    print(f'  ETA_EARTH = {ETA_EARTH:.2f}\n')
+
+    print('Assumed wavelength:')
+    print(f'  WAVELENGTH = {WAVELENGTH.to(u.nm):.2f}\n')
+
+    print('Assumed telescope diameter:')
+    print(f'  DIAMETER = {DIAMETER.to(u.m):.2f}\n')
+
+    print('lambda / D:')
+    print(f'  LAMBDA_OVER_D_IN_MAS = {LAMBDA_OVER_D_IN_MAS:.2f}\n')
+
+    print('SCATTERING_ANGLES_OF_FEATURES (start, peak, end; in degrees):')
+    for feature, (start, peak, end) in SCATTERING_ANGLES_OF_FEATURES.items():
+        print(f'  {feature}: ({start}, {peak}, {end}) degrees')
+    print()
+
+    print('PHASE_ANGLES_OF_FEATURES (start, peak, end; in degrees):')
+    for feature, (start, peak, end) in PHASE_ANGLES_OF_FEATURES.items():
+        print(f'  {feature}: ({start}, {peak}, {end}) degrees')
+    print()
