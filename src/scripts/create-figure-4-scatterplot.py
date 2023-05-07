@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from utils.constants import PHASE_ANGLES_OF_FEATURES
 from utils.plotting import set_fontsize
 from utils import paths
 
@@ -27,11 +28,11 @@ from utils import paths
 
 if __name__ == "__main__":
 
+    print("\nCREATE FIGURE 4: SCATTERPLOT\n")
+
     # -------------------------------------------------------------------------
     # Load the data
     # -------------------------------------------------------------------------
-
-    print("\nCREATE SCATTERPLOT\n")
 
     print("Loading data...", end=" ", flush=True)
 
@@ -65,17 +66,26 @@ if __name__ == "__main__":
         return cmap(norm(q))
 
     # Create a new figure
+    # These numbers where carefully hand-tuned to ensure that the output has
+    # exactly the right width (7 inches) for the paper when saved as a PDF.
     pad_inches = 0.025
-    fig, ax = plt.subplots(figsize=(7 - 2 * pad_inches, 3 - 2 * pad_inches))
+    fig, ax = plt.subplots(figsize=(7.02 - 2 * pad_inches, 2 - 2 * pad_inches))
 
     # Set up the font size
     set_fontsize(ax, 6)
 
-    # Add a a grid to the plot (many journals don't like this?)
-    # ax.grid(ls='--', c='k', alpha=0.2, zorder=0)
+    # Add a a grid to the plot
+    ax.grid(
+        ls='--',
+        alpha=0.3,
+        color='k',
+        lw=0.5,
+        dash_capstyle='round',
+        dashes=(0.05, 2.5),
+    )
 
     # Set labels and limits for the axes
-    ax.set_xlabel(r"Stellar distance (pc)")
+    ax.set_xlabel("Stellar distance (pc)")
     ax.set_ylabel("Stellar effective temperature (K)")
     ax.set_xlim(0, 25)
     ax.set_ylim(3500, 7500)
@@ -100,7 +110,7 @@ if __name__ == "__main__":
 
     # Manually construct a color bar and add it to the plot
     divider = make_axes_locatable(ax)
-    cbar_ax = divider.new_horizontal(size="4%", pad=0.05)
+    cbar_ax = divider.new_horizontal(size="6%", pad=0.05)
     cbar = mpl.colorbar.ColorbarBase(
         cbar_ax,
         cmap=cmap,
@@ -116,44 +126,24 @@ if __name__ == "__main__":
     cbar.ax.tick_params(labelsize=6)
 
     # Add labels to the colorbar
-    cbar.ax.text(
-        0.5,
-        10,
-        "Rayleigh",
-        rotation=90,
-        ha="center",
-        va="center",
-        fontsize=6,
-    )
-    cbar.ax.text(
-        0.5,
-        30,
-        "Glint",
-        rotation=90,
-        ha="center",
-        va="center",
-        fontsize=6,
-    )
-    cbar.ax.text(
-        0.5,
-        60,
-        "Rainbows",
-        rotation=90,
-        ha="center",
-        va="center",
-        fontsize=6,
-        color="white",
-    )
-    cbar.ax.text(
-        0.5,
-        80,
-        "Other",
-        rotation=90,
-        ha="center",
-        va="center",
-        fontsize=6,
-        color="white",
-    )
+    for label, color, x, key in [
+        ("Rayleigh", "black", 0.33, "Rayleigh"),
+        ("Rainbows", "white", 0.66, "Rainbow"),
+        ("Ocean glint", "white", 0.33, "Ocean Glint"),
+        ("Glories", "white", 0.66, "Glory"),
+    ]:
+        peak_phase_angle = PHASE_ANGLES_OF_FEATURES[key][1]
+        degrees_from_quadrature = np.abs(90 - peak_phase_angle)
+        cbar.ax.text(
+            x=x,
+            y=degrees_from_quadrature - 5,  # stay away from the edge
+            s=label,
+            rotation=90,
+            ha="center",
+            va="center",
+            fontsize=6,
+            color=color,
+        )
 
     # Manually create a legend for the markersize
     handles = [
@@ -187,7 +177,8 @@ if __name__ == "__main__":
         borderpad=1.25,
     )
 
-    print("Done!")
+    print("Done!", flush=True)
+    print(f"Saving plot to PDF...", end=" ", flush=True)
 
     # Save the figure
     fig.tight_layout(pad=0)
@@ -199,4 +190,4 @@ if __name__ == "__main__":
         pad_inches=pad_inches,
     )
 
-    print(f"Saved result to {file_path}!")
+    print("Done!", flush=True)
