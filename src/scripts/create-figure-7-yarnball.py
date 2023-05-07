@@ -1,5 +1,5 @@
 """
-Create Figure 8: The yarn ball plot with random eccentric orbits.
+Create Figure 7: The yarn ball plot with random eccentric orbits.
 """
 
 # -----------------------------------------------------------------------------
@@ -10,17 +10,17 @@ import time
 
 from astropy.io import ascii
 from matplotlib.patches import Circle
-from tqdm.auto import tqdm
 
 import astropy.units as u
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
+from utils.constants import RANDOM_SEED
 from utils.phases import kep3d
 from utils.samplers import sample_e, sample_i
 from utils.plotting import CBF_COLORS
-from utils import paths
+from utils.paths import data as data_dir, figures as figures_dir
 
 
 # -----------------------------------------------------------------------------
@@ -129,7 +129,6 @@ def prepare_ax(
 # -----------------------------------------------------------------------------
 
 if __name__ == "__main__":
-
     # -------------------------------------------------------------------------
     # Preliminaries
     # -------------------------------------------------------------------------
@@ -140,7 +139,7 @@ if __name__ == "__main__":
     script_start = time.time()
 
     # Set random seed (for reproducibility)
-    np.random.seed(42)
+    np.random.seed(RANDOM_SEED)
 
     # Use colorblind-friendly colors as default color cycle
     mpl.rcParams["axes.prop_cycle"] = mpl.cycler(color=CBF_COLORS)
@@ -148,14 +147,6 @@ if __name__ == "__main__":
     # -------------------------------------------------------------------------
     # Setup configuration for simulations and plot
     # -------------------------------------------------------------------------
-
-    # Whether or not to create a plot
-    # If False, only the output data of the simulations will be saved
-    create_plot = True
-
-    # Define grid size for plot
-    # We will make a plot with (grid_size, grid_size) panels
-    grid_size = 4
 
     # Number of orbits to plot for each star
     n_orbits_to_plot = 10
@@ -174,54 +165,40 @@ if __name__ == "__main__":
     print("Reading in target list...", end=" ", flush=True)
 
     file_name = "2646_NASA_ExEP_Target_List_HWO_Table.csv"
-    targets = ascii.read(paths.data / file_name, header_start=1, data_start=2)
+    targets = ascii.read(data_dir / file_name, header_start=1, data_start=2)
     n_stars = len(targets)
 
     print(f"Done! ({n_stars} stars in total)")
 
     # -------------------------------------------------------------------------
-    # Prepare plot (if desired)
+    # Create plot
     # -------------------------------------------------------------------------
 
-    if create_plot:
+    # Set up a new figure
+    pad_inches = 0.025
+    fig, axes = plt.subplots(
+        nrows=2,
+        ncols=4,
+        figsize=(7 - 2 * pad_inches, 3.5 - 2 * pad_inches),
+    )
 
-        # Set up a new figure
-        pad_inches = 0.025
-        fig, axes = plt.subplots(
-            nrows=grid_size,
-            ncols=grid_size,
-            figsize=(7 - 2 * pad_inches, 7 - 2 * pad_inches),
-        )
-
-        # Flatten the axes array for easier access
-        axes = axes.flatten()
-
-    # We only need this to make the linter happy
-    else:
-        pad_inches = None
-        fig = None
-        axes = None
-
-    # -------------------------------------------------------------------------
-    # Loop over targets and simulate orbits
-    # -------------------------------------------------------------------------
+    # Flatten the axes array for easier access
+    axes = axes.flatten()
 
     # Define inner working angles (IWA) in mas for computing beta_max
     iwas = np.array([convert_lod_to_mas(iwa) for iwa in [1, 2, 3, 4]])
 
     # Loop over all the stars in the table
-    print("Simulating orbits:", flush=True)
-    # noinspection PyTypeChecker
-    for n, target in tqdm(enumerate(targets), total=n_stars, ncols=80):
+    print("Simulating and plotting orbits...", end=" ", flush=True)
+    for n, target in enumerate(targets[: len(axes)]):
 
         # Define shortcuts
         star_name = str(target["hd_name"])
         distance = target["sy_dist"]
         hz = target["st_eei_angsep"]
 
-        # If we are creating a plot, set up the axes for this star
-        if create_plot and (n < len(axes)):
-            prepare_ax(axes[n], star_name, distance, hz)
+        # Set up the ax for this star
+        prepare_ax(axes[n], star_name, distance, hz)
 
         # Sample eccentricities and inclinations
         esamp = sample_e(n_planets)
@@ -229,7 +206,7 @@ if __name__ == "__main__":
         anodesamp = np.random.random_sample((n_planets,)) * 360 * u.deg
         wsamp = np.random.random_sample((n_planets,)) * 360 * u.deg
 
-        # Simulate the given number of planets (orbits) for this star
+        # Simulate and plot the given number of planets (orbits) for this star
         for m in np.arange(n_planets):
 
             # Set up our orbit
@@ -244,32 +221,24 @@ if __name__ == "__main__":
             anode = anodesamp[m]
 
             # Plot some orbits (if desired)
-            if create_plot and (n < len(axes)) and (m < n_orbits_to_plot):
-                epochs = np.linspace(tperi, tperi + P, 100, endpoint=True)
-                _, _, Xorb, Yorb, Zorb, _, _, _ = kep3d(
-                    epochs, P, tperi, a, e, i, w, anode
-                )
-                axes[n].plot(Xorb, Yorb)
+            epochs = np.linspace(tperi, tperi + P, 100, endpoint=True)
+            _, _, Xorb, Yorb, Zorb, _, _, _ = kep3d(
+                epochs, P, tperi, a, e, i, w, anode
+            )
+            axes[n].plot(Xorb, Yorb)
 
-    print()
+    print("Done!", flush=True)
+    print("Saving plot...", end=" ", flush=True)
 
-    # -------------------------------------------------------------------------
-    # Save results
-    # -------------------------------------------------------------------------
+    fig.tight_layout(pad=0)
+    file_path = figures_dir / "figure-7-yarnball.pdf"
+    plt.savefig(
+        file_path,
+        bbox_inches="tight",
+        pad_inches=pad_inches,
+    )
 
-    if create_plot:
-
-        print('Saving plot...', end=' ', flush=True)
-
-        fig.tight_layout(pad=0)
-        file_path = paths.figures / "figure-7-yarnball.pdf"
-        plt.savefig(
-            file_path,
-            bbox_inches="tight",
-            pad_inches=pad_inches,
-        )
-
-        print('Done!')
+    print("Done!")
 
     # -------------------------------------------------------------------------
     # Postliminaries
