@@ -19,22 +19,12 @@ from utils.paths import (
     figures as figures_dir,
     data as data_dir,
 )
-# from utils.constants import SCATTERING_FEATURES
+from utils.constants import PHASE_ANGLES_OF_FEATURES
 
 
 # -----------------------------------------------------------------------------
 # AUXILIARY FUNCTIONS
 # -----------------------------------------------------------------------------
-
-# TODO: This should be imported from utils.constants, but there is still
-#   something off about the angles (maybe scattering vs phase angle?)
-SCATTERING_FEATURES = {
-    "Ocean Glint": (120, 150, 170),
-    "Rayleigh": (50, 70, 90),
-    "Rainbow": (22, 42, 53),
-    "Glory": (0, 5, 10),
-}
-
 
 def draw_phase(
     phase: float,
@@ -42,6 +32,11 @@ def draw_phase(
     radius: float,
     ax: plt.Axes,
 ) -> None:
+    """
+    Auxiliary function to draw an illustration of the planet phase.
+    """
+
+    # Define colors of the illuminated / dark park
     LIGHT = '#EEEEEE'
     DARK = '#333333'
 
@@ -210,7 +205,10 @@ if __name__ == '__main__':
     axes[0].set_aspect('equal', 'box')
     axes[0].set_xlabel('Phase angle (in degrees)', fontsize=6)
     axes[0].set_xlim(0, 180)
-    axes[0].set_xticks(np.arange(0, 181, 30))
+    axes[0].set_xticks(np.arange(0, 181, 10))
+    axes[0].set_xticklabels(
+        [x if x % 30 == 0 else "" for x in np.arange(0, 181, 10)]
+    )
     axes[0].set_ylim(-5, 5)
     axes[0].set_yticks([])
     axes[0].spines[['left', 'right', 'bottom']].set_visible(False)
@@ -266,12 +264,12 @@ if __name__ == '__main__':
         dashes=(0.05, 2.5),
     )
     axes[1].set_xlim(0, 180)
-    axes[1].set_xticks(np.arange(0, 181, 30))
+    axes[1].set_xticks(np.arange(0, 181, 10))
     axes[1].set_ylabel('Normalised polarized flux', labelpad=10)
     axes[1].set_ylim(-0.005, 0.065)
     axes[1].spines[['bottom']].set_visible(False)
     axes[1].tick_params(
-        bottom=True,
+        bottom=False,
         top=True,
         labelbottom=False,
         labeltop=False,
@@ -286,11 +284,13 @@ if __name__ == '__main__':
 
     print("Creating bottom panel...", end=' ', flush=True)
 
+    # Note: axes[2] displays the scattering angle, but under the hood, plotting
+    # uses the phase angle (hence we need PHASE_ANGLES_OF_FEATURES here).
     for label, positions, file_name in (
-        ("Glories", SCATTERING_FEATURES['Glory'], 'glory.png'),
-        ("Ocean Glint", SCATTERING_FEATURES['Ocean Glint'], 'glint.jpg'),
-        ("Rainbows", SCATTERING_FEATURES['Rainbow'], 'rainbow.jpg'),
-        ("Rayleigh", SCATTERING_FEATURES['Rayleigh'], 'rayleigh.jpg'),
+        ("Glories", PHASE_ANGLES_OF_FEATURES['Glory'], 'glory.png'),
+        ("Ocean Glint", PHASE_ANGLES_OF_FEATURES['Ocean Glint'], 'glint.jpg'),
+        ("Rainbows", PHASE_ANGLES_OF_FEATURES['Rainbow'], 'rainbow.jpg'),
+        ("Rayleigh", PHASE_ANGLES_OF_FEATURES['Rayleigh'], 'rayleigh.jpg'),
     ):
         img = plt.imread(static_dir / "bott-plot" / file_name)
         axes[2].imshow(X=img, extent=[positions[0], positions[2], 0, 10])
@@ -310,8 +310,10 @@ if __name__ == '__main__':
 
     axes[2].set_xlabel('Scattering angle (in degrees)')
     axes[2].set_xlim(0, 180)
-    axes[2].set_xticks(np.arange(0, 181, 30))
-    axes[2].set_xticklabels(np.arange(0, 181, 30)[::-1])
+    axes[2].set_xticks(np.arange(0, 181, 10))
+    axes[2].set_xticklabels(
+        [x if x % 30 == 0 else "" for x in np.arange(0, 181, 10)[::-1]]
+    )
     axes[2].set_ylim(0, 10)
     axes[2].set_yticks([])
     axes[2].spines[['left', 'right']].set_visible(False)
