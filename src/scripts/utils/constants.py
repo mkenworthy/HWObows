@@ -31,10 +31,12 @@ SCATTERING_ANGLES_OF_FEATURES = {
 # Assumed wavelength for the observations
 WAVELENGTH = u.Quantity(600, u.nm)
 
-
 # Compute lambda / D in mas
 with u.set_enabled_equivalencies(u.dimensionless_angles()):
     LAMBDA_OVER_D_IN_MAS = (WAVELENGTH / DIAMETER).to(u.mas).value
+
+# Random seed
+RANDOM_SEED = 42
 
 
 if __name__ == "__main__":
@@ -62,3 +64,6 @@ if __name__ == "__main__":
     for feature, (start, peak, end) in PHASE_ANGLES_OF_FEATURES.items():
         print(f'  {feature}: ({start}, {peak}, {end}) degrees')
     print()
+
+    print('RANDOM_SEED:')
+    print(f'  RANDOM_SEED = {RANDOM_SEED}\n')

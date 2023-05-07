@@ -11,6 +11,7 @@ from tqdm import tqdm
 import astropy.units as u
 import numpy as np
 
+from utils.constants import RANDOM_SEED
 from utils.phases import kep3d, xyztoscatter
 from utils.samplers import sample_e, sample_i
 from utils import paths
@@ -88,7 +89,7 @@ if __name__ == "__main__":
     print("\nSIMULATE ELLIPTICAL ORBITS (IN PARALLEL)\n")
 
     # Fix the random seed to ensure reproducibility
-    np.random.seed(42)
+    np.random.seed(RANDOM_SEED)
 
     # Define number of planet orbits to simulate for each star and number of
     # epochs to sample along each orbit ("resolution of the orbit")
