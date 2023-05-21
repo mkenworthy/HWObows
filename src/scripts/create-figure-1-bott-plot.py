@@ -7,6 +7,7 @@ Create Figure 1: The "Bott plot".
 # -----------------------------------------------------------------------------
 
 from matplotlib.patches import Circle, Polygon, Ellipse
+from matplotlib.ticker import StrMethodFormatter
 from scipy.interpolate import interp1d
 
 import h5py
@@ -204,8 +205,8 @@ if __name__ == '__main__':
     for phase in np.arange(0, 181, 30):
         draw_phase(phase=phase, x_offset=phase, radius=3, ax=axes[0])
 
-    ax.set_aspect('equal', 'box')
-    ax.set_xlabel('Phase angle (in degrees)', fontsize=6)
+    ax.set_aspect("equal", "box")
+    ax.set_xlabel(r"Phase angle $\alpha$ (in degrees)", fontsize=6)
     ax.set_xlim(0, 180)
     ax.set_xticks(np.arange(0, 181, 10))
     ax.set_xticklabels(
@@ -246,6 +247,7 @@ if __name__ == '__main__':
             labeltop=False,
             direction='inout',
         )
+        ax.yaxis.set_major_formatter(StrMethodFormatter("{x:.2f}"))
 
     # Define grid for interpolating curves to a "smooth" line
     grid = np.linspace(0, 180, 1800)
@@ -278,7 +280,7 @@ if __name__ == '__main__':
             color=color,
         )
 
-    ax.set_ylabel('Total flux (in arbitrary units)', labelpad=10)
+    ax.set_ylabel('Normalised total flux', labelpad=10)
     ax.set_ylim(-0.03, 0.43)
 
     print("Done!")
@@ -331,7 +333,7 @@ if __name__ == '__main__':
             zorder=1,
         )
 
-    ax.set_ylabel('Normalised polarized flux', labelpad=10)
+    ax.set_ylabel('Normalised linearly polarized flux', labelpad=10)
     ax.set_ylim(-0.005, 0.065)
 
     print("Done!")
@@ -368,7 +370,7 @@ if __name__ == '__main__':
             ),
         )
 
-    ax.set_xlabel('Scattering angle (in degrees)')
+    ax.set_xlabel(r'Scattering angle $\varphi$ (in degrees)')
     ax.set_xlim(0, 180)
     ax.set_xticks(np.arange(0, 181, 10))
     ax.set_xticklabels(
