@@ -304,17 +304,15 @@ Aside from detecting ocean glint, the presence of surface water on Earth-like ex
     \includegraphics{figures/figure-1-bott-plot.pdf}
     \script{create-figure-1-bott-plot.py}
     \caption{
-        The phase curves of the normalized linearly polarized flux of a cloudy planet with a wavy ocean surface and an Earth-like atmosphere in an edge-on orbit; adapted from \citet{treesandstam2019}.  
-        %
-        The wind speed over the ocean, which determines the wave height \citep[][]{CoxMunk1954}, is \qty{7}{\meter\per\second}.
-        %
-        The clouds consist of spherical water droplets.
-        %
-        The cloud coverage fraction is 0.5 and while the cloud pattern is patchy, the glint is always cloud-free. 
-        %
-        The fluxes are normalized such that the total (unpolarized + polarized) flux equals the planet's geometric albedo at phase angle $\alpha = \qty{0}{\degree}$ (scattering angle $\varphi = \qty{180}{\degree}$).
-        %
-        Below the plot, we show the scattering angles of glories, rainbows, Rayleigh scattering, and ocean glint. Note that the features in the actual curves partly overlap with each other.
+        Phase curves of the normalised total and the normalised linearly polarised flux of a cloudy planet with a wavy ocean surface and an Earth-like atmosphere in an edge-on orbit (adapted from \citealt{treesandstam2019}).  
+        The wind speed over the ocean---which determines the wave height \citep{CoxMunk1954}---is \qty{7}{\meter\per\second}, and the clouds consist of spherical water droplets.
+        The cloud coverage fraction is 0.5, and while the cloud pattern is patchy, the glint is always cloud-free. 
+        The fluxes are normalised such that the total (unpolarised + polarised) flux equals the planet's geometric albedo at phase angle $\alpha = \qty{0}{\degree}$.
+        In the bottom panel, we illustrate the scattering angle ranges of glories, rainbows, Rayleigh scattering, and ocean glint. 
+        Note that the features in the actual curves partly overlap with each other.
+        The glory illustration is taken from \citet{Zakovryashin_2020}; all other illustrations are from \href{https://unsplash.com}{unsplash.com} [\href{https://unsplash.com/photos/YWL4dqqiRdk}{1}, \href{https://unsplash.com/photos/BgFOMcg4HNs}{2}, \href{https://unsplash.com/photos/9YdePM6BrO4}{3}].
+        This figure is best viewed in colour.
+        \looseness=-1
     }
     \label{fig:bottplot}
 \end{figure*}
@@ -350,13 +348,13 @@ The glory can allow further characterization of condensates as its angle and sha
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Habitable Worlds Observatory}
 
-The National Academy of Sciences Astronomy \& Astrophysics 2020 Decadal Survey (Astro2020) \citep{decadal} recommended the first in a new \enquote{Great Observatories} program a telescope with the capability to detect signatures of habitability on about 25 HZ planets.
+The National Academy of Sciences Astronomy \& Astrophysics 2020 Decadal Survey \citep[Astro2020;][]{decadal} recommended the first in a new \enquote{Great Observatories} program a telescope with the capability to detect signatures of habitability on about 25 HZ planets.
 %
 This requires an instrument with a coronagraph capable of high-contrast imaging and low-resolution spectroscopy at optical to near-infrared wavelengths. 
 %
 The precursor technology recommended by the survey lists \enquote{direct imaging to probe polarized ocean glint on terrestrial planets} as a priority capability \citep[Box E.1 in][]{decadal} for ground and space-based observatories.
 %
-Following the release of this report, NASA recently announced the start of the development of the Habitable Worlds Observatory (hereafter \enquote{\HWO}).
+Following the release of this report, NASA recently announced the start of the development of the Habitable Worlds Observatory (hereafter \enquote{\HWO{}}).
 %
 The performance and characteristics (on- or off-axis, diameter, type of segmentation, polarimetry or photometry, and coronagraph, \IWA) of \HWO will significantly impact the expected exo-Earth yield \citep{Stark2019_exoplanetyield} and are still to be determined.
 %
@@ -403,7 +401,7 @@ We present and discuss our results in \cref{sec:3}, and conclude in \cref{sec:4}
 \section{Methods}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\HWO and its stellar sample}
+\subsection{Target list}
 \label{subsec:2.1}
 
 A preliminary target list of nearby stars (maximum distance \qty{25}{\parsec}) around which \HWO may search for habitable rocky planets, assuming a \qty{6}{\meter} telescope, has been compiled: the \emph{NASA Exoplanet Exploration Program's Mission Star List for the Habitable Worlds Observatory}.%
@@ -533,7 +531,7 @@ As can be seen in \cref{fig:scatterplot}, for exoplanets in edge-on circular orb
 \subsubsection{Circular, inclined orbits}
 
 Most planets are not in edge-on orbits as seen from Earth.
-For an orbit with an inclination angle $i$ ($i=\qty{0}{\degree}$ is face-on), we can identify the following two regimes:
+For an orbit with an inclination angle $i$ (where $i=\qty{0}{\degree}$ is face-on), we can identify the following two regimes:
 \begin{enumerate}
     \item The coronagraph does not obscure any part of the sky-projected orbit: 
     the maximum phase angle coverage depends solely on $i$. 
@@ -546,8 +544,8 @@ The range of accessible phase angles is then
 \label{eq:Delta_phi_max}
     \Delta \alpha = 
     \begin{cases}
-        2 i & \textrm{for} \cos(i) > \frac{\mathrm{IWA}\; d_* }{a} \\ 
-        2 \cos^{-1}\left(\dfrac{\mathrm{IWA}\cdot d_* }{a}\right) & \textrm{for} \cos(i) < \frac{\mathrm{IWA}\; d_* }{a}
+        2 i & \textrm{for} \cos(i) > \frac{\mathrm{IWA} \cdot d_* }{a} \\ 
+        2 \cos^{-1}\left(\dfrac{\mathrm{IWA} \cdot d_* }{a}\right) & \textrm{for} \cos(i) < \frac{\mathrm{IWA} \cdot d_* }{a}
     \end{cases} \,
 \end{equation}
 
@@ -599,8 +597,6 @@ The solid lines in \cref{fig:betaallofit} show the cumulative distribution of th
         Each plot shows 10 examples of orbits randomly drawn for each star.
         The orbits are scaled to ensure an Earth-like incident flux. 
         The concentric, dashed circles indicate inner working angles of \num{20.6}, \num{41.3}, \num{61.9}, and \qty{82.5}{\mas}.
-        %, corresponding to 1, 2, 3, and 4\,$\lambda / D$, respectively (assuming $\lambda = \qty{600}{\nano\meter}$ and $D = \qty{6}{\meter}$).
-        %
         Each system has been scaled such that its HZ has the same radius, hence the variation in the values of the \IWA{}s compared to the orbits.
         It is clear that the \IWA can significantly affect the range of observable phases angles for each orbit.
     }
@@ -625,6 +621,7 @@ We then calculate the minimum and maximum accessible phase angles for \IWA{}s of
 The dashed lines in \cref{fig:betaallofit} show the normalised cumulative distribution of the accessible phase angles for each value of the \IWA for eccentric orbits. 
 %
 We also calculate which target planets would be observable at the phase angles where ocean glint, the rainbow, or the Rayleigh peak occur.
+\looseness=-1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Simulating contrast curves}
@@ -632,15 +629,11 @@ We also calculate which target planets would be observable at the phase angles w
 
 A second parameter that is crucial for detecting angular features like rainbows and ocean glint on Earth-like exoplanets is the contrast, that is, the planet/star flux ratio. 
 %
-While not the main focus of this paper, we note that the total and polarized flux contrasts depend on the phase angle, due to a combination of the changing illumination fraction of the observable planetary disk and non-isotropic reflection by the planet.
+While contrast is not the main focus of this paper, we note that the total and polarized flux contrasts depend on the phase angle, due to a combination of the changing illumination fraction of the observable planetary disk and non-isotropic reflection by the planet.
 %
-We present some simplified examples in \cref{fig:contrasts}. 
+For the contrast calculations we start with the NASA Exoplanet Exploration Program’s Mission Star List for \HWO, which includes for every star an estimated contrast for an Earth-twin in the habitable zone.
 %
-These calculations are by no means complete or exact, given the many variables that go into the modelling of reflected total and polarized fluxes of Earth-like exoplanets \citep{treesandstam2019,trees2022}.
-
-The NASA Exoplanet Exploration Program’s Mission Star List for \HWO includes for every star an estimated contrast for an Earth-twin in the habitable zone.
-%
-The contrast is given by \citep[see, e.g.,][]{2023A&A...671A.165M}
+The contrast is given by \citep[e.g.,][]{2023A&A...671A.165M}
 \begin{equation}
     C(\alpha) 
     = F_p(\alpha) / F_* 
@@ -649,13 +642,18 @@ The contrast is given by \citep[see, e.g.,][]{2023A&A...671A.165M}
 \end{equation}
 where $A_\mathrm{G}$ is the planet's geometric albedo, $R_p$ its radius, $\phi(\alpha)$ is the phase function at phase angle $\alpha$ (normalized to \num{1.0} at full phase, thus at $\alpha=\qty{0}{\degree}$), and $a$ is the distance between the planet and its host star.
 %
-The assumptions that went into the contrast estimations for \HWO are that $a$ is constant (the orbits are circular), the geometric albedo $A_\mathrm{G}$ is \num{0.2}, and that the phase function $\phi(\alpha)$ can be described by a Lambertian phase function \citep{Russell1916}, which assumes isotropic reflection by the planet. 
+The contrast estimations for \HWO assumed circular orbits and a Lambertian phase function  \citep{Russell1916} with $A_\mathrm{G}=0.2$. 
 %
-We assume that the calculated contrasts in the list correspond to the reflected flux at quadrature and use \cref{eq:contrast} to calculate the reflected light fraction at $\alpha=\qty{90}{\degree}$ as $C(90) = \qty{6.37}{\percent}$.
+For a more accurate representation of the contrast as function of separation we can update the phase function with the models shown in Fig. \Cref{fig:bottplot} from \citet{treesandstam2019}. 
+%
+To update the phase function we will first correct for the reflected flux at quadrature and then map the normalise total flux and polarized flux as function of separation.
 
-We use the phase functions at $\qty{670}{\nano\meter}$ from \citet{treesandstam2019} for an Earth-like planet with an ocean surface, a wind-speed of $\qty{7}{\meter\per\second}$, and patchy liquid water clouds. 
 %
-We correct the Star List contrast by dividing by the $6.37\%$ reflected light fraction of the Lambertian phase function and multiplying by the reflected light fraction of the \citet{treesandstam2019} model of $5.64\%$.
+We assume that the calculated contrasts in the Star List for \HWO correspond to the reflected flux at quadrature and use \cref{eq:contrast} to calculate the reflected light fraction at $\alpha=\qty{90}{\degree}$ as $C(90) = \qty{6.37}{\percent}$. 
+%
+In addition, we calculate the reflected light fraction at quadrature with the updated model of \citet{treesandstam2019}, which assumes an Earth-like planet with an ocean surface, a wind-speed of $\qty{7}{\meter\per\second}$, and patchy liquid water clouds, observed at $\qty{670}{\nano\meter}$.
+%
+We correct the star list contrast by dividing by the \qty{6.37}{\percent} reflected light fraction of the Lambertian phase function and multiplying by the reflected light fraction of the updated model. 
 %
 We map the orbital phase for circular orbits to the phase angle and on-sky separation, given an inclination $i$ of \qty{90}{\degree}. 
 %
@@ -663,7 +661,9 @@ Together, they give the reflected light contrast as a function of separation for
 %
 We multiply this flux with the degree of polarization to obtain the polarized contrast.
 %
-\cref{fig:contrasts} shows the resulting contrast curves for three of the closest target stars: the M~dwarf Lalande~21185, the K~dwarf $\epsilon$~Eri, and the G~dwarf $\alpha$~Cen~A
+\Cref{fig:contrasts} shows the resulting contrast curves for three of the closest target stars: the M~dwarf Lalande~21185, the K~dwarf $\epsilon$~Eri, and the G~dwarf $\alpha$~Cen~A
+%
+These calculations are by no means complete or exact, given the many variables that go into the modelling of reflected total and polarized fluxes of Earth-like exoplanets \citep{treesandstam2019,trees2022}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Figure 6
@@ -694,7 +694,7 @@ We multiply this flux with the degree of polarization to obtain the polarized co
 \subsection{The effect of eccentricity}
 \label{sec:result_eccentricity}
 
-As shown in \cref{fig:betaallofit}, allowing for eccentric orbits increases the number of systems that can be observed at each phase angle (notably for the red and purple lines). 
+As shown in \cref{fig:betaallofit}, a realistic eccentricity distribution increases the number of systems that can be observed at each phase angle (notably for the red and purple lines). 
 %
 This is because eccentric planets spend more time at orbital separations greater than their semi-major axis, and hence are more likely to peek out from behind the coronagraph \IWA and extreme orbital phases (albeit with worse contrast due to the greater star-planet separation).
 %
@@ -808,7 +808,7 @@ A benefit of observing the polarized reflected light is that a coronagraph is no
 
 The desire to detect and characterize a large number of Earth-like exoplanets, and the intrinsic occurrence of such planets around different stellar spectral types, will drive the choice of coronagraphic \IWA for \HWO. 
 %
-Assuming a \qty{62}{\mas} \IWA, {\color{red}{!!}} $\sim\qty{-1}{\percent}$ of planetary systems in the NASA Exoplanet Exploration Program's Mission Star List for \HWO would be observable at phases angles where angular features due to Rayleigh scattering show up.
+Assuming a \qty{62}{\mas} \IWA, {\color{red}{!!}} $\sim\qty{-1}{\percent}$ of planetary systems in the NASA Exoplanet Exploration Program's Mission Star List for \HWO would be observable at phases angles with maximal polarization from Rayleigh scattering.
 %
 The rainbow of light that is scattered in droplets of water clouds and ocean glint, both of which indicate the presence of a water cycle which provides additional context to the habitability of an exoplanet, would be accessible in {\color{red}{!!}} $\sim\qty{-1}{\percent}$ and {\color{red}{!!}} $\sim\qty{-1}{\percent}$ of systems respectively.
 %
@@ -820,12 +820,11 @@ To observe more scattering features in more systems, \HWO' would need to have a 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Software/Data Availability}
 
-\todo{check the naming and references/footnotes for this list throughout the paper}
 The NASA ExEP target list containing the data used for these simulations is  available online.%
 \footnote{\url{https://exoplanets.nasa.gov/exep/science-overview/}}
 %
-This work has made use of \textsf{numpy}
- \citep{NumPy2020}, \textsf{scipy} \citep{scipy_2020}, \textsf{matplotlib} \citep{matplotlib2007}, and \textsf{astropy},\footnote{\url{https://www.astropy.org}} a community-developed core Python package and an ecosystem of tools and resources for astronomy \citep{astropy:2013, astropy:2018, astropy:2022}.
+This work has made use of \textsf{numpy} \citep{NumPy2020}, \textsf{scipy} \citep{scipy_2020}, \textsf{matplotlib} \citep{matplotlib2007}, and \textsf{astropy}\footnote{\url{https://www.astropy.org}}, a community-developed core Python package and an ecosystem of tools and resources for astronomy \citep{astropy:2013, astropy:2018, astropy:2022}.
+The colourblind-friendly colour schemes used in this paper were taken from \citet{Petroff_2021}.
 
 This paper has been formatted in the \texttt{showyourwork!} framework \citep{Luger2021}, which includes the computer code to reproduce the figures, including the associated data, within an online repository to make it reproducible.%
 \footnote{\url{https://github.com/mkenworthy/HWObows/}}
@@ -862,8 +861,6 @@ SYH was funded by the generous support of the Heising-Simons Foundation.
 RJP is supported by NASA under award number 80GSFC21M0002.
 %
 OHS acknowledges funding from the Direction Scientifique Générale de l'ONERA (ARE Alioth).
-%
-%This paper has been formatted in the {\tt showyourwork!} framework, which includes the computer code to reproduce the figures, including the associated data, within an online repository to make it reproducible \citep{Luger2021}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % References
