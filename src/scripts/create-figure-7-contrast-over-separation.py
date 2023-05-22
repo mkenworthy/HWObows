@@ -16,8 +16,11 @@ import pandas as pd
 from matplotlib.colorbar import Colorbar
 from scipy import interpolate
 
-from utils import paths
 from utils.constants import SCATTERING_ANGLES_OF_FEATURES, DIAMETER
+from utils.paths import (
+    figures as figures_dir,
+    data as data_dir,
+)
 from utils.plotting import set_fontsize
 
 
@@ -36,7 +39,7 @@ if __name__ == "__main__":
     print("Loading data...", end=" ", flush=True)
 
     # Read in target list
-    file_path = paths.data / "2646_NASA_ExEP_Target_List_HWO_Table.csv"
+    file_path = data_dir / "2646_NASA_ExEP_Target_List_HWO_Table.csv"
     targets = pd.read_csv(file_path, header=[0, 1])
 
     # Select habitable zone values and target names
@@ -46,7 +49,8 @@ if __name__ == "__main__":
     # Read in data from Trees and Stam (2019) and extract I, Q, P, and phases.
     # Note: We add 2*std to make the values consistent with Figure 2.
     # Note: The index [3] corresponds to the 670 nm band.
-    with h5py.File(paths.data / "v7_fc50.h5", "r") as hdf_file:
+    file_path = data_dir / "v7_fc50.h5"
+    with h5py.File(file_path, "r") as hdf_file:
         I_data = np.array(hdf_file["I"])[3] + 2 * np.array(hdf_file["Istd"])[3]
         Q_data = (
             np.abs(np.array(hdf_file["Q"]))[3]
@@ -271,7 +275,7 @@ if __name__ == "__main__":
 
     print(f"Saving plot to PDF...", end=" ", flush=True)
     file_name = "figure-7-contrast-over-separation.pdf"
-    file_path = paths.figures / file_name
+    file_path = figures_dir / file_name
     fig.savefig(
         file_path,
         dpi=600,
