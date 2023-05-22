@@ -1,5 +1,5 @@
 """
-Simulate 1,000 elliptical orbits for every planet in the target list.
+Simulate 1,000 eccentric orbits for every planet in the target list.
 """
 
 from warnings import catch_warnings, filterwarnings
@@ -30,7 +30,7 @@ def simulate_orbit(
     anode: float,
 ) -> tuple[np.ndarray, np.ndarray]:
     """
-    Simulate an elliptical orbit and return the minimum and maximum
+    Simulate an eccentric orbit and return the minimum and maximum
     scattering angles for each IWA.
 
     Args:
@@ -86,7 +86,7 @@ def simulate_orbit(
 
 if __name__ == "__main__":
 
-    print("\nSIMULATE ELLIPTICAL ORBITS (IN PARALLEL)\n")
+    print("\nSIMULATE ECCENTRIC ORBITS (IN PARALLEL)\n")
 
     # Fix the random seed to ensure reproducibility
     np.random.seed(RANDOM_SEED)
@@ -100,31 +100,11 @@ if __name__ == "__main__":
     print(f"Number of epochs to sample:   {n_epochs:,}\n")
 
     # Select values for the inner working angle (IWA) to simulate (in mas)
-    try:
-        op = snakemake.params["whichsim"]
-    except NameError:
-        print(80 * "-")
-        print(
-            "WARNING: This script is intended to be run via snakemake! \n"
-            "Since no value was provided for 'whichsim', the default 'iwa' "
-            "will be used."
-        )
-        print(80 * "-" + "\n")
-        op = "iwa"
-
-    if op == "iwa":
-        iwa = np.array([21, 41, 62, 83])
-        tag = ""
-    elif op == "iwa2":
-        iwa = np.linspace(20, 120, 5)
-        tag = "2"
-    elif op == "iwa3":
-        iwa = np.linspace(20, 120, 20)
-        tag = "3"
-    else:
-        raise ValueError(f"Invalid value for 'whichsim': {op}")
-    print(f'IWA option: "{op}"')
-    print(f"IWA values: {iwa} mas\n")
+    # We simulate IWAs of 20 to 120 mas in steps of 1 mas (101 values) so that
+    # we can use them both for Figure 5 and Figure 8.
+    iwa = np.arange(20, 121)
+    with np.printoptions(threshold=1):
+        print(f"IWA values (in mas): {iwa}\n")
 
     # Read in the stellar target list
     print("Reading in stellar target list...", end=" ")
@@ -166,7 +146,7 @@ if __name__ == "__main__":
             betamin[idx_orbit, idx_star, :] = scatmin
             betamax[idx_orbit, idx_star, :] = scatmax
 
-    file_name = f"iwa_all{tag}.npz"
+    file_name = "eccentric-orbits.npz"
     print(f"\nSaving data to file {file_name}...", end=" ")
     np.savez_compressed(
         file=paths.data / file_name,
