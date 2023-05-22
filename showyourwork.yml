@@ -51,11 +51,11 @@ dependencies:
   src/scripts/create-figure-5-n-over-phase.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/iwa_all.npz
-  src/scripts/create-figure-6-contrast-over-separation.py:
+  src/scripts/create-figure-6-yarnball.py:
+    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+  src/scripts/create-figure-7-contrast-over-separation.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/Reflected_light_curves_Trees_Stam_2019.txt
-  src/scripts/create-figure-7-yarnball.py:
-    - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
   src/scripts/create-figure-8-n-over-iwa.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/iwa_all3.npz
