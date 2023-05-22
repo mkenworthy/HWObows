@@ -55,7 +55,7 @@ dependencies:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
   src/scripts/create-figure-7-contrast-over-separation.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-    - src/data/Reflected_light_curves_Trees_Stam_2019.txt
+    - src/data/v7_fc50.h5
   src/scripts/create-figure-8-n-over-iwa.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
     - src/data/iwa_all3.npz
