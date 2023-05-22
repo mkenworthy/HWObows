@@ -7,6 +7,7 @@ Create Figure 1: The "Bott plot".
 # -----------------------------------------------------------------------------
 
 from matplotlib.patches import Circle, Polygon, Ellipse
+from matplotlib.ticker import StrMethodFormatter
 from scipy.interpolate import interp1d
 
 import h5py
@@ -182,9 +183,9 @@ if __name__ == '__main__':
     # >>> identify -verbose figure-1-bott-plot.pdf | grep "Print size"
     pad_inches = 0.025
     fig, axes = plt.subplots(
-        nrows=3,
-        figsize=(8.15 - 2 * pad_inches, 4.2 - 2 * pad_inches),
-        height_ratios=[1, 6, 1],
+        nrows=4,
+        figsize=(8.15 - 2 * pad_inches, 5.5 - 2 * pad_inches),
+        height_ratios=[1, 4.5, 4.5, 1],
     )
 
     # Set font size for all axes
@@ -194,95 +195,156 @@ if __name__ == '__main__':
     print("Done!")
 
     # -------------------------------------------------------------------------
-    # Top panel: Phase illustations
+    # First panel: Phase illustations
     # -------------------------------------------------------------------------
 
-    print("Creating top panel...", end=' ', flush=True)
+    print("Creating first panel...", end=' ', flush=True)
+
+    ax = axes[0]
 
     for phase in np.arange(0, 181, 30):
         draw_phase(phase=phase, x_offset=phase, radius=3, ax=axes[0])
 
-    axes[0].set_aspect('equal', 'box')
-    axes[0].set_xlabel('Phase angle (in degrees)', fontsize=6)
-    axes[0].set_xlim(0, 180)
-    axes[0].set_xticks(np.arange(0, 181, 10))
-    axes[0].set_xticklabels(
+    ax.set_aspect("equal", "box")
+    ax.set_xlabel(r"Phase angle $\alpha$ (in degrees)", fontsize=6)
+    ax.set_xlim(0, 180)
+    ax.set_xticks(np.arange(0, 181, 10))
+    ax.set_xticklabels(
         [x if x % 30 == 0 else "" for x in np.arange(0, 181, 10)]
     )
-    axes[0].set_ylim(-5, 5)
-    axes[0].set_yticks([])
-    axes[0].spines[['left', 'right', 'bottom']].set_visible(False)
-    axes[0].text(x=-5, y=0, s='Phase:', va='center', ha='right', fontsize=6)
-    axes[0].tick_params(axis='both', which='major',  labelsize=6)
-    axes[0].xaxis.set_label_position('top')
-    axes[0].xaxis.tick_top()
-    axes[0].yaxis.set_tick_params(width=0)
+    ax.set_ylim(-5, 5)
+    ax.set_yticks([])
+    ax.spines[['left', 'right', 'bottom']].set_visible(False)
+    ax.text(x=-5, y=0, s='Phase:', va='center', ha='right', fontsize=6)
+    ax.tick_params(axis='both', which='major',  labelsize=6)
+    ax.xaxis.set_label_position('top')
+    ax.xaxis.tick_top()
+    ax.yaxis.set_tick_params(width=0)
 
     print("Done!")
 
     # -------------------------------------------------------------------------
-    # Middle panel: Normalized polarized flux (Q)
+    # Joint options for second and third panel
     # -------------------------------------------------------------------------
 
-    print("Creating middle panel...", end=' ', flush=True)
+    # Set some options that are the same for both panels
+    for ax in (axes[1], axes[2]):
+        ax.grid(
+            ls='--',
+            alpha=0.3,
+            color='k',
+            lw=0.5,
+            dash_capstyle='round',
+            dashes=(0.05, 2.5),
+        )
+        ax.set_xlim(0, 180)
+        ax.set_xticks(np.arange(0, 181, 10))
+        ax.spines[['bottom']].set_visible(False)
+        ax.tick_params(
+            bottom=False,
+            top=True,
+            labelbottom=False,
+            labeltop=False,
+            direction='inout',
+        )
+        ax.yaxis.set_major_formatter(StrMethodFormatter("{x:.2f}"))
 
+    # Define grid for interpolating curves to a "smooth" line
     grid = np.linspace(0, 180, 1800)
 
+    # -------------------------------------------------------------------------
+    # Second panel: Total flux (I)
+    # -------------------------------------------------------------------------
+
+    print("Creating second panel...", end=' ', flush=True)
+
+    ax = axes[1]
+
     for i, wavelength in enumerate(wavelengths):
+
+        # Prepare color and linestyle
+        color = plt.get_cmap('rainbow')(i / (len(wavelengths) - 1))
+        ls = '--' if wavelength == 600 else '-'
+
+        # Interpolate to a smooth line
+        x = np.linspace(0, 180, 180, endpoint=True)
+        y = np.nan_to_num(I[wavelength])
+        f = interp1d(x, y, fill_value=0, bounds_error=False, kind='cubic')
+
+        # Plot the curve
+        ax.plot(
+            grid,
+            np.clip(f(grid), 0, None),
+            lw=1,
+            ls=ls,
+            color=color,
+        )
+
+    ax.set_ylabel('Normalised total flux', labelpad=10)
+    ax.set_ylim(-0.03, 0.43)
+
+    print("Done!")
+
+    # -------------------------------------------------------------------------
+    # Third panel: Normalized polarized flux (Q)
+    # -------------------------------------------------------------------------
+
+    print("Creating third panel...", end=' ', flush=True)
+
+    ax = axes[2]
+
+    for i, wavelength in enumerate(wavelengths):
+
+        # Prepare label, color, and linestyle
         label = rf'${int(wavelength)}\,\mathrm{{nm}}$'
         color = plt.get_cmap('rainbow')(i / (len(wavelengths) - 1))
         ls = '--' if wavelength == 600 else '-'
 
+        # Interpolate to a smooth line
         x = np.linspace(0, 180, 180, endpoint=True)
         y = np.nan_to_num(Q[wavelength])
         f = interp1d(x, y, fill_value=0, bounds_error=False, kind='cubic')
-        axes[1].plot(grid, np.clip(f(grid), 0, None), lw=1, ls=ls, color=color)
 
-        props = dict(
-            fc='white',
-            ec='none',
-            alpha=0.85,
-            boxstyle='round,pad=0.01',
+        # Plot the curve
+        ax.plot(
+            grid,
+            np.clip(f(grid), 0, None),
+            lw=1,
+            ls=ls,
+            color=color,
+            zorder=2,
         )
-        axes[1].text(
+
+        # Add label
+        ax.text(
             x=68,
-            y=f(68) + 0.0005,
+            y=f(68) + 0.0004,
             s=label,
             color=color,
             fontsize=4,
             ha='center',
             va='bottom',
-            bbox=props,
+            bbox=dict(
+                fc='white',
+                ec='none',
+                alpha=0.85,
+                boxstyle='round,pad=0.001',
+            ),
+            zorder=1,
         )
 
-    axes[1].grid(
-        ls='--',
-        alpha=0.3,
-        color='k',
-        lw=0.5,
-        dash_capstyle='round',
-        dashes=(0.05, 2.5),
-    )
-    axes[1].set_xlim(0, 180)
-    axes[1].set_xticks(np.arange(0, 181, 10))
-    axes[1].set_ylabel('Normalised polarized flux', labelpad=10)
-    axes[1].set_ylim(-0.005, 0.065)
-    axes[1].spines[['bottom']].set_visible(False)
-    axes[1].tick_params(
-        bottom=False,
-        top=True,
-        labelbottom=False,
-        labeltop=False,
-        direction='inout',
-    )
+    ax.set_ylabel('Normalised linearly polarized flux', labelpad=10)
+    ax.set_ylim(-0.005, 0.065)
 
     print("Done!")
 
     # -------------------------------------------------------------------------
-    # Bottom panel: Illustrations of scattering phenomena
+    # Fourth panel: Illustrations of scattering phenomena
     # -------------------------------------------------------------------------
 
-    print("Creating bottom panel...", end=' ', flush=True)
+    print("Creating fourth panel...", end=' ', flush=True)
+
+    ax = axes[3]
 
     # Note: axes[2] displays the scattering angle, but under the hood, plotting
     # uses the phase angle (hence we need PHASE_ANGLES_OF_FEATURES here).
@@ -293,9 +355,9 @@ if __name__ == '__main__':
         ("Rayleigh", PHASE_ANGLES_OF_FEATURES['Rayleigh'], 'rayleigh.jpg'),
     ):
         img = plt.imread(static_dir / "bott-plot" / file_name)
-        axes[2].imshow(X=img, extent=[positions[0], positions[2], 0, 10])
+        ax.imshow(X=img, extent=[positions[0], positions[2], 0, 10])
 
-        axes[2].text(
+        ax.text(
             x=(positions[0] + positions[2]) / 2,
             y=10,
             s=label,
@@ -308,25 +370,25 @@ if __name__ == '__main__':
             ),
         )
 
-    axes[2].set_xlabel('Scattering angle (in degrees)')
-    axes[2].set_xlim(0, 180)
-    axes[2].set_xticks(np.arange(0, 181, 10))
-    axes[2].set_xticklabels(
+    ax.set_xlabel(r'Scattering angle $\varphi$ (in degrees)')
+    ax.set_xlim(0, 180)
+    ax.set_xticks(np.arange(0, 181, 10))
+    ax.set_xticklabels(
         [x if x % 30 == 0 else "" for x in np.arange(0, 181, 10)[::-1]]
     )
-    axes[2].set_ylim(0, 10)
-    axes[2].set_yticks([])
-    axes[2].spines[['left', 'right']].set_visible(False)
-    axes[2].text(x=-5, y=5, s='Features:', va='center', ha='right', fontsize=6)
-    axes[2].tick_params(axis='both', which='major')
-    axes[2].tick_params(
+    ax.set_ylim(0, 10)
+    ax.set_yticks([])
+    ax.spines[['left', 'right']].set_visible(False)
+    ax.text(x=-5, y=5, s='Features:', va='center', ha='right', fontsize=6)
+    ax.tick_params(axis='both', which='major')
+    ax.tick_params(
         bottom=True,
         top=True,
         labelbottom=True,
         labeltop=False,
         direction='inout',
     )
-    axes[2].yaxis.set_tick_params(width=0)
+    ax.yaxis.set_tick_params(width=0)
 
     print("Done!")
 
