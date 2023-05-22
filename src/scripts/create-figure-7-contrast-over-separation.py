@@ -1,5 +1,5 @@
 """
-Create Figure 6: Contrast over separation for three example targets.
+Create Figure 7: Contrast over separation for three example targets.
 """
 
 # -----------------------------------------------------------------------------
@@ -270,7 +270,7 @@ if __name__ == "__main__":
     fig.tight_layout(pad=0, w_pad=0.4)
 
     print(f"Saving plot to PDF...", end=" ", flush=True)
-    file_name = "figure-6-contrast-over-separation.pdf"
+    file_name = "figure-7-contrast-over-separation.pdf"
     file_path = paths.figures / file_name
     fig.savefig(
         file_path,
