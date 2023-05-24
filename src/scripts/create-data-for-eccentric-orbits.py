@@ -4,6 +4,8 @@ Simulate 1,000 eccentric orbits for every planet in the target list.
 
 from warnings import catch_warnings, filterwarnings
 
+import time
+
 from astropy.io import ascii
 from joblib import Parallel, delayed
 from tqdm import tqdm
@@ -86,10 +88,22 @@ def simulate_orbit(
 
 if __name__ == "__main__":
 
+    # -------------------------------------------------------------------------
+    # Preliminaries
+    # -------------------------------------------------------------------------
+
+    print("\n" + 80 * "-")
     print("\nSIMULATE ECCENTRIC ORBITS (IN PARALLEL)\n")
+
+    # Start timer
+    script_start = time.time()
 
     # Fix the random seed to ensure reproducibility
     np.random.seed(RANDOM_SEED)
+
+    # -------------------------------------------------------------------------
+    # Define parameters; set up output arrays
+    # -------------------------------------------------------------------------
 
     # Define number of planet orbits to simulate for each star and number of
     # epochs to sample along each orbit ("resolution of the orbit")
@@ -116,6 +130,10 @@ if __name__ == "__main__":
     # Set up output arrays
     betamin = np.zeros((n_orbits, n_stars, iwa.size))
     betamax = np.zeros((n_orbits, n_stars, iwa.size))
+
+    # -------------------------------------------------------------------------
+    # Run simulations in parallel
+    # -------------------------------------------------------------------------
 
     # Loop over all the stars in the target list
     print("Simulating orbits for stars in target list:")
@@ -146,6 +164,10 @@ if __name__ == "__main__":
             betamin[idx_orbit, idx_star, :] = scatmin
             betamax[idx_orbit, idx_star, :] = scatmax
 
+    # -------------------------------------------------------------------------
+    # Save results to *.npz file
+    # -------------------------------------------------------------------------
+
     file_name = "eccentric-orbits.npz"
     print(f"\nSaving data to file {file_name}...", end=" ")
     np.savez_compressed(
@@ -155,3 +177,10 @@ if __name__ == "__main__":
         betamin=betamin,
     )
     print("Done!\n")
+
+    # -------------------------------------------------------------------------
+    # Postliminaries
+    # -------------------------------------------------------------------------
+
+    print(f"\nThis took {time.time() - script_start:.1f} seconds!")
+    print("\n" + 80 * "-" + "\n")
