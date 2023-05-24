@@ -18,7 +18,7 @@ import pandas as pd
 from matplotlib.colorbar import Colorbar
 from scipy import interpolate
 
-from utils.constants import SCATTERING_ANGLES_OF_FEATURES, DIAMETER
+from utils.constants import lambda_over_d_in_mas, SCATTERING_ANGLES_OF_FEATURES
 from utils.paths import (
     figures as figures_dir,
     data as data_dir,
@@ -41,6 +41,9 @@ if __name__ == "__main__":
 
     # Start timer
     script_start = time.time()
+
+    # Define wavelength for this figure (670 nm)
+    wavelength = 670 * u.nm
 
     # -------------------------------------------------------------------------
     # Load data
@@ -126,11 +129,6 @@ if __name__ == "__main__":
     inclination = np.deg2rad(90)
     alpha = np.rad2deg(np.arccos(np.cos(orbital_phase) * np.sin(inclination)))
 
-    # Compute the IWA at 670 nm
-    WAVELENGTH = 670 * u.nm
-    with u.set_enabled_equivalencies(u.dimensionless_angles()):
-        IWA = (WAVELENGTH / DIAMETER).to(u.mas)
-
     # -------------------------------------------------------------------------
     # Prepare the plot
     # -------------------------------------------------------------------------
@@ -170,8 +168,8 @@ if __name__ == "__main__":
         ax.set_ylim(1e-12, 1e-7)
         ax.get_yaxis().set_visible(i == 0)
 
-        # Plot vertical lines at 1, 2, and 3 IWA
-        for x in np.arange(1, 4) * IWA:
+        # Plot vertical lines at 1, 2, and 3 IWA (in mas)
+        for x in np.arange(1, 4) * lambda_over_d_in_mas(wavelength):
             ax.axvline(x=x.value, ls="--", c="k", alpha=0.5, lw=0.5)
 
         # Get index of current target in target list
@@ -215,7 +213,9 @@ if __name__ == "__main__":
     # Add labels for the IWA lines
     # -------------------------------------------------------------------------
 
-    for x in np.arange(1, 4) * IWA:
+    # Reminder: We get lines at 23, 46, and 69 mas here, because our
+    # wavelength is 670 nm (not 600 nm as in most of the other plots).
+    for x in np.arange(1, 4) * lambda_over_d_in_mas(wavelength):
         axes[0].text(
             x=x.value,
             y=2e-12,
@@ -224,7 +224,7 @@ if __name__ == "__main__":
             alpha=0.5,
             ha="center",
             va="bottom",
-            fontsize=4,
+            fontsize=6,
             rotation=90,
             bbox=dict(
                 color="white",

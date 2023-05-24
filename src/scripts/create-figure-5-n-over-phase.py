@@ -20,7 +20,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from utils import paths
-from utils.constants import ETA_EARTH, RANDOM_SEED, PHASE_ANGLES_OF_FEATURES
+from utils.constants import (
+    lambda_over_d_in_mas,
+    ETA_EARTH,
+    RANDOM_SEED,
+    PHASE_ANGLES_OF_FEATURES,
+)
 from utils.plotting import set_fontsize, CBF_COLORS
 from utils.samplers import sample_i
 
@@ -40,6 +45,14 @@ if __name__ == "__main__":
 
     # Start timer
     script_start = time.time()
+
+    # Get IWA values (in mas) for 1, 2, 3, 4 lambda / D at 600 nm and round
+    # to the nearest integer (because `create-data-for-eccentric-orbits.py`
+    # only computes the beta values for integer values of the IWA in mas).
+    # This should be [21, 41, 62, 83] mas.
+    n_lambda_over_d_in_mas = np.around(
+        lambda_over_d_in_mas().value * np.array([1, 2, 3, 4]), 0
+    )
 
     # -------------------------------------------------------------------------
     # Read in the data
@@ -187,7 +200,7 @@ if __name__ == "__main__":
     phase_angles = np.linspace(90, 180, 360)
 
     # Loop over IWA to plot a line for each one
-    for i, iwa in enumerate([21, 41, 62, 83]):
+    for i, iwa in enumerate(n_lambda_over_d_in_mas):
 
         # Get the index that belongs to the current IWA (since we are pulling
         # the data from a file that has all IWA values: 20, 21, ..., 120)
@@ -309,7 +322,7 @@ if __name__ == "__main__":
                 .unstack(level=0),
                 headers=(
                     ["Feature"]
-                    + [f"{iwa:.0f} mas" for iwa in (21, 41, 62, 83)]
+                    + [f"{iwa:.0f} mas" for iwa in n_lambda_over_d_in_mas]
                 ),
                 tablefmt="simple",  # latex_booktabs
             )

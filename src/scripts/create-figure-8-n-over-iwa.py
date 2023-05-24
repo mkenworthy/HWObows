@@ -24,8 +24,8 @@ from utils.paths import (
 )
 from utils.plotting import set_fontsize, CBF_COLORS
 from utils.constants import (
+    lambda_over_d_in_mas,
     ETA_EARTH,
-    LAMBDA_OVER_D_IN_MAS,
     PHASE_ANGLES_OF_FEATURES as SCATTERING_FEATURES
 )
 
@@ -45,6 +45,14 @@ if __name__ == "__main__":
 
     # Start timer
     script_start = time.time()
+
+    # Get IWA values (in mas) for 1, 2, 3, 4 lambda / D at 600 nm and round
+    # to the nearest integer (because `create-data-for-eccentric-orbits.py`
+    # only computes the beta values for integer values of the IWA in mas).
+    # This should be [21, 41, 62, 83] mas.
+    n_lambda_over_d_in_mas = np.around(
+        lambda_over_d_in_mas().value * np.array([1, 2, 3, 4]), 0
+    )
 
     # -------------------------------------------------------------------------
     # Read in the data
@@ -114,7 +122,7 @@ if __name__ == "__main__":
             ax.plot(iwa_list, y, ls=ls, lw=1, color=CBF_COLORS[k])
 
             if i == 1:
-                for iwa in [21, 41, 62, 83]:
+                for iwa in n_lambda_over_d_in_mas:
                     idx = np.where(iwa_list == iwa)[0][0]
                     expected_numbers.append(
                         {
@@ -133,7 +141,7 @@ if __name__ == "__main__":
         ax.set_xlabel(r"IWA (in mas)")
 
         # Set the options for the top x-axis
-        top_ax.set_xticks(np.arange(1, 7) * LAMBDA_OVER_D_IN_MAS)
+        top_ax.set_xticks(np.arange(1, 7) * lambda_over_d_in_mas().value)
         top_ax.set_xticklabels(np.arange(1, 7))
         top_ax.set_xlim(ax.get_xlim())
         top_ax.set_xlabel(r"IWA (in $\lambda / D$)")
@@ -202,7 +210,9 @@ if __name__ == "__main__":
     )
 
     # Define the column names
-    headers = ["Feature"] + [f"{iwa:.0f} mas" for iwa in (21, 41, 62, 83)]
+    headers = (
+        ["Feature"] + [f"{iwa:.0f} mas" for iwa in n_lambda_over_d_in_mas]
+    )
 
     # Print the table to the terminal
     table = tabulate(df, headers=headers, tablefmt="simple")

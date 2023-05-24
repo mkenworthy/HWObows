@@ -16,7 +16,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
-from utils.constants import RANDOM_SEED
+from utils.constants import RANDOM_SEED, lambda_over_d_in_mas
 from utils.phases import kep3d
 from utils.samplers import sample_e, sample_i
 from utils.plotting import CBF_COLORS
@@ -27,12 +27,27 @@ from utils.paths import data as data_dir, figures as figures_dir
 # DEFINITIONS
 # -----------------------------------------------------------------------------
 
-def draw_iwa(ax: plt.Axes, iwas: np.ndarray) -> None:
+def prepare_ax(
+    ax: plt.Axes,
+    star_name: str,
+    distance: float,
+    hz: float,
+) -> None:
     """
-    Auxiliary function to draw inner working angles on a given axis.
+    Auxiliary function to prepare an `ax` for plotting.
     """
 
-    for iwa in iwas:
+    # Remove ticks and setup aspect ratio
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_aspect("equal")
+
+    # Set up limits and draw inner working angles
+    ax.set_xlim(-2 * hz, 2 * hz)
+    ax.set_ylim(-2 * hz, 2 * hz)
+
+    # Draw inner working angles (1 to 4 lambda / D at 600 nm)
+    for iwa in np.arange(1, 5) * lambda_over_d_in_mas().value:
         for i, (ec, ls, alpha) in enumerate([
             ("white", "-", 0.5),
             ("black", "--", 1.0),
@@ -49,46 +64,6 @@ def draw_iwa(ax: plt.Axes, iwas: np.ndarray) -> None:
                     zorder=100 + i,
                 )
             )
-
-
-def convert_lod_to_mas(
-    lod: float,
-    wavelength: u.Quantity = 600 * u.nm,
-    diameter: u.Quantity = 6 * u.m,
-) -> float:
-    """
-    Convert a angular separation from units of lambda / D to mas.
-    """
-
-    return (
-        (lod * wavelength / diameter)
-        .to(
-            "mas",
-            equivalencies=u.dimensionless_angles(),
-        )
-        .value
-    )
-
-
-def prepare_ax(
-    ax: plt.Axes,
-    star_name: str,
-    distance: float,
-    hz: float,
-) -> None:
-    """
-    Auxiliary function to prepare an axis for plotting.
-    """
-
-    # Remove ticks and setup aspect ratio
-    ax.set_xticks([])
-    ax.set_yticks([])
-    ax.set_aspect("equal")
-
-    # Set up limits and draw inner working angles
-    ax.set_xlim(-2 * hz, 2 * hz)
-    ax.set_ylim(-2 * hz, 2 * hz)
-    draw_iwa(ax, iwas)
 
     # Define options for text boxes
     text_kwargs = dict(
@@ -193,7 +168,7 @@ if __name__ == "__main__":
     axes = axes.flatten()
 
     # Define inner working angles (IWA) in mas for computing beta_max
-    iwas = np.array([convert_lod_to_mas(iwa) for iwa in [1, 2, 3, 4]])
+    iwas = lambda_over_d_in_mas() * np.arange(1, 5)
 
     # Loop over all the stars in the table
     print("Simulating and plotting orbits...", end=" ", flush=True)
@@ -235,6 +210,11 @@ if __name__ == "__main__":
             axes[n].plot(Xorb, Yorb)
 
     print("Done!", flush=True)
+
+    # -------------------------------------------------------------------------
+    # Save figure
+    # -------------------------------------------------------------------------
+
     print("Saving plot...", end=" ", flush=True)
 
     fig.tight_layout(pad=0)
