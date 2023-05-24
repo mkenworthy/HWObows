@@ -6,6 +6,8 @@ Create Figure 7: Contrast over separation for three example targets.
 # IMPORTS
 # -----------------------------------------------------------------------------
 
+import time
+
 import astropy.units as u
 import h5py
 import matplotlib as mpl
@@ -30,7 +32,15 @@ from utils.plotting import set_fontsize
 
 if __name__ == "__main__":
 
-    print("\nCREATE FIGURE 6: CONTRAST OVER SEPARATION\n")
+    # -------------------------------------------------------------------------
+    # Preliminaries
+    # -------------------------------------------------------------------------
+
+    print("\n" + 80 * "-")
+    print("\nCREATE FIGURE 7: CONTRAST OVER SEPARATION\n")
+
+    # Start timer
+    script_start = time.time()
 
     # -------------------------------------------------------------------------
     # Load data
@@ -283,3 +293,10 @@ if __name__ == "__main__":
         pad_inches=pad_inches,
     )
     print("Done!", flush=True)
+
+    # -------------------------------------------------------------------------
+    # Postliminaries
+    # -------------------------------------------------------------------------
+
+    print(f"\nThis took {time.time() - script_start:.1f} seconds!")
+    print("\n" + 80 * "-" + "\n")

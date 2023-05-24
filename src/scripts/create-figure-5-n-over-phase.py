@@ -9,6 +9,8 @@ for different inner working angles (both circular and eccentric).
 
 from warnings import catch_warnings, filterwarnings
 
+import time
+
 from matplotlib.lines import Line2D
 from scipy.interpolate import interp1d
 from tabulate import tabulate
@@ -29,7 +31,15 @@ from utils.samplers import sample_i
 
 if __name__ == "__main__":
 
+    # -------------------------------------------------------------------------
+    # Preliminaries
+    # -------------------------------------------------------------------------
+
+    print("\n" + 80 * "-")
     print("\nCREATE FIGURE 5: N_SYSTEMS OVER PHASE ANGLE\n")
+
+    # Start timer
+    script_start = time.time()
 
     # -------------------------------------------------------------------------
     # Read in the data
@@ -323,3 +333,10 @@ if __name__ == "__main__":
     )
 
     print("Done!", flush=True)
+
+    # -------------------------------------------------------------------------
+    # Postliminaries
+    # -------------------------------------------------------------------------
+
+    print(f"\nThis took {time.time() - script_start:.1f} seconds!")
+    print("\n" + 80 * "-" + "\n")

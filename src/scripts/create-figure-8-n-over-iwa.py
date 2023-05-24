@@ -8,6 +8,8 @@ contains the number of systems accessible as a function of IWA.
 # IMPORTS
 # -----------------------------------------------------------------------------
 
+import time
+
 from matplotlib.lines import Line2D
 from tabulate import tabulate
 
@@ -34,7 +36,15 @@ from utils.constants import (
 
 if __name__ == "__main__":
 
+    # -------------------------------------------------------------------------
+    # Preliminaries
+    # -------------------------------------------------------------------------
+
+    print("\n" + 80 * "-")
     print("\nCREATE FIGURE 8: N_SYSTEMS OVER IWA\n")
+
+    # Start timer
+    script_start = time.time()
 
     # -------------------------------------------------------------------------
     # Read in the data
@@ -245,3 +255,10 @@ if __name__ == "__main__":
     )
 
     print("Done!", flush=True)
+
+    # -------------------------------------------------------------------------
+    # Postliminaries
+    # -------------------------------------------------------------------------
+
+    print(f"\nThis took {time.time() - script_start:.1f} seconds!")
+    print("\n" + 80 * "-" + "\n")

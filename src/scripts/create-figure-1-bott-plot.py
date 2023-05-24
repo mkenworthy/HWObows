@@ -6,6 +6,8 @@ Create Figure 1: The "Bott plot".
 # IMPORTS
 # -----------------------------------------------------------------------------
 
+import time
+
 from matplotlib.patches import Circle, Polygon, Ellipse
 from matplotlib.ticker import StrMethodFormatter
 from scipy.interpolate import interp1d
@@ -138,7 +140,15 @@ def draw_phase(
 
 if __name__ == '__main__':
 
+    # -------------------------------------------------------------------------
+    # Preliminaries
+    # -------------------------------------------------------------------------
+
+    print("\n" + 80 * "-")
     print("\nCREATE FIGURE 1: THE 'BOTT PLOT'\n")
+
+    # Start timer
+    script_start = time.time()
 
     # -------------------------------------------------------------------------
     # Load data (from Trees & Stam 2019)
@@ -409,3 +419,10 @@ if __name__ == '__main__':
     )
 
     print("Done!\n")
+
+    # -------------------------------------------------------------------------
+    # Postliminaries
+    # -------------------------------------------------------------------------
+
+    print(f"\nThis took {time.time() - script_start:.1f} seconds!")
+    print("\n" + 80 * "-" + "\n")
