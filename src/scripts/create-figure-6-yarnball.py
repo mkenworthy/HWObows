@@ -33,17 +33,22 @@ def draw_iwa(ax: plt.Axes, iwas: np.ndarray) -> None:
     """
 
     for iwa in iwas:
-        ax.add_patch(
-            Circle(
-                xy=(0, 0),
-                radius=float(iwa),
-                facecolor="none",
-                edgecolor="k",
-                ls="--",
-                lw=0.5,
-                alpha=1.0,
+        for i, (ec, ls, alpha) in enumerate([
+            ("white", "-", 0.5),
+            ("black", "--", 1.0),
+        ]):
+            ax.add_patch(
+                Circle(
+                    xy=(0, 0),
+                    radius=float(iwa),
+                    fc="none",
+                    ec=ec,
+                    ls=ls,
+                    lw=0.75,
+                    alpha=alpha,
+                    zorder=100 + i,
+                )
             )
-        )
 
 
 def convert_lod_to_mas(
