@@ -72,10 +72,10 @@ if __name__ == "__main__":
 
     # Compute the minimum and maximum scattering angles (pre-computed)
     file_path = data_dir / "eccentric-orbits.npz"
-    iwa = np.load(file_path)
-    phase_max = iwa["betamax"]
-    phase_min = iwa["betamin"]
-    iwa_list = iwa["iwa"]
+    data = np.load(file_path)
+    phase_max = data["betamax"]  # shape: (n_simulations, n_targets, n_iwa)
+    phase_min = data["betamin"]  # shape: (n_simulations, n_targets, n_iwa)
+    iwa_list = data["iwa"]  # shape: (n_iwa,)
 
     print("Done!", flush=True)
 
@@ -112,18 +112,29 @@ if __name__ == "__main__":
         # Add the title
         ax.set_title(feature_name, fontsize=8, pad=10)
 
+        # Loop over the start, peak, and end of the feature
         for i, ls in enumerate([":", "-", "--"]):
 
-            # TODO: Fix the plot for Rayleigh scattering, where the  start and
-            #  end are on different sides of quadrature.
-            x = (
-                (phase_min <= SCATTERING_FEATURES[feature_name][i])
-                * (SCATTERING_FEATURES[feature_name][i] <= phase_max)
-            )
-            y = np.sum(np.nanmean(x, axis=0), axis=0)
+            # Compute the expected number of number accessible of systems
+            # Reminder: phase_min and phase_max have the following shape:
+            # `(n_simulations, n_targets, n_iwa)`.
+            # By averaging over the simulations and and summing over the
+            # targets, we get the expected number of planets accessible
+            # at each IWA.
+            angle = SCATTERING_FEATURES[feature_name][i]
+            accessible = (phase_min <= angle) * (angle <= phase_max)
+            n_expected = np.sum(np.nanmean(accessible, axis=0), axis=0)
 
-            ax.plot(iwa_list, y, ls=ls, lw=1, color=CBF_COLORS[k])
+            # Plot the expected number as a function of IWA
+            # Note: For Rayleigh scattering, the peak and the start of the
+            # feature are virtually the same, because start (70 degree) and
+            # peak (110 degree) are the same distance from quadrature, and
+            # things are symmetric about quadrature if you average over
+            # sufficiently many orbits (cf. Fig. 5).
+            ax.plot(iwa_list, n_expected, ls=ls, lw=1, color=CBF_COLORS[k])
 
+            # If we are looking at the peak value (i=1), store the expected
+            # number at 1, 2, 3, 4 lambda / D in mas for Table 3.
             if i == 1:
                 for iwa in n_lambda_over_d_in_mas:
                     idx = np.where(iwa_list == iwa)[0][0]
@@ -131,7 +142,7 @@ if __name__ == "__main__":
                         {
                             "iwa": iwa,
                             "feature": feature_name,
-                            "n": y[idx],
+                            "n": n_expected[idx],
                         }
                     )
 
