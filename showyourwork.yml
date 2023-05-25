@@ -79,6 +79,8 @@ overleaf:
     - src/tex/output
   # List of files to pull from Overleaf
   pull:
+    - src/tex/authors.tex
+    - src/tex/affiliations.tex
     - src/tex/ms.tex
     - src/tex/bib.bib
 
