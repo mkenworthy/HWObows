@@ -244,7 +244,7 @@ if __name__ == "__main__":
             "% THIS FILE IS GENERATED AUTOMATICALLY BY "
             "`create-figure-8-n-over-iwa.py`\n"
             "% PLEASE DO NOT EDIT MANUALLY\n\n"
-            f"% LAST UPDATE: {datetime.now().isoformat()} \n"
+            f"% LAST UPDATE: {datetime.utcnow().isoformat()}Z \n"
             f"% GENERATED ON: {gethostname()} \n\n"
         )
 
