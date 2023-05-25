@@ -8,6 +8,9 @@ Script to create LaTeX code for Table 1.
 
 import time
 
+from datetime import datetime
+from socket import gethostname
+
 from tabulate import tabulate
 
 import astropy.units as u
@@ -112,6 +115,8 @@ if __name__ == "__main__":
             "% THIS FILE IS GENERATED AUTOMATICALLY BY "
             "`create-table-1-iwa-owa.py`\n"
             "% PLEASE DO NOT EDIT MANUALLY\n\n"
+            f"% LAST UPDATE: {datetime.now().isoformat()} \n"
+            f"% GENERATED ON: {gethostname()} \n\n"
         )
 
         # Add the table line by line

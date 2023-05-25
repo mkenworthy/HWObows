@@ -10,6 +10,9 @@ contains the number of systems accessible as a function of IWA.
 
 import time
 
+from datetime import datetime
+from socket import gethostname
+
 from matplotlib.lines import Line2D
 from tabulate import tabulate
 
@@ -230,6 +233,8 @@ if __name__ == "__main__":
             "% THIS FILE IS GENERATED AUTOMATICALLY BY "
             "`create-figure-8-n-over-iwa.py`\n"
             "% PLEASE DO NOT EDIT MANUALLY\n\n"
+            f"% LAST UPDATE: {datetime.now().isoformat()} \n"
+            f"% GENERATED ON: {gethostname()} \n\n"
         )
 
         # Add the table line by line; add multicolumn for the top row
