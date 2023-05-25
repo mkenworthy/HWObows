@@ -44,7 +44,7 @@ if __name__ == "__main__":
     print("Computing values...", end=" ", flush=True)
 
     multiples_of_lambda_over_d = [1, 2, 3, 4, 32, 64]
-    wavelengths = [600 * u.nm, 670 * u.nm, 1000 * u.nm]
+    wavelengths = [600 * u.nm, 1000 * u.nm]
 
     data = []
     for lambda_over_d in multiples_of_lambda_over_d:
