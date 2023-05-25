@@ -1,6 +1,6 @@
 """
-Create Figure 5: CDF of number of planets over accessible phase angle
-for different inner working angles (both circular and elliptical).
+Create Figure 5: Expected number of accessible planets over phase angle
+for different inner working angles (both circular and eccentric).
 """
 
 # -----------------------------------------------------------------------------
@@ -9,14 +9,23 @@ for different inner working angles (both circular and elliptical).
 
 from warnings import catch_warnings, filterwarnings
 
+import time
+
 from matplotlib.lines import Line2D
+from scipy.interpolate import interp1d
+from tabulate import tabulate
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
 from utils import paths
-from utils.constants import ETA_EARTH, RANDOM_SEED
+from utils.constants import (
+    lambda_over_d_in_mas,
+    ETA_EARTH,
+    RANDOM_SEED,
+    PHASE_ANGLES_OF_FEATURES,
+)
 from utils.plotting import set_fontsize, CBF_COLORS
 from utils.samplers import sample_i
 
@@ -27,7 +36,23 @@ from utils.samplers import sample_i
 
 if __name__ == "__main__":
 
+    # -------------------------------------------------------------------------
+    # Preliminaries
+    # -------------------------------------------------------------------------
+
+    print("\n" + 80 * "-")
     print("\nCREATE FIGURE 5: N_SYSTEMS OVER PHASE ANGLE\n")
+
+    # Start timer
+    script_start = time.time()
+
+    # Get IWA values (in mas) for 1, 2, 3, 4 lambda / D at 600 nm and round
+    # to the nearest integer (because `create-data-for-eccentric-orbits.py`
+    # only computes the beta values for integer values of the IWA in mas).
+    # This should be [21, 41, 62, 83] mas.
+    n_lambda_over_d_in_mas = np.around(
+        lambda_over_d_in_mas().value * np.array([1, 2, 3, 4]), 0
+    )
 
     # -------------------------------------------------------------------------
     # Read in the data
@@ -41,20 +66,20 @@ if __name__ == "__main__":
 
     # Read in the maximum and minimum scattering angles as calculated by the
     # dynamical simulations. This set of files only has 4 IWAs.
-    iwa = np.load(paths.data / "iwa_all.npz")
-    phase_max = iwa["betamax"]
-    phase_min = iwa["betamin"]
+    iwa = np.load(paths.data / "eccentric-orbits.npz")
+    phase_max = iwa["betamax"]  # in degrees
+    phase_min = iwa["betamin"]  # in degrees
     iwa_list = iwa["iwa"]  # in mas
 
     # Note: We only use phase_max for plotting.
-    # For a given system, phase_max and phase_min might differ (for elliptical
+    # For a given system, phase_max and phase_min might differ (for eccentric
     # orbits), but the distributions mirror each other (about 90 degrees) when
     # you average over enough orbits.
 
     print("Done!", flush=True)
 
     # -------------------------------------------------------------------------
-    # Run simulations for different inclinations
+    # Run simulations for different inclinations (circular orbits)
     # -------------------------------------------------------------------------
 
     print("Simulating different inclinations...", end=" ", flush=True)
@@ -71,7 +96,7 @@ if __name__ == "__main__":
     beta = np.zeros(shape=(n_sims, len(hz), len(iwa_list)))
 
     # Loop over all targets to run the simulations
-    for i in range(len(hz)):
+    for i, target_hz in enumerate(hz):
 
         # Generate random inclinations such that cos(i) is uniform over [0, 1]
         inclinations = sample_i(n_sims)
@@ -83,7 +108,7 @@ if __name__ == "__main__":
 
             with catch_warnings():
                 filterwarnings("ignore", "invalid value encountered in arccos")
-                beta_max0 = np.degrees(np.arccos(iwa / hz[i]))
+                beta_max0 = np.degrees(np.arccos(iwa / target_hz))
 
             # If beta_max is nan then the planet is not detectable at this IWA
             if np.isnan(beta_max0):
@@ -152,10 +177,10 @@ if __name__ == "__main__":
     set_fontsize(top_ax, 6)
     set_fontsize(right_ax, 6)
 
-    # Manually set up a label for circular vs. elliptical orbits
+    # Manually set up a label for circular vs. eccentric orbits
     handles = [
         Line2D([0], [0], ls="-", color="k", lw=1, label="Circular orbits"),
-        Line2D([0], [0], ls="--", color="k", lw=1, label="Elliptical orbits"),
+        Line2D([0], [0], ls="--", color="k", lw=1, label="Eccentric orbits"),
     ]
     legend = ax.legend(
         handles=handles,
@@ -166,72 +191,89 @@ if __name__ == "__main__":
     legend.get_frame().set_facecolor('white')
     legend.get_frame().set_linewidth(0)
 
-    # Loop over IWA to plot a lin
-    for i, iwa in enumerate(iwa_list):
+    # Store results for table
+    eccentric = []
+    circular = []
+
+    # Define a grid of phase angles on which to evaluate the expected number
+    # of accessible planets
+    phase_angles = np.linspace(90, 180, 360)
+
+    # Loop over IWA to plot a line for each one
+    for i, iwa in enumerate(n_lambda_over_d_in_mas):
+
+        # Get the index that belongs to the current IWA (since we are pulling
+        # the data from a file that has all IWA values: 20, 21, ..., 120)
+        iwa_idx = np.where(np.isclose(iwa_list, iwa))[0][0]
 
         # ---------------------------------------------------------------------
-        # First the dynamical betas
+        # First the dynamical betas (eccentric orbits)
         # ---------------------------------------------------------------------
 
-        # Note: Although we're calling them betas, really they're the maximum
-        # scattering angles)
+        # For each phase angle, compute the expected number of planets that
+        # are accessible at that phase angle
+        n_accessible = []
+        for phase_angle in phase_angles:
 
-        # Getting data of the histogram bins to build the CDF
-        count, bins_count = np.histogram(phase_max[:, :, i], bins=bins)
+            # For each planet and each simulation:
+            # Is the current phase angle accessible at the current IWA?
+            accessible = (
+                (phase_angle >= phase_min[:, :, iwa_idx])
+                * (phase_angle <= phase_max[:, :, iwa_idx])
+            ).astype(float)
 
-        # Find the PDF of the histogram using count values
-        pdf = count / sum(count)
+            # Compute expected number of accessible planets at this phase angle
+            # by averaging over simulations and summing over targets
+            n_expected = np.sum(np.mean(accessible, axis=0))
+            n_accessible.append(n_expected)
 
-        # Use np.cumsum to calculate the CDF
-        # We can also find using the PDF values by looping and adding
-        cdf = np.cumsum(pdf)
-
-        # Really, we want to plot 1-CDF to show the number of systems with a
-        # maximum scattering angle less than the bin. We multiply by the number
-        # of detected systems (i.e., where the beta_maxes are finite) and then
-        # normalize by the number of simulations.
-        n_systems = (
-            (1 - cdf)
-            * len(np.where(np.isfinite(phase_max[:, :, i]))[0])
-            / phase_max[:, :, i].shape[0]
-        )
-
-        # Plot the result over the phase angle bins
+        # Plot the results
         ax.plot(
-            bins_count[1:],
-            n_systems,
-            color=CBF_COLORS[i],
-            linestyle="--",
-            linewidth=1,
+            phase_angles,
+            n_accessible,
+            lw=1,
+            ls="--",
+            color=CBF_COLORS[i]
         )
+
+        # Get number of accessible planets at the phase angle at which our 4
+        # features have their respective peaks and store the results. Keep in
+        # mind that we only computed the curve from 90 to 180 degrees, but we
+        # can assume that it is symmetric around 90 degrees.
+        f = interp1d(phase_angles, n_accessible)
+        for key, (_, angle, _) in PHASE_ANGLES_OF_FEATURES.items():
+            angle = 180 - angle if angle < 90 else angle
+            n = np.around(f(angle), 2)
+            eccentric.append({"iwa": iwa, "feature": key, "n": n})
 
         # ---------------------------------------------------------------------
         # Now the circular case (these ones are actually betas)
         # ---------------------------------------------------------------------
 
-        # This is the analytical beta_max for a given IWA
-        with catch_warnings():
-            filterwarnings("ignore", "invalid value encountered in arccos")
-            beta_max2 = np.degrees(np.arccos(iwa / hz))
+        # For each phase angle, compute the expected number of planets that
+        # are accessible at that phase angle
+        n_accessible = []
+        for phase_angle in phase_angles:
 
-        # We need to add 90 to get the maximum scattering angle
-        count, bins_count = np.histogram(
-            beta[:, :, i].flatten() + 90, bins=bins
-        )
-        pdf = count / sum(count)
-        cdf = np.cumsum(pdf)
+            # For each planet and each simulation:
+            # Is the current phase angle accessible at the current IWA?
+            accessible = (
+                (phase_angle >= beta[:, :, iwa_idx] - 90)
+                * (phase_angle <= beta[:, :, iwa_idx] + 90)
+            ).astype(float)
 
-        # Here multiplying by the beta_max takes into account the
-        # non-detections and the total number of systems
-        n_systems = (1 - cdf) * np.sum(np.isfinite(beta_max2))
+            # Compute expected number of accessible planets at this phase angle
+            # by averaging over simulations and summing over targets
+            n_expected = np.sum(np.mean(accessible, axis=0))
+            n_accessible.append(n_expected)
 
-        # Plot the result over the phase angle bins
+        # Plot the results
         ax.plot(
-            bins_count[1:],
-            n_systems,
-            color=CBF_COLORS[i],
-            linestyle="-",
-            linewidth=1,
+            phase_angles,
+            n_accessible,
+            lw=1,
+            ls="-",
+            color=CBF_COLORS[i]
         )
 
         # Add the labels for the line
@@ -252,11 +294,49 @@ if __name__ == "__main__":
             ),
         )
 
-    print("Done!", flush=True)
-    print(f"Saving plot to PDF...", end=" ", flush=True)
+        # Get number of accessible planets at the phase angle at which our 4
+        # features have their respective peaks and store the results. Keep in
+        # mind that we only computed the curve from 90 to 180 degrees, but we
+        # can assume that it is symmetric around 90 degrees.
+        f = interp1d(phase_angles, n_accessible)
+        for key, (_, angle, _) in PHASE_ANGLES_OF_FEATURES.items():
+            angle = 180 - angle if angle < 90 else angle
+            n = np.around(f(angle), 2)
+            circular.append({"iwa": iwa, "feature": key, "n": n})
 
+    print("Done!\n", flush=True)
+
+    # -------------------------------------------------------------------------
+    # Print tables with the expected numbers
+    # -------------------------------------------------------------------------
+
+    for data, label in [(eccentric, "Eccentric"), (circular, "Circular")]:
+        print(f"\n{label} orbits:")
+        print(
+            tabulate(
+                pd.DataFrame(data)
+                .groupby(['iwa', 'feature'])
+                .mean()
+                .round({"n": 0})
+                .astype({"n": int})
+                .unstack(level=0),
+                headers=(
+                    ["Feature"]
+                    + [f"{iwa:.0f} mas" for iwa in n_lambda_over_d_in_mas]
+                ),
+                tablefmt="simple",  # latex_booktabs
+            )
+        )
+        print()
+
+    # -------------------------------------------------------------------------
     # Save the figure
+    # -------------------------------------------------------------------------
+
     fig.tight_layout(pad=0)
+
+    print(f"\nSaving plot to PDF...", end=" ", flush=True)
+
     file_path = paths.figures / "figure-5-n-over-phase.pdf"
     plt.savefig(
         file_path,
@@ -266,3 +346,10 @@ if __name__ == "__main__":
     )
 
     print("Done!", flush=True)
+
+    # -------------------------------------------------------------------------
+    # Postliminaries
+    # -------------------------------------------------------------------------
+
+    print(f"\nThis took {time.time() - script_start:.1f} seconds!")
+    print("\n" + 80 * "-" + "\n")

@@ -9,6 +9,8 @@ degrees from quadrature when assuming edge-on, circular orbits.
 
 from typing import Any
 
+import time
+
 from matplotlib.lines import Line2D
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
@@ -28,7 +30,15 @@ from utils import paths
 
 if __name__ == "__main__":
 
+    # -------------------------------------------------------------------------
+    # Preliminaries
+    # -------------------------------------------------------------------------
+
+    print("\n" + 80 * "-")
     print("\nCREATE FIGURE 4: SCATTERPLOT\n")
+
+    # Start timer
+    script_start = time.time()
 
     # -------------------------------------------------------------------------
     # Load the data
@@ -191,3 +201,10 @@ if __name__ == "__main__":
     )
 
     print("Done!", flush=True)
+
+    # -------------------------------------------------------------------------
+    # Postliminaries
+    # -------------------------------------------------------------------------
+
+    print(f"\nThis took {time.time() - script_start:.1f} seconds!")
+    print("\n" + 80 * "-" + "\n")

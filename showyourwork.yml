@@ -28,9 +28,7 @@ datasets:
   10.5072/zenodo.1190827:
     contents:
       v7_fc50.h5: src/data/v7_fc50.h5
-      TOI640b.json: src/data/TOI640b.json
       2646_NASA_ExEP_Target_List_HWO_Table.csv: src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-      Reflected_light_curves_Trees_Stam_2019.txt: src/data/Reflected_light_curves_Trees_Stam_2019.txt
 
 
 # Dependencies: Which script needs which data product as an input
@@ -39,7 +37,7 @@ dependencies:
   # Scripts that generate data files
   src/scripts/create-data-for-circular-orbits.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-  src/scripts/create-data-for-elliptical-orbits.py:
+  src/scripts/create-data-for-eccentric-orbits.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
 
   # Scripts that generate figures
@@ -50,15 +48,15 @@ dependencies:
     - src/data/phi_max_3_lambda_over_d.csv
   src/scripts/create-figure-5-n-over-phase.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-    - src/data/iwa_all.npz
-  src/scripts/create-figure-6-contrast-over-separation.py:
+    - src/data/eccentric-orbits.npz
+  src/scripts/create-figure-6-yarnball.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-    - src/data/Reflected_light_curves_Trees_Stam_2019.txt
-  src/scripts/create-figure-7-yarnball.py:
+  src/scripts/create-figure-7-contrast-over-separation.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
+    - src/data/v7_fc50.h5
   src/scripts/create-figure-8-n-over-iwa.py:
     - src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv
-    - src/data/iwa_all3.npz
+    - src/data/eccentric-orbits.npz
 
 
 
@@ -77,8 +75,8 @@ overleaf:
   # List of files to push to Overleaf
   push:
     - src/tex/figures
+    - src/tex/tables
     - src/tex/output
-    - src/tex/tikz
   # List of files to pull from Overleaf
   pull:
     - src/tex/ms.tex

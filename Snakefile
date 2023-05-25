@@ -8,30 +8,14 @@ rule make_phi_max_csv_file:
      script:
          "src/scripts/create-data-for-circular-orbits.py"
 
-rule make_iwa_files:
+rule create_eccentric_orbits_data:
     input:
         "src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv"
     output:
-        "src/data/iwa_all.npz"
+        "src/data/eccentric-orbits.npz"
     cache:
         True
-    params:
-        whichsim="iwa"
     conda:
         "environment.yml"
     script:
-        "src/scripts/create-data-for-elliptical-orbits.py"
-
-rule make_iwa3_files:
-    input:
-        "src/data/2646_NASA_ExEP_Target_List_HWO_Table.csv"
-    output:
-        "src/data/iwa_all3.npz"
-    cache:
-        True
-    params:
-        whichsim="iwa3"
-    conda:
-        "environment.yml"
-    script:
-        "src/scripts/create-data-for-elliptical-orbits.py"
+        "src/scripts/create-data-for-eccentric-orbits.py"

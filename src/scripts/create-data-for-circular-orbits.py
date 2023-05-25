@@ -9,6 +9,8 @@ for each system in the target list assuming an edge-on, circular orbit.
 
 from warnings import catch_warnings, filterwarnings
 
+import time
+
 import astropy.units as u
 import pandas as pd
 import numpy as np
@@ -23,13 +25,29 @@ from utils.constants import DIAMETER, WAVELENGTH
 
 if __name__ == "__main__":
 
+    # -------------------------------------------------------------------------
+    # Preliminaries
+    # -------------------------------------------------------------------------
+
+    print("\n" + 80 * "-")
     print("\nCREATE DATA FOR CIRCULAR ORBITS\n")
+
+    # Start timer
+    script_start = time.time()
+
+    # -------------------------------------------------------------------------
+    # Load data
+    # -------------------------------------------------------------------------
 
     # Load the target list and select the EEIDmas column as the habitable zones
     print("Loading target list...", end=" ", flush=True)
     df = pd.read_csv(paths.data / "2646_NASA_ExEP_Target_List_HWO_Table.csv")
     hz = np.array(df["EEIDmas"].values[1:], dtype=float) * u.mas
     print("Done!")
+
+    # -------------------------------------------------------------------------
+    # Compute phi_max
+    # -------------------------------------------------------------------------
 
     # Compute phi_max for 3 lambda/D (up to an offset of 90 degrees)
     # This is essentially Eq. (4) from the paper, where i=90° (i.e., cos(i)=0).
@@ -53,4 +71,11 @@ if __name__ == "__main__":
         X=phi_max.value,
         delimiter=",",
     )
-    print("Done!\n")
+    print("Done!")
+
+    # -------------------------------------------------------------------------
+    # Postliminaries
+    # -------------------------------------------------------------------------
+
+    print(f"\nThis took {time.time() - script_start:.1f} seconds!")
+    print("\n" + 80 * "-" + "\n")
