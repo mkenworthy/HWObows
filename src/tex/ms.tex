@@ -154,7 +154,7 @@ We {\bf use a recently-created catalog relevant to HabWorlds} of 164 stars to es
 %
 We find that the polarimetric Rayleigh scattering peak is accessible in most of the exo-Earths planetary systems.
 %
-Assuming a fixed Earth-like semi-major axis for each system, the rainbow due to water clouds at phase angles of $\sim\qtyrange{20}{60}{\degree}$ would be accessible with \HWO in $\sim\num{46}$ systems, while the ocean glint signature at phase angles of $\sim\qtyrange{130}{170}{\degree}$ would be accessible in $\sim\num{16}$ systems, assuming an \IWA of \qty{62}{\mas} ($3\,\lambda/D$ for a $D=\qty{6}{\meter}$ telescope at $\lambda=\qty{600}{\nano\meter}$).
+The rainbow due to water clouds at phase angles of $\sim\qtyrange{20}{60}{\degree}$ would be accessible with \HWO\ {\bf for a planet with an Earth equivalent instellation} in $\sim\num{46}$ systems, while the ocean glint signature at phase angles of $\sim\qtyrange{130}{170}{\degree}$ would be accessible in $\sim\num{16}$ systems, assuming an \IWA of \qty{62}{\mas} ($3\,\lambda/D$ for a $D=\qty{6}{\meter}$ telescope at $\lambda=\qty{600}{\nano\meter}$).
 %
 Improving the \IWA to $2\,\lambda/D$ increases the number of systems with accessible rainbows and glints by factors of approximately 2 and 3, respectively.
 %
@@ -237,9 +237,11 @@ In general, the glint on a planet will be strongest at red wavelengths because t
 %
 This has been observed in Earthshine measurements \citep{Emde2017,sterzik2019, takahashi2021}. 
 %
-At large phase angles, the forward scattering of light by cloud particles could be confused with glint \citep{Robinson_2010}. {\bf Recently, spectral PCA has been proposed as a tool to separate glint from atmospheric effects on Earth-like worlds \citep{Ryan_Robinson_2022}.}
+At large phase angles, the forward scattering of light by cloud particles could be confused with glint \citep{Robinson_2010}.  
 %
 This confusion can be resolved by measuring polarised phase curves at multiple wavelengths \citep{treesandstam2019}, as shown in \cref{fig:bottplot}, or by probing the rainbow, see below.
+%
+{\bf More recently, \citet{Ryan_Robinson_2022} have also proposed spectral PCA as a tool to separate glint from atmospheric effects on Earth-like worlds.}
 
 Glint provides evidence of specular reflecting surfaces, which, taken in the context of the temperature and types of condensates, may be interpreted as evidence for liquid water.
 %
@@ -392,7 +394,7 @@ The range of accessible phase angles will depend on the \IWA of the coronagraph,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Circular, edge-on orbits}
 
-For the non-eccentric case, the minimum and maximum accessible phase angles are symmetric about \qty{90}{\degree}. 
+%For the non-eccentric case, the minimum and maximum accessible phase angles are symmetric about \qty{90}{\degree}. 
 %
 The on-sky projected planet distance, $r_\mathrm{proj}$ (in \unit{\au}) is shown in \cref{fig:scattering-angle} for a non-eccentric case with a semi-major axis $a$ (in \unit{\au}), at a distance $d_*$ (in \unit{\parsec}) from the observer.
 %
@@ -403,7 +405,7 @@ The scattering angle, $\varphi$, is given by
 \end{equation}
 assuming small angles and $r_\mathrm{proj} = \delta d_*$, where $\delta$ is the on-sky angular separation.
 %
-We access the minimum phase angle when $r_\mathrm{proj}$ reaches the inner working angle separation, thus when $\delta = \mathrm{IWA}$. 
+We access the minimum{\bf /maximum} phase angle when $r_\mathrm{proj}$ reaches the inner working angle separation, thus when $\delta = \mathrm{IWA}$. 
 %
 We can rewrite \cref{eq:sinphi} as:
 \begin{equation}
@@ -412,7 +414,7 @@ We can rewrite \cref{eq:sinphi} as:
     \cdot d_*}{a} \,.
 \end{equation}
 {\bf where we define $\Delta \alpha$ as the difference between the maximum and 
-minimum accessible phase angles}.
+minimum accessible phase angles. For non-eccentric orbits the minimum and maximum phase angles will be equal sides of quadrature and so $\Delta \alpha / 2$ represents the maximum angle away from quadrature that can be accessed}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Figure 3
@@ -429,7 +431,7 @@ minimum accessible phase angles}.
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\Cref{fig:scatterplot} shows $\Delta \alpha$ for the systems in the \HWO target list, assuming an IWA of \qty{61.9}{\mas}.
+\Cref{fig:scatterplot} shows {\bf $\Delta \alpha / 2$} for the systems in the \HWO target list, assuming an IWA of \qty{61.9}{\mas}.
 %
 As can be seen in \cref{fig:scatterplot}, for exoplanets in edge-on circular orbits, it will always be possible to observe the peak polarisation due to Rayleigh scattering, which occurs around quadrature ($\alpha=\qty{90}{\degree}$), while the rainbow angle ($\alpha\sim\qty{40}{\degree}$) will only be accessible for a subset of exoplanets.
 
@@ -537,7 +539,7 @@ The solid lines in \cref{fig:betaallofit} show the cumulative distribution of th
 
 We repeat the Monte Carlo simulations from \cref{sec:circular}, assuming the orbital eccentricity follows a beta-distribution with shape parameters $a=0.867$ and $b=3.03$ \citep{2013MNRAS.434L..51K}. 
 %
-The semi-major axis is kept the same for the circular and eccentric orbits - we do not renormalise the semi-major axis to keep the time averaged flux the same for all systems.
+The semi-major axis is kept the same for the circular and eccentric orbits---we do not renormalise the semi-major axis to keep the time-averaged flux the same for all systems.
 %
 We randomly draw \num{1000} orbits for each star and determine the sky-projected orbits following, for example, \citet{2010exop.book...15M}. 
 %
@@ -575,29 +577,11 @@ where $A_\mathrm{G}$ is the planet's geometric albedo, $R_p$ its radius, $\phi(\
 {\color{red}{The contrast estimations in the \HWO target list were 
 calculated assuming circular planetary orbits, and Lambertian reflecting planets \citep{Russell1916} with a geometric albedo $A_{\rm G}$ equal to 0.2.
 This albedo value was adopted from the VPL models in \citet{Robinson2011}, and the assumption of a Lambert phase function is justifiable given the apparent albedo values derived from Earthshine observations by \citet{Qiu2003} and \citet{Palle2003}.
-For a more accurate representation of the contrast as a function of the separation, we replace the Lambertian phase function with the models shown in \cref{fig:bottplot} from \citet{treesandstam2019} which assume an Earth-like planet with an ocean surface, a wind-speed of $\qty{7}{\meter\per\second}$, and patchy liquid water clouds, observed at $\lambda = \qty{670}{\nano\meter}$. 
+For a more accurate representation of the contrast as a function of the separation, we replace the Lambertian phase function with the models shown in \cref{fig:bottplot} from \citet{treesandstam2019} which assume an Earth-like planet with an ocean surface, a wind-speed of $\qty{7}{\meter\per\second}$, and patchy liquid water clouds observed at $\lambda = \qty{670}{\nano\meter}$.\looseness=-1 
 
-We assume that the contrasts in the \HWO target list represent the
-reflected flux at quadrature ($\alpha=90^\circ$) where a Lambertian
-phase function equals $1/\pi$, and  
-\cref{eq:contrast} to 
+We assume that the contrasts in the \HWO target list represent the reflected flux at quadrature ($\alpha = \qty{90}{\degree}$), where a Lambertian phase function equals $1/\pi$. 
+Using \cref{eq:contrast}, we correct the contrasts in the \HWO target list by dividing them with $0.2/\pi$ (=\,\qty{6.37}{\percent}) and multiplying them by the  reflected light fractions of the updated models of \citet{treesandstam2019}.
 }}
-%
-
-The contrast estimations for \HWO assumed circular planetary orbits and Lambertian phase functions \citep{Russell1916} with $A_\mathrm{G}=0.2$. 
-%
-For a more accurate representation of the contrast as a function of separation, we can update the phase function with the models shown in \cref{fig:bottplot} from \citet{treesandstam2019}.
-%
-To update the phase function, we first correct for the reflected flux at quadrature and then map the normalised total flux and polarised flux as a function of separation.
-
-We assume that the calculated contrasts in the \HWO target list correspond to the reflected flux at quadrature, and so we use \cref{eq:contrast} to calculate the reflected light fraction. We assume a Lambertian reflecting planet at $\alpha=\qty{90}{\degree}$ with a geometric albedo of $0.2$ therefore $C(90) = \qty{6.37}{\percent} \left( R_p / a(90) \right)^2$. 
-%
-The geometric albedo is adopted from the VPL models in \citet{Robinson2011}, and the assumption of a Lambert phase function is justifiable given the apparent albedo values derived from Earthshine in \citet{Qiu2003} and \citet{Palle2003}.
-%
-In addition, we calculate the reflected light fraction at quadrature with the updated model of \citet{treesandstam2019}, which assumes an Earth-like planet with an ocean surface, a wind-speed of $\qty{7}{\meter\per\second}$, and patchy liquid water clouds, observed at $\lambda = \qty{670}{\nano\meter}$.
-%
-We correct the star list contrast by dividing by the \qty{6.37}{\percent} reflected light fraction of the Lambertian phase function and multiplying by the reflected light fraction of the updated model. 
-%
 We then map the orbital phase for circular orbits to the phase angle and on-sky separation, assuming an inclination $i$ of \qty{90}{\degree}. 
 %
 Together, this gives the reflected light contrast as a function of separation for a full orbit.
@@ -629,6 +613,8 @@ These calculations are by no means complete or exact, given the many variables t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{-1mm}
 \section{Results}
 \label{sec:3}
 
@@ -639,7 +625,7 @@ These calculations are by no means complete or exact, given the many variables t
 
 As shown in \cref{fig:betaallofit}, {\bf an empirical} eccentricity distribution increases the number of systems that can be observed at each phase angle (notably for the red and purple lines). 
 %
-This is because eccentric planets reach orbital separations greater than their semi-major axis, and hence are more likely {\bf to "peek out"} from behind the coronagraph \IWA at extreme orbital phases (albeit with worse contrast due to the greater star-planet separation). 
+This is because eccentric planets reach orbital separations greater than their semi-major axis, and hence are more likely {\bf to \enquote{peek out}} from behind the coronagraph \IWA at extreme orbital phases (albeit with worse contrast due to the greater star-planet separation). 
 %
 The eccentricity does not significantly affect the number of systems for \IWA smaller than that used in the selection of the \HWO target list (yellow and blue lines). 
 
@@ -707,19 +693,22 @@ It will be important to consider both the accessible phase angles and contrast l
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{-2mm}
 \section{Discussion}
 \label{sec:4}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this work, we consider each orbit to have a semi-major axis for which it would receives the same flux as Earth assuming a circular orbit.
+In this work, we consider each orbit to have a semi-major axis for which it would receive the same flux as Earth assuming a circular orbit.
 %
-As Earth is on the inner edge of the Habitable Zone, our estimates for the number of systems with accessible scattering features is conservative.
+As Earth is at the inner edge of the Habitable Zone, our estimates for the number of systems with accessible scattering features is conservative.
 %
 However, as we are only considering the accessibility of scattering features, it is possible to scale the results presented here for different semi-major axis. 
 %
-This is because the range of accessible features is determined only by the amount of the orbit covered by the mask, therefore increasing the semi-major axis of an orbit (e.g. double) is equivalent to decreasing the apparent mask size by the same factor (e.g. half).
+This is because the range of accessible features is determined only by the amount of the orbit covered by the mask, therefore increasing the semi-major axis of an orbit (e.g., double) is equivalent to decreasing the apparent mask size by the same factor (e.g., half).
+\looseness=-1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{-2mm}
 \section{Conclusions}
 \label{sec:5}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -734,7 +723,7 @@ We primarily focused on the range of accessible phase angles given the limitatio
 %
 While we do not consider the detectability of the scattering features beyond their accessibility, we show they are typically more distinct in polarised light, but the exoplanet-star contrast ratio is lower than the unpolarised light contrast ratio.
 %
-A benefit of observing the polarised reflected light is that a coronagraph is not explicitly required for quiescent stars, as the light of these stars themselves can be considered to be unpolarised \citep{kemp1987}.
+%A benefit of observing the polarised reflected light is that a coronagraph is not explicitly required for quiescent stars, as the light of these stars themselves can be considered to be unpolarised \citep{kemp1987}.
 
 The desire to detect and characterize a large number of Earth-like exoplanets, and the intrinsic occurrence of such planets around different stellar spectral types, will drive the choice of coronagraphic \IWA for \HWO. 
 %
@@ -748,6 +737,8 @@ To observe more scattering features in more systems, \HWO would need a smaller \
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{-2mm}
 \section*{Data Availability}
 
 The NASA ExEP target list containing the data used for our simulations is  available online.%
@@ -766,9 +757,9 @@ The research presented in this paper was initiated at a workshop held in Leiden 
 
 SRV and JLB acknowledge funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation program under grant agreement \textnumero~805445.
 %
-SLC acknowledges support from an STFC Ernest Rutherford Fellowship. 
-%
 TDG acknowledges funding from the Max Planck ETH Center for Learning Systems.
+%
+SLC acknowledges support from an STFC Ernest Rutherford Fellowship. 
 %
 KB acknowledges support from NASA Habitable Worlds grant \textnumero~80NSSC20K152, and previous support for related work from NASA Astrobiology Institute's Virtual Planetary Laboratory under Cooperative Agreement \textnumero~NNA13AA93A.
 %
